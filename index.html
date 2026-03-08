@@ -1,0 +1,384 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Lin WangRu · 游戏开发作品集</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;700&display=swap" rel="stylesheet">
+    <style>
+        body { font-family: 'Inter', sans-serif; }
+        .project-card { transition: all 0.3s ease; }
+        .project-card:hover { transform: translateY(-4px); box-shadow: 0 20px 40px rgba(0,0,0,0.1); }
+        .tag { transition: all 0.2s; }
+        .tag:hover { transform: scale(1.05); }
+        .qr-container { 
+            background: white; 
+            padding: 12px; 
+            border-radius: 12px; 
+            box-shadow: 0 4px 20px rgba(0,0,0,0.1);
+            display: inline-block;
+        }
+        .gradient-text {
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+        }
+        .game-icon {
+            width: 48px;
+            height: 48px;
+            border-radius: 12px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 24px;
+        }
+        /* 视频弹窗样式 */
+        .video-modal {
+            display: none;
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(0,0,0,0.9);
+            z-index: 100;
+            justify-content: center;
+            align-items: center;
+        }
+        .video-modal.active {
+            display: flex;
+        }
+        .video-container {
+            position: relative;
+            width: 90%;
+            max-width: 1000px;
+            background: #000;
+            border-radius: 12px;
+            overflow: hidden;
+        }
+        .video-container video {
+            width: 100%;
+            height: auto;
+            max-height: 80vh;
+        }
+        .close-btn {
+            position: absolute;
+            top: -40px;
+            right: 0;
+            color: white;
+            font-size: 24px;
+            cursor: pointer;
+            background: none;
+            border: none;
+            padding: 8px;
+        }
+        .close-btn:hover {
+            color: #ccc;
+        }
+    </style>
+</head>
+<body class="bg-gray-50 text-gray-800">
+
+    <!-- Header -->
+    <header class="bg-white shadow-sm sticky top-0 z-50">
+        <div class="max-w-5xl mx-auto px-6 py-4 flex justify-between items-center">
+            <h1 class="text-2xl font-bold gradient-text">Lin WangRu</h1>
+            <nav class="space-x-6 text-sm font-medium">
+                <a href="#projects" class="hover:text-purple-600 transition">项目</a>
+                <a href="#about" class="hover:text-purple-600 transition">关于</a>
+                <a href="https://github.com/LinWangRu" target="_blank" class="hover:text-purple-600 transition">GitHub</a>
+            </nav>
+        </div>
+    </header>
+
+    <!-- Hero Section -->
+    <section class="max-w-5xl mx-auto px-6 py-16">
+        <div class="flex flex-col md:flex-row items-center justify-between gap-12">
+            <div class="flex-1">
+                <h2 class="text-4xl md:text-5xl font-bold mb-4 text-gray-900">游戏开发作品集</h2>
+                <p class="text-xl text-gray-600 mb-6 leading-relaxed">
+                    专注游戏系统架构与策略博弈设计。<br>
+                    从 Endless War 猜拳博弈到 Monster Master 怪物收集，探索策略深度与系统扩展性。
+                </p>
+                <div class="flex gap-3 flex-wrap">
+                    <span class="tag px-4 py-2 bg-purple-100 text-purple-700 rounded-full text-sm font-medium">Unity</span>
+                    <span class="tag px-4 py-2 bg-blue-100 text-blue-700 rounded-full text-sm font-medium">C#</span>
+                    <span class="tag px-4 py-2 bg-red-100 text-red-700 rounded-full text-sm font-medium">技术策划</span>
+                    <span class="tag px-4 py-2 bg-green-100 text-green-700 rounded-full text-sm font-medium">系统架构</span>
+                </div>
+            </div>
+            
+            <!-- QR Code Section -->
+            <div class="text-center">
+                <div class="qr-container mb-3">
+                    <img src="https://api.qrserver.com/v1/create-qr-code/?size=150x150&data=https://linwangru.github.io" 
+                         alt="作品集二维码" 
+                         class="w-32 h-32 md:w-40 md:h-40"
+                         id="qr-code">
+                </div>
+                <p class="text-sm text-gray-500 font-medium">扫码查看在线作品集</p>
+                <p class="text-xs text-gray-400 mt-1">https://linwangru.github.io</p>
+            </div>
+        </div>
+    </section>
+
+    <!-- Projects Section -->
+    <section id="projects" class="max-w-5xl mx-auto px-6 py-12">
+        <h3 class="text-2xl font-bold mb-8 text-gray-900 border-l-4 border-purple-500 pl-4">精选项目</h3>
+        
+        <div class="space-y-8">
+            
+            <!-- Endless War (Rock Paper Scissors) -->
+            <article class="project-card bg-white rounded-2xl p-8 shadow-md border-2 border-red-100 relative overflow-hidden">
+                <div class="absolute top-0 right-0 bg-gradient-to-l from-red-500 to-orange-500 text-white px-4 py-1 text-xs font-bold rounded-bl-lg">
+                    核心作品
+                </div>
+                
+                <div class="flex items-start gap-4 mb-4">
+                    <div class="game-icon bg-gradient-to-br from-red-400 to-orange-400 text-white">✊</div>
+                    <div class="flex-1">
+                        <div class="flex flex-col md:flex-row justify-between items-start md:items-center">
+                            <div>
+                                <h4 class="text-2xl font-bold text-gray-900 mb-1">Endless War</h4>
+                                <p class="text-gray-600">猜拳博弈 · 回合制策略战斗系统</p>
+                            </div>
+                            <span class="mt-2 md:mt-0 px-3 py-1 bg-red-100 text-red-600 rounded-full text-sm font-medium">独立开发</span>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="flex gap-2 flex-wrap mb-4">
+                    <span class="tag px-3 py-1 bg-red-50 text-red-600 rounded text-xs font-medium">猜拳行动权机制</span>
+                    <span class="tag px-3 py-1 bg-orange-50 text-orange-600 rounded text-xs font-medium">Utility AI</span>
+                    <span class="tag px-3 py-1 bg-purple-50 text-purple-600 rounded text-xs font-medium">技能框架</span>
+                    <span class="tag px-3 py-1 bg-blue-50 text-blue-600 rounded text-xs font-medium">C#抽象类</span>
+                    <span class="tag px-3 py-1 bg-green-50 text-green-600 rounded text-xs font-medium">动态空间算法</span>
+                </div>
+
+                <div class="bg-gray-50 rounded-lg p-4 mb-4">
+                    <h5 class="font-semibold text-gray-700 mb-2">核心机制（按简历描述）：</h5>
+                    <ul class="list-disc list-inside text-gray-600 space-y-1 text-sm">
+                        <li><strong>猜拳行动权机制</strong>：用"猜拳"替代传统速度属性决定行动顺序，增加博弈维度</li>
+                        <li><strong>高扩展性技能框架</strong>：基于C#抽象类与钩子函数(OnBeforeTakeDamage/OnAfterDealDamage等)，将伤害拦截、吸血、反伤等效果模块化，策划仅需继承基类、配置参数即可实现新技能</li>
+                        <li><strong>拟人化AI决策模型</strong>：双层AI系统——战术层用Utility AI实现斩杀预判、治疗优先级决策；博弈层根据队友状态动态切换猜拳策略(如"配合队友集火"或"绝望随机")</li>
+                        <li><strong>动态空间算法</strong>：独立开发GetDynamicDistance算法，通过逻辑数组动态维护战场坐标关系，为技能范围、位移特性提供稳定的空间参考</li>
+                        <li><strong>标准化战斗管线</strong>：构建"前置拦截→闪避判定→减伤计算→后置反馈"四阶段流水线，明确区分物理/法术/真实伤害类型</li>
+                    </ul>
+                </div>
+
+                <div class="flex gap-4">
+                    <a href="https://github.com/LinWangRu/Rock-Paper-Scissors" target="_blank" 
+                       class="inline-flex items-center gap-2 px-4 py-2 bg-gray-900 text-white rounded-lg hover:bg-gray-800 transition text-sm font-medium">
+                        <svg class="w-4 h-4" fill="currentColor" viewBox="0 0 24 24"><path d="M12 0c-6.626 0-12 5.373-12 12 0 5.302 3.438 9.8 8.207 11.387.599.111.793-.261.793-.577v-2.234c-3.338.726-4.033-1.416-4.033-1.416-.546-1.387-1.333-1.756-1.333-1.756-1.089-.745.083-.729.083-.729 1.205.084 1.839 1.237 1.839 1.237 1.07 1.834 2.807 1.304 3.492.997.107-.775.418-1.305.762-1.604-2.665-.305-5.467-1.334-5.467-5.931 0-1.311.469-2.381 1.236-3.221-.124-.303-.535-1.524.117-3.176 0 0 1.008-.322 3.301 1.23.957-.266 1.983-.399 3.003-.404 1.02.005 2.047.138 3.006.404 2.291-1.552 3.297-1.23 3.297-1.23.653 1.653.242 2.874.118 3.176.77.84 1.235 1.911 1.235 3.221 0 4.609-2.807 5.624-5.479 5.921.43.372.823 1.102.823 2.222v3.293c0 .319.192.694.801.576 4.765-1.589 8.199-6.086 8.199-11.386 0-6.627-5.373-12-12-12z"/></svg>
+                        查看代码
+                    </a>
+                    <button onclick="playVideo('演示0.mp4')" 
+                            class="inline-flex items-center gap-2 px-4 py-2 bg-red-600 text-white rounded-lg hover:bg-red-700 transition text-sm font-medium">
+                        <svg class="w-4 h-4" fill="currentColor" viewBox="0 0 24 24"><path d="M8 5v14l11-7z"/></svg>
+                        玩法演示
+                    </button>
+                </div>
+            </article>
+
+            <!-- 欺心恋曲 (Galgame/视觉小说引擎) -->
+            <article class="project-card bg-white rounded-2xl p-8 shadow-sm border border-gray-100">
+                <div class="flex items-start gap-4 mb-4">
+                    <div class="game-icon bg-gradient-to-br from-pink-400 to-purple-400 text-white">💕</div>
+                    <div class="flex-1">
+                        <div class="flex flex-col md:flex-row justify-between items-start md:items-center">
+                            <div>
+                                <h4 class="text-2xl font-bold text-gray-900 mb-1">欺心恋曲</h4>
+                                <p class="text-gray-600">视觉小说引擎 · 数据驱动工作流</p>
+                            </div>
+                            <span class="mt-2 md:mt-0 px-3 py-1 bg-pink-100 text-pink-600 rounded-full text-sm">2025.04-2025.10</span>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="flex gap-2 flex-wrap mb-4">
+                    <span class="tag px-3 py-1 bg-pink-50 text-pink-600 rounded text-xs font-medium">Excel数据驱动</span>
+                    <span class="tag px-3 py-1 bg-purple-50 text-purple-600 rounded text-xs font-medium">像素级存档</span>
+                    <span class="tag px-3 py-1 bg-blue-50 text-blue-600 rounded text-xs font-medium">Newtonsoft.Json</span>
+                    <span class="tag px-3 py-1 bg-green-50 text-green-600 rounded text-xs font-medium">对象池优化</span>
+                </div>
+
+                <div class="bg-gray-50 rounded-lg p-4 mb-4">
+                    <h5 class="font-semibold text-gray-700 mb-2">核心功能（按简历描述）：</h5>
+                    <ul class="list-disc list-inside text-gray-600 space-y-1 text-sm">
+                        <li><strong>数据驱动工作流</strong>：设计Excel配置系统，将对话、立绘、音效、分支跳转完全数据化，策划可独立完成剧本编写与演出配置，迭代效率提升60%</li>
+                        <li><strong>像素级存档系统</strong>：针对视觉小说玩家"随时存档、反复读档探索分支"的行为习惯，设计上下文完整序列化方案(含打字机状态、角色好感度、演出进度)，实现读档秒开、状态无损还原</li>
+                        <li><strong>可配置演出工具</strong>：封装运镜(缩放/平移)、淡入淡出等动画接口为策划可配置的指令，使策划能直接设计过场节奏</li>
+                        <li><strong>性能保障</strong>：引入对象池管理立绘资源，避免频繁切换场景的内存波动，保障中低端设备流畅运行</li>
+                        <li><strong>多媒体管理</strong>：使用AudioMixer实现音量分层控制(BGM/Voice/SFX)，VideoPlayer处理过场动画与结局视频</li>
+                    </ul>
+                </div>
+
+                <div class="flex gap-4">
+                    <a href="https://github.com/LinWangRu/Galgame" target="_blank" 
+                       class="inline-flex items-center gap-2 px-4 py-2 bg-gray-900 text-white rounded-lg hover:bg-gray-800 transition text-sm font-medium">
+                        <svg class="w-4 h-4" fill="currentColor" viewBox="0 0 24 24"><path d="M12 0c-6.626 0-12 5.373-12 12 0 5.302 3.438 9.8 8.207 11.387.599.111.793-.261.793-.577v-2.234c-3.338.726-4.033-1.416-4.033-1.416-.546-1.387-1.333-1.756-1.333-1.756-1.089-.745.083-.729.083-.729 1.205.084 1.839 1.237 1.839 1.237 1.07 1.834 2.807 1.304 3.492.997.107-.775.418-1.305.762-1.604-2.665-.305-5.467-1.334-5.467-5.931 0-1.311.469-2.381 1.236-3.221-.124-.303-.535-1.524.117-3.176 0 0 1.008-.322 3.301 1.23.957-.266 1.983-.399 3.003-.404 1.02.005 2.047.138 3.006.404 2.291-1.552 3.297-1.23 3.297-1.23.653 1.653.242 2.874.118 3.176.77.84 1.235 1.911 1.235 3.221 0 4.609-2.807 5.624-5.479 5.921.43.372.823 1.102.823 2.222v3.293c0 .319.192.694.801.576 4.765-1.589 8.199-6.086 8.199-11.386 0-6.627-5.373-12-12-12z"/></svg>
+                        查看代码
+                    </a>
+                    <button onclick="playVideo('演示1.mp4')" 
+                            class="inline-flex items-center gap-2 px-4 py-2 bg-pink-600 text-white rounded-lg hover:bg-pink-700 transition text-sm font-medium">
+                        <svg class="w-4 h-4" fill="currentColor" viewBox="0 0 24 24"><path d="M8 5v14l11-7z"/></svg>
+                        玩法演示
+                    </button>
+                </div>
+            </article>
+
+            <!-- Monster Master -->
+            <article class="project-card bg-white rounded-2xl p-8 shadow-sm border border-gray-100">
+                <div class="flex items-start gap-4 mb-4">
+                    <div class="game-icon bg-gradient-to-br from-green-400 to-blue-400 text-white">👾</div>
+                    <div class="flex-1">
+                        <div class="flex flex-col md:flex-row justify-between items-start md:items-center">
+                            <div>
+                                <h4 class="text-2xl font-bold text-gray-900 mb-1">Monster Master</h4>
+                                <p class="text-gray-600">怪物收集与养成系统框架</p>
+                            </div>
+                            <span class="mt-2 md:mt-0 px-3 py-1 bg-gray-100 text-gray-600 rounded-full text-sm">系统框架</span>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="flex gap-2 flex-wrap mb-4">
+                    <span class="tag px-3 py-1 bg-purple-50 text-purple-600 rounded text-xs font-medium">Unity</span>
+                    <span class="tag px-3 py-1 bg-blue-50 text-blue-600 rounded text-xs font-medium">C#</span>
+                    <span class="tag px-3 py-1 bg-green-50 text-green-600 rounded text-xs font-medium">数据驱动</span>
+                    <span class="tag px-3 py-1 bg-orange-50 text-orange-600 rounded text-xs font-medium">回合制战斗</span>
+                </div>
+
+                <div class="bg-gray-50 rounded-lg p-4 mb-4">
+                    <h5 class="font-semibold text-gray-700 mb-2">核心功能：</h5>
+                    <ul class="list-disc list-inside text-gray-600 space-y-1 text-sm">
+                        <li>怪物属性系统（种族值、个体值、性格修正）</li>
+                        <li>技能学习与遗传机制</li>
+                        <li>背包与道具管理系统</li>
+                    </ul>
+                </div>
+
+                <div class="flex gap-4">
+                    <a href="https://github.com/LinWangRu/Monster_Master" target="_blank" 
+                       class="inline-flex items-center gap-2 px-4 py-2 bg-gray-900 text-white rounded-lg hover:bg-gray-800 transition text-sm font-medium">
+                        <svg class="w-4 h-4" fill="currentColor" viewBox="0 0 24 24"><path d="M12 0c-6.626 0-12 5.373-12 12 0 5.302 3.438 9.8 8.207 11.387.599.111.793-.261.793-.577v-2.234c-3.338.726-4.033-1.416-4.033-1.416-.546-1.387-1.333-1.756-1.333-1.756-1.089-.745.083-.729.083-.729 1.205.084 1.839 1.237 1.839 1.237 1.07 1.834 2.807 1.304 3.492.997.107-.775.418-1.305.762-1.604-2.665-.305-5.467-1.334-5.467-5.931 0-1.311.469-2.381 1.236-3.221-.124-.303-.535-1.524.117-3.176 0 0 1.008-.322 3.301 1.23.957-.266 1.983-.399 3.003-.404 1.02.005 2.047.138 3.006.404 2.291-1.552 3.297-1.23 3.297-1.23.653 1.653.242 2.874.118 3.176.77.84 1.235 1.911 1.235 3.221 0 4.609-2.807 5.624-5.479 5.921.43.372.823 1.102.823 2.222v3.293c0 .319.192.694.801.576 4.765-1.589 8.199-6.086 8.199-11.386 0-6.627-5.373-12-12-12z"/></svg>
+                        查看代码
+                    </a>
+                </div>
+            </article>
+
+            <!-- Other Projects -->
+            <article class="project-card bg-white rounded-2xl p-8 shadow-sm border border-gray-100">
+                <h4 class="text-xl font-bold text-gray-900 mb-4">其他项目</h4>
+                <div class="grid md:grid-cols-3 gap-4">
+                    <div class="bg-gray-50 rounded-lg p-4 hover:bg-gray-100 transition cursor-pointer" onclick="window.open('https://github.com/LinWangRu/EDA-Homework', '_blank')">
+                        <h5 class="font-semibold text-gray-800 mb-1">EDA-Homework</h5>
+                        <p class="text-xs text-gray-600">电子设计自动化算法</p>
+                        <span class="inline-block mt-2 px-2 py-1 bg-gray-200 text-gray-700 rounded text-xs">C++</span>
+                    </div>
+                    <div class="bg-gray-50 rounded-lg p-4 hover:bg-gray-100 transition cursor-pointer" onclick="window.open('https://github.com/LinWangRu/Handwriting-Recognition', '_blank')">
+                        <h5 class="font-semibold text-gray-800 mb-1">Handwriting-Recognition</h5>
+                        <p class="text-xs text-gray-600">手写数字识别神经网络</p>
+                        <span class="inline-block mt-2 px-2 py-1 bg-gray-200 text-gray-700 rounded text-xs">Python/ML</span>
+                    </div>
+                    <div class="bg-gray-50 rounded-lg p-4 hover:bg-gray-100 transition cursor-pointer" onclick="window.open('https://github.com/LinWangRu/CondaPy', '_blank')">
+                        <h5 class="font-semibold text-gray-800 mb-1">CondaPy</h5>
+                        <p class="text-xs text-gray-600">Conda 环境管理工具</p>
+                        <span class="inline-block mt-2 px-2 py-1 bg-gray-200 text-gray-700 rounded text-xs">Python</span>
+                    </div>
+                </div>
+            </article>
+
+        </div>
+    </section>
+
+    <!-- About Section -->
+    <section id="about" class="max-w-5xl mx-auto px-6 py-12 mb-16">
+        <h3 class="text-2xl font-bold mb-8 text-gray-900 border-l-4 border-purple-500 pl-4">关于我</h3>
+        <div class="bg-white rounded-2xl p-8 shadow-sm border border-gray-100">
+            <p class="text-gray-700 leading-relaxed mb-6">
+                具备扎实的独立开发与系统架构能力，擅长运用<strong>数据驱动(Data-Driven)设计模式</strong>，通过配置表高效管理游戏剧情、演出逻辑与系统参数。
+                深入理解面向对象设计与模块化解耦，能基于继承、多态与事件机制构建高扩展性的Gameplay系统(如技能/Buff系统、回合制AI)。
+                注重代码工程化与协作沟通，具备将设计需求转化为稳定可实现技术方案的能力。
+            </p>
+            <div class="grid md:grid-cols-2 gap-6">
+                <div>
+                    <h4 class="font-semibold text-gray-900 mb-3">技术栈</h4>
+                    <div class="flex flex-wrap gap-2">
+                        <span class="px-3 py-1 bg-gray-100 rounded text-sm">Unity3D</span>
+                        <span class="px-3 py-1 bg-gray-100 rounded text-sm">C#</span>
+                        <span class="px-3 py-1 bg-gray-100 rounded text-sm">Python</span>
+                        <span class="px-3 py-1 bg-gray-100 rounded text-sm">Excel数据配置</span>
+                        <span class="px-3 py-1 bg-gray-100 rounded text-sm">AI行为树</span>
+                        <span class="px-3 py-1 bg-gray-100 rounded text-sm">设计模式</span>
+                    </div>
+                </div>
+                <div>
+                    <h4 class="font-semibold text-gray-900 mb-3">联系方式</h4>
+                    <p class="text-gray-600 text-sm mb-1">GitHub: <a href="https://github.com/LinWangRu" class="text-purple-600 hover:underline">@LinWangRu</a></p>
+                    <p class="text-gray-600 text-sm mb-1">邮箱: 3500601435@qq.com</p>
+                    <p class="text-gray-500 text-xs">求职意向: 游戏技术策划 | 期望城市: 深圳</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="bg-white border-t border-gray-200 py-8">
+        <div class="max-w-5xl mx-auto px-6 text-center text-gray-500 text-sm">
+            <p>© 2025 Lin WangRu. 使用 GitHub Pages 部署</p>
+        </div>
+    </footer>
+
+    <!-- Video Modal -->
+    <div id="videoModal" class="video-modal" onclick="closeVideo(event)">
+        <div class="video-container" onclick="event.stopPropagation()">
+            <button class="close-btn" onclick="closeVideo()">✕</button>
+            <video id="demoVideo" controls autoplay>
+                <source src="" type="video/mp4">
+                您的浏览器不支持视频播放。
+            </video>
+        </div>
+    </div>
+
+    <script>
+        // 动态生成当前页面二维码
+        document.getElementById('qr-code').src = 
+            'https://api.qrserver.com/v1/create-qr-code/?size=200x200&data=' + 
+            encodeURIComponent(window.location.href);
+        
+        // 播放视频
+        function playVideo(videoFile) {
+            const modal = document.getElementById('videoModal');
+            const video = document.getElementById('demoVideo');
+            const source = video.querySelector('source');
+            
+            source.src = videoFile;
+            video.load();
+            modal.classList.add('active');
+            video.play();
+        }
+        
+        // 关闭视频
+        function closeVideo(event) {
+            if (event && event.target !== document.getElementById('videoModal') && event.target !== document.querySelector('.close-btn')) {
+                return;
+            }
+            const modal = document.getElementById('videoModal');
+            const video = document.getElementById('demoVideo');
+            
+            video.pause();
+            video.currentTime = 0;
+            modal.classList.remove('active');
+        }
+        
+        // ESC键关闭视频
+        document.addEventListener('keydown', function(e) {
+            if (e.key === 'Escape') {
+                closeVideo();
+            }
+        });
+    </script>
+</body>
+</html>
