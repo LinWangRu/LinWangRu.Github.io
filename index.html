@@ -76,7 +76,133 @@
         .close-btn:hover {
             color: #ccc;
         }
-    </style>
+
+        /* 游戏分析模块 */
+        .analysis-tabs {
+            display: flex;
+            gap: 8px;
+            flex-wrap: wrap;
+            border-bottom: 2px solid #f3f4f6;
+            padding-bottom: 0;
+        }
+        .analysis-tab {
+            padding: 10px 16px;
+            font-size: 13px;
+            font-weight: 600;
+            color: #6b7280;
+            background: none;
+            border: none;
+            border-bottom: 3px solid transparent;
+            cursor: pointer;
+            transition: all 0.2s;
+            margin-bottom: -2px;
+        }
+        .analysis-tab:hover { color: #d97706; }
+        .analysis-tab.active {
+            color: #d97706;
+            border-bottom-color: #f59e0b;
+        }
+        .analysis-panel { display: none; }
+        .analysis-panel.active { display: block; }
+        .analysis-content {
+            max-height: 600px;
+            overflow-y: auto;
+            padding: 16px;
+            background: #f9fafb;
+            border-radius: 12px;
+            font-size: 14px;
+            line-height: 1.7;
+        }
+        .analysis-content h3 {
+            font-size: 16px;
+            font-weight: 700;
+            color: #374151;
+            margin: 20px 0 8px;
+            padding-left: 10px;
+            border-left: 3px solid #f59e0b;
+        }
+        .analysis-content h3:first-child { margin-top: 0; }
+        .analysis-content h2 {
+            font-size: 17px;
+            font-weight: 700;
+            color: #1f2937;
+            margin: 24px 0 10px;
+            padding-left: 10px;
+            border-left: 3px solid #3b82f6;
+        }
+        .analysis-content h2.report-title {
+            border-left-color: #8b5cf6;
+            font-size: 18px;
+            margin-top: 0;
+        }
+        .analysis-content h4 {
+            font-size: 14px;
+            font-weight: 600;
+            color: #4b5563;
+            margin: 14px 0 6px;
+        }
+        .analysis-content p { color: #4b5563; margin-bottom: 8px; }
+        .analysis-list {
+            list-style: disc;
+            padding-left: 20px;
+            color: #4b5563;
+            margin-bottom: 10px;
+        }
+        .analysis-list li { margin-bottom: 4px; }
+        .table-wrap {
+            overflow-x: auto;
+            margin: 10px 0 16px;
+            border-radius: 8px;
+            border: 1px solid #e5e7eb;
+        }
+        .analysis-table {
+            width: 100%;
+            border-collapse: collapse;
+            font-size: 12px;
+            background: white;
+        }
+        .analysis-table th {
+            background: #fef3c7;
+            color: #92400e;
+            font-weight: 600;
+            padding: 8px 10px;
+            text-align: left;
+            white-space: nowrap;
+        }
+        .analysis-table td {
+            padding: 6px 10px;
+            border-top: 1px solid #f3f4f6;
+            color: #374151;
+        }
+        .analysis-table tr:hover td { background: #fffbeb; }
+        .xlsx-table { font-size: 11px; }
+        .xlsx-table td, .xlsx-table th { padding: 4px 8px; }
+        .formula-block {
+            background: #eff6ff;
+            border-left: 3px solid #3b82f6;
+            padding: 10px 14px;
+            margin: 10px 0;
+            font-family: monospace;
+            font-size: 13px;
+            border-radius: 0 8px 8px 0;
+        }
+
+        .report-meta { display:flex; flex-wrap:wrap; gap:8px 16px; font-size:12px; color:#64748b; margin-bottom:12px; padding-bottom:10px; border-bottom:1px solid #e2e8f0; }
+        .report-badge { background:#dbeafe; color:#1d4ed8; padding:2px 8px; border-radius:999px; font-weight:600; }
+        .mini-toc { display:flex; flex-wrap:wrap; gap:6px 10px; font-size:12px; margin-bottom:14px; padding:10px 12px; background:#f8fafc; border-radius:8px; border:1px solid #e2e8f0; }
+        .mini-toc a { color:#2563eb; text-decoration:none; } .mini-toc a:hover { text-decoration:underline; }
+        .summary-box { background:linear-gradient(135deg,#fffbeb 0%,#fef3c7 100%); border:1px solid #fcd34d; border-radius:10px; padding:12px 14px; margin-bottom:16px; }
+        .summary-box li { margin-bottom:6px; }
+        .highlight { background:#fef9c3; border-left:3px solid #eab308; padding:8px 12px; margin:8px 0; font-weight:600; font-size:13px; border-radius:0 6px 6px 0; }
+        .sub-block { color:#92400e; font-weight:700; font-size:13px; margin:12px 0 6px; padding-left:8px; border-left:3px solid #f59e0b; }
+        .table-caption { font-size:12px; font-weight:700; color:#475569; margin:12px 0 4px; }
+        .chart-gallery { display:grid; grid-template-columns:repeat(auto-fill,minmax(280px,1fr)); gap:12px; margin:12px 0 16px; }
+        .chart-figure { margin:0; background:white; border:1px solid #e2e8f0; border-radius:8px; overflow:hidden; }
+        .chart-img { width:100%; height:auto; display:block; }
+        .chart-figure figcaption { font-size:11px; color:#64748b; padding:6px 8px; background:#f8fafc; }
+        .analysis-content h3[id^="ark-"] { font-size:15px; font-weight:700; color:#1e3a5f; margin:18px 0 8px; padding-left:10px; border-left:3px solid #3b82f6; }
+        .analysis-content h4[id^="ark-"] { font-size:13px; font-weight:600; color:#334155; margin:12px 0 6px; }
+        </style>
 </head>
 <body class="bg-gray-50 text-gray-800">
 
@@ -86,6 +212,7 @@
             <h1 class="text-2xl font-bold gradient-text">Lin WangRu</h1>
             <nav class="space-x-6 text-sm font-medium">
                 <a href="#projects" class="hover:text-purple-600 transition">项目</a>
+                <a href="#game-analysis" class="hover:text-purple-600 transition">策划分析</a>
                 <a href="#about" class="hover:text-purple-600 transition">关于</a>
                 <a href="https://github.com/LinWangRu" target="_blank" class="hover:text-purple-600 transition">GitHub</a>
             </nav>
@@ -322,47 +449,363 @@
                 </div>
             </article>
 
-            <!-- Goods Match 产品分析 -->
-            <article class="project-card bg-white rounded-2xl p-8 shadow-sm border border-gray-100">
-                <div class="flex items-start gap-4 mb-4">
-                    <div class="game-icon bg-gradient-to-br from-amber-400 to-orange-400 text-white">📊</div>
-                    <div class="flex-1">
-                        <div class="flex flex-col md:flex-row justify-between items-start md:items-center">
-                            <div>
-                                <h4 class="text-2xl font-bold text-gray-900 mb-1">Goods Match 产品体验分析</h4>
-                                <p class="text-gray-600">货架三消 · 机制拆解与海外休闲市场竞品对比</p>
-                            </div>
-                            <span class="mt-2 md:mt-0 px-3 py-1 bg-amber-100 text-amber-700 rounded-full text-sm">2026.05</span>
-                        </div>
-                    </div>
+<!-- 游戏分析与数值策划 · 合并模块 -->
+<!-- 游戏分析与数值策划 · 合并模块 -->
+<!-- 游戏分析与数值策划 · 合并模块 -->
+<article id="game-analysis" class="project-card bg-white rounded-2xl p-8 shadow-md border-2 border-amber-100 relative overflow-hidden">
+    <div class="absolute top-0 right-0 bg-gradient-to-l from-amber-500 to-orange-500 text-white px-4 py-1 text-xs font-bold rounded-bl-lg">
+        策划分析
+    </div>
+    <div class="flex items-start gap-4 mb-4">
+        <div class="game-icon bg-gradient-to-br from-amber-400 to-orange-400 text-white">📊</div>
+        <div class="flex-1">
+            <div class="flex flex-col md:flex-row justify-between items-start md:items-center">
+                <div>
+                    <h4 class="text-2xl font-bold text-gray-900 mb-1">游戏分析与数值策划</h4>
+                    <p class="text-gray-600">产品体验分析 · 系统架构拆解 · 数值策划案</p>
                 </div>
-
-                <div class="flex gap-2 flex-wrap mb-4">
-                    <span class="tag px-3 py-1 bg-amber-50 text-amber-600 rounded text-xs font-medium">产品分析</span>
-                    <span class="tag px-3 py-1 bg-orange-50 text-orange-600 rounded text-xs font-medium">数值经济</span>
-                    <span class="tag px-3 py-1 bg-blue-50 text-blue-600 rounded text-xs font-medium">竞品对比</span>
-                    <span class="tag px-3 py-1 bg-green-50 text-green-600 rounded text-xs font-medium">海外市场</span>
-                </div>
-
-                <div class="bg-gray-50 rounded-lg p-4 mb-4">
-                    <h5 class="font-semibold text-gray-700 mb-2">报告要点：</h5>
-                    <ul class="list-disc list-inside text-gray-600 space-y-1 text-sm">
-                        <li><strong>核心玩法</strong>：三格货柜三消 + 限时通关，第 15 关传送带、第 26–27 关流动架与多锁为机制关键节点</li>
-                        <li><strong>体力与经济</strong>：5 点体力 / 15 分钟恢复 / 约 3 分钟单局，形成「短局高频、长间休息」的海外休闲节律</li>
-                        <li><strong>商业化</strong>：分析 9.99 去广告（时长归零）与激励视频、道具定价失衡（钟表 vs 冻结）等问题</li>
-                        <li><strong>竞品定位</strong>：对比 Goods Master 3D、Triple Match 3D、Royal Match，提炼机制深度与 LiveOps 差距</li>
-                        <li><strong>改进建议</strong>：P0 道具 reprice、9.99 文案澄清、12 关通关率校准；P1 难关首次免扣体力试点</li>
-                    </ul>
-                </div>
-
-                <div class="flex gap-4">
-                    <a href="林王儒产品分析报告.pdf" target="_blank"
-                       class="inline-flex items-center gap-2 px-4 py-2 bg-amber-600 text-white rounded-lg hover:bg-amber-700 transition text-sm font-medium">
-                        <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12h6m-6 4h6m2 5H7a2 2 0 01-2-2V5a2 2 0 012-2h5.586a1 1 0 01.707.293l5.414 5.414a1 1 0 01.293.707V19a2 2 0 01-2 2z"/></svg>
-                        查看完整报告 (PDF)
-                    </a>
-                </div>
-            </article>
+                <span class="mt-2 md:mt-0 px-3 py-1 bg-amber-100 text-amber-700 rounded-full text-sm">2025–2026</span>
+            </div>
+        </div>
+    </div>
+    <div class="flex gap-2 flex-wrap mb-4">
+        <span class="tag px-3 py-1 bg-amber-50 text-amber-600 rounded text-xs font-medium">产品分析</span>
+        <span class="tag px-3 py-1 bg-indigo-50 text-indigo-600 rounded text-xs font-medium">系统架构</span>
+        <span class="tag px-3 py-1 bg-blue-50 text-blue-600 rounded text-xs font-medium">数值策划</span>
+        <span class="tag px-3 py-1 bg-green-50 text-green-600 rounded text-xs font-medium">竞品对比</span>
+        <span class="tag px-3 py-1 bg-purple-50 text-purple-600 rounded text-xs font-medium">Excel数据表</span>
+    </div>
+    <p class="text-sm text-gray-600 mb-6">涵盖 Goods Match 三消产品体验报告、《崩坏：星穹铁道》游戏架构拆解，以及《明日方舟》数值策划案与干员养成 Excel 数据表。</p>
+    
+    <!-- Tab Navigation -->
+    <div class="analysis-tabs mb-6">
+        <button class="analysis-tab active" data-tab="match3" onclick="switchAnalysisTab('match3')">Goods Match 产品分析</button>
+        <button class="analysis-tab" data-tab="hsr" onclick="switchAnalysisTab('hsr')">星穹铁道 架构拆解</button>
+        <button class="analysis-tab" data-tab="arknights" onclick="switchAnalysisTab('arknights')">明日方舟 数值策划</button>
+    </div>
+    
+    <!-- Tab Panels -->
+    <div id="tab-match3" class="analysis-panel active">
+        <div class="analysis-content">
+<h3>一、报告说明</h3>
+<p>本报告基于实际游玩整理，涵盖机制、难度、数值、体力、广告与付费、美术、活动，及海外休闲市场与同类竞品对比。</p>
+<h3>二、体验总览</h3>
+<p>三格货柜三消、限时通关。第5关锁、第15关传送带、第26–27关流动架与多锁为关键节点。体力5点/关耗1，自然恢复15分钟/点，单局约3分钟。</p>
+<div class="table-wrap"><table class="analysis-table"><thead><tr><th>维度</th><th>评分</th><th>摘要</th><th>备注</th></tr></thead><tbody>
+<tr><td>核心玩法</td><td>4.0</td><td>货柜三消+传送带</td><td></td></tr>
+<tr><td>难度设计</td><td>4.1</td><td>12关体感需校准</td><td></td></tr>
+<tr><td>数值经济</td><td>3.1</td><td>道具比价失衡</td><td></td></tr>
+<tr><td>体力设计</td><td>4.0</td><td>15分/点与3分/局匹配</td><td></td></tr>
+<tr><td>广告9.99</td><td>4.0</td><td>时长归零利研究机制</td><td></td></tr>
+<tr><td>美术UI</td><td>3.5</td><td>萌系但长时易疲劳</td><td></td></tr>
+</tbody></table></div>
+<h3>三、游戏机制</h3>
+<h4>3.1 基础循环</h4>
+<p>点选货物入三格货柜，三同消除；货柜满或超时失败。通关约60金币。</p>
+<h4>3.2 关卡机制递进</h4>
+<div class="table-wrap scroll-x"><table class="analysis-table"><thead><tr><th>关卡</th><th>机制</th><th>要点</th><th>备注</th></tr></thead><tbody>
+<tr><td>3</td><td>后置货物</td><td>纵深记忆</td><td></td></tr>
+<tr><td>4</td><td>额外货物</td><td>密度↑</td><td></td></tr>
+<tr><td>5</td><td>货柜锁</td><td>消组解锁</td><td></td></tr>
+<tr><td>10</td><td>困难关</td><td>阶段考</td><td></td></tr>
+<tr><td>12</td><td>列消推新行</td><td>理论难体感易</td><td></td></tr>
+<tr><td>15</td><td>传送带</td><td>点睛机制</td><td></td></tr>
+<tr><td>17</td><td>双带(下)</td><td>难度峰</td><td></td></tr>
+<tr><td>18</td><td>双带(上下)</td><td>空间最难</td><td></td></tr>
+<tr><td>20</td><td>困难关</td><td>低于17–18</td><td></td></tr>
+<tr><td>22</td><td>心形钥匙</td><td>不占货柜</td><td></td></tr>
+<tr><td>24</td><td>双锁</td><td>解锁6组</td><td></td></tr>
+<tr><td>26</td><td>后置+流动架+锁</td><td>机制叠加</td><td></td></tr>
+<tr><td>27</td><td>26关+流动架锁</td><td>前期综合峰</td><td></td></tr>
+</tbody></table></div>
+<h4>3.3 活动</h4>
+<div class="table-wrap"><table class="analysis-table"><thead><tr><th>模式</th><th>规则</th><th>奖励</th><th>备注</th></tr></thead><tbody>
+<tr><td>月挑战</td><td>每日特殊关</td><td>金+道具</td><td></td></tr>
+<tr><td>冰川挑战</td><td>主题关</td><td>活动奖</td><td></td></tr>
+<tr><td>奖杯冲刺</td><td>积里程</td><td>100程=1000金</td><td></td></tr>
+</tbody></table></div>
+<h3>四、体力系统与设计用意</h3>
+<h4>4.1 规则摘要</h4>
+<div class="table-wrap"><table class="analysis-table"><thead><tr><th>项目</th><th>数值</th><th>备注</th></tr></thead><tbody>
+<tr><td>上限</td><td>5点</td><td></td></tr>
+<tr><td>开局消耗</td><td>1点/关</td><td></td></tr>
+<tr><td>金币恢复</td><td>200金/点</td><td></td></tr>
+<tr><td>自然恢复</td><td>15分钟/点</td><td></td></tr>
+<tr><td>单局时长</td><td>约3分钟</td><td>体验估</td></tr>
+</tbody></table></div>
+<h4>4.2 恢复速度 vs 单局时长</h4>
+<div class="table-wrap"><table class="analysis-table"><thead><tr><th>对比项</th><th>数值</th><th>含义</th><th>备注</th></tr></thead><tbody>
+<tr><td>单局时长</td><td>~3分钟</td><td>一把完整关卡</td><td></td></tr>
+<tr><td>自然回1点</td><td>15分钟</td><td>等待成本</td><td></td></tr>
+<tr><td>比值</td><td>1点≈5局</td><td>15÷3=5</td><td></td></tr>
+<tr><td>满体力可玩</td><td>~15分钟</td><td>5局连打</td><td></td></tr>
+<tr><td>耗尽后等满</td><td>~75分钟</td><td>5点×15分</td><td></td></tr>
+<tr><td>金币买满5点</td><td>1000金</td><td>200×5</td><td></td></tr>
+</tbody></table></div>
+<h4>4.3 设计用意</h4>
+<ul class="analysis-list">
+<li><strong>会话节奏</strong>：5点体力×3分钟≈15分钟连玩，与「回满需75分钟」形成自然停手点，符合休闲「短局高频、长间休息」。</li>
+<li><strong>时间与金钱二选一</strong>：等15分钟=再玩约5局的量；花200金≈少打约3关的通关收入。</li>
+<li><strong>与广告/9.99协同</strong>：9.99省去结算看广告时间；体力限制开局次数，二者分工清晰。</li>
+<li><strong>风险</strong>：卡关重试仍耗1点，建议在26–27关失败时评估是否返还体力或首次免扣。</li>
+</ul>
+<h3>五、难度设计</h3>
+<p>15关传送带为分水岭；17–18为峰；20关回落。12关理论难但休闲玩家少规划，体感更易。26–27关适合作为后期机制样板关。</p>
+<h3>六、数值与经济</h3>
+<div class="table-wrap scroll-x"><table class="analysis-table"><thead><tr><th>类型</th><th>项目</th><th>量级</th><th>备注</th></tr></thead><tbody>
+<tr><td>入</td><td>通关</td><td>~60</td><td></td></tr>
+<tr><td>入</td><td>日任务</td><td>~350</td><td></td></tr>
+<tr><td>入</td><td>轮盘</td><td>概率</td><td>在线3h</td></tr>
+<tr><td>入</td><td>小猪</td><td>3000</td><td>付费</td></tr>
+<tr><td>入</td><td>冲刺</td><td>1000</td><td>领后重置</td></tr>
+<tr><td>出</td><td>道具</td><td>见下表</td><td></td></tr>
+<tr><td>出</td><td>体力</td><td>200/点</td><td></td></tr>
+</tbody></table></div>
+<div class="table-wrap"><table class="analysis-table"><thead><tr><th>道具</th><th>效果</th><th>金价</th><th>问题</th><th>备注</th></tr></thead><tbody>
+<tr><td>钟表</td><td>+60秒</td><td>450</td><td>性价比过高</td><td></td></tr>
+<tr><td>冻结</td><td>停10秒</td><td>600</td><td>弱于钟表</td><td></td></tr>
+<tr><td>锤子</td><td>消1组</td><td>900</td><td>—</td><td></td></tr>
+<tr><td>魔棒</td><td>消3组</td><td>1500</td><td>标价不统一</td><td></td></tr>
+<tr><td>洗牌</td><td>加格重置</td><td>1000</td><td>危急时极强</td><td></td></tr>
+<tr><td>星翻倍</td><td>分数×2</td><td>300</td><td>绑排名</td><td></td></tr>
+</tbody></table></div>
+<h3>七、广告与9.99权益</h3>
+<div class="table-wrap"><table class="analysis-table"><thead><tr><th>场景</th><th>免费</th><th>9.99</th><th>备注</th></tr></thead><tbody>
+<tr><td>结算</td><td>看广告翻倍</td><td>时长归零照领</td><td></td></tr>
+<tr><td>价值</td><td>时间刷星</td><td>时间研究关卡</td><td></td></tr>
+</tbody></table></div>
+<h3>八、美术与UI</h3>
+<p>萌系清晰；饱和偏高，1小时易疲劳。建议描边、降饱和、护眼模式。</p>
+<h3>九、海外市场与受众调研</h3>
+<div class="table-wrap scroll-x"><table class="analysis-table"><thead><tr><th>指标</th><th>概况</th><th>备注</th></tr></thead><tbody>
+<tr><td>益智大盘</td><td>2025约82亿美元</td><td>同比+7.6%</td></tr>
+<tr><td>Match-3</td><td>约48亿、下载降</td><td>收入近乎持平</td></tr>
+<tr><td>Merge</td><td>增速最快子类</td><td>约+80%收入</td></tr>
+<tr><td>新品成功率</td><td>Match-3约1.4%</td><td>213款中仅3款超10万刀/月</td></tr>
+<tr><td>头部集中度</td><td>Royal/Candy占半</td><td>新入需差异化</td></tr>
+</tbody></table></div>
+<h3>十、同类竞品对比分析</h3>
+<div class="table-wrap scroll-x"><table class="analysis-table"><thead><tr><th>产品</th><th>厂商</th><th>核心玩法</th><th>备注</th></tr></thead><tbody>
+<tr><td>Goods Match</td><td>乐言(体验)</td><td>货柜三消+传送带</td><td>本报告</td></tr>
+<tr><td>Goods Master 3D</td><td>Higgs</td><td>拖放/购物车三消</td><td>品类标杆</td></tr>
+<tr><td>Goods Match 3D</td><td>Higgs</td><td>点选入购物车</td><td>同质化高</td></tr>
+<tr><td>Triple Match 3D</td><td>Boombox等</td><td>3D堆叠三消</td><td>旅行主题</td></tr>
+<tr><td>Royal Match</td><td>Dream</td><td>棋盘Match-3</td><td>收入参照</td></tr>
+</tbody></table></div>
+<div class="table-wrap scroll-x"><table class="analysis-table"><thead><tr><th>维度</th><th>Goods Match</th><th>Goods Master 3D</th><th>Triple Match 3D</th><th>备注</th></tr></thead><tbody>
+<tr><td>操作</td><td>点选→三格柜</td><td>点多货架/车</td><td>点选清盘</td><td></td></tr>
+<tr><td>机制深</td><td>传送带+流动架</td><td>中+技能卡</td><td>中+旅行关</td><td>GM优势</td></tr>
+<tr><td>体力</td><td>5/15分/3分局</td><td>常见体力</td><td>常见体力</td><td>节奏清晰</td></tr>
+<tr><td>去广告</td><td>时长归零</td><td>约9.99去广告</td><td>IAP+广告</td><td>表述差异</td></tr>
+<tr><td>活动</td><td>月/冰川/冲刺</td><td>LiveOps成熟</td><td>主题更新快</td><td>可加强</td></tr>
+<tr><td>美术</td><td>萌系高饱和</td><td>写实超市</td><td>堆叠视觉</td><td>护眼待做</td></tr>
+<tr><td>出海</td><td>排名/国旗</td><td>全球大规模</td><td>多语言</td><td>同向</td></tr>
+</tbody></table></div>
+<h3>十一、六个问题</h3>
+<div class="table-wrap"><table class="analysis-table"><thead><tr><th>问题</th><th>回答</th><th>备注</th></tr></thead><tbody>
+<tr><td>玩法成立?</td><td>是；传送带+流动架有记忆点</td><td></td></tr>
+<tr><td>难度合理?</td><td>整体是；12关看通关率</td><td></td></tr>
+<tr><td>数值健康?</td><td>体力逻辑好；道具需调价</td><td></td></tr>
+<tr><td>留存够?</td><td>活动有；绑传送带周</td><td></td></tr>
+<tr><td>美术UX?</td><td>中短局OK；护眼待做</td><td></td></tr>
+<tr><td>下版优先?</td><td>调价+9.99文案+体力卡关</td><td></td></tr>
+</tbody></table></div>
+<h3>十二、不足与建议（重点）</h3>
+<div class="table-wrap scroll-x"><table class="analysis-table"><thead><tr><th>级</th><th>项</th><th>建议</th><th>备注</th></tr></thead><tbody>
+<tr><td>P0</td><td>道具标价</td><td>统一秒/组换算</td><td></td></tr>
+<tr><td>P0</td><td>12关</td><td>按通关率排期</td><td></td></tr>
+<tr><td>P1</td><td>9.99文案</td><td>时长归零三句说清</td><td></td></tr>
+<tr><td>P1</td><td>体力挫败</td><td>难关首次免扣试点</td><td></td></tr>
+<tr><td>P1</td><td>传送带</td><td>14关预习</td><td></td></tr>
+<tr><td>P1</td><td>护眼</td><td>降饱和+开关</td><td></td></tr>
+<tr><td>P2</td><td>排名</td><td>分段+保底箱</td><td></td></tr>
+<tr><td>P2</td><td>27关</td><td>流动锁图示</td><td></td></tr>
+<tr><td>P2</td><td>出海</td><td>英美术+区域礼包</td><td></td></tr>
+<tr><td>P2</td><td>竞品</td><td>传送带主题季</td><td></td></tr>
+</tbody></table></div>
+<h3>十三、结论</h3>
+<p>Goods Match机制栈成熟，传送带为点睛；体力15分/点与3分/局形成清晰海外休闲节律。9.99广告时长归零契合全球激励视频习惯，利于深度玩家研究关卡。海外货架三消接受度高但竞争激烈，相对Goods Master 3D等竞品，应以机制深度+混合变现差异化，并加强LiveOps与区域化运营。优先：道具reprice、9.99文案、12关数据校准、传送带主题出海素材。</p>
+<p class="text-xs text-gray-400 mt-4">行业数据来源：AppMagic Casual 2025摘要、Naavik Puzzle 2025、InvestGame Monetization 2025等公开报告。</p>
+</div>
+        <div class="flex gap-3 mt-6 flex-wrap">
+            <a href="analysis-assets/林王儒产品分析报告.pdf" target="_blank" class="inline-flex items-center gap-2 px-4 py-2 bg-amber-600 text-white rounded-lg hover:bg-amber-700 transition text-sm font-medium">
+                <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12h6m-6 4h6m2 5H7a2 2 0 01-2-2V5a2 2 0 012-2h5.586a1 1 0 01.707.293l5.414 5.414a1 1 0 01.293.707V19a2 2 0 01-2 2z"/></svg>
+                下载 PDF 原报告
+            </a>
+        </div>
+    </div>
+    <div id="tab-hsr" class="analysis-panel">
+        <div class="analysis-content">
+<h3>架构总览</h3>
+<p>《崩坏：星穹铁道》采用<strong>局内/局外分离</strong>的回合制架构，将养成、经济、玩法、商业化通过多层系统模块串联，形成完整的 F2P 闭环。</p>
+<h3>一、核心玩法 · 回合制战斗</h3>
+<ul class="analysis-list">
+<li>游戏分为局内外进行回合制战斗，即时攻击怪物进入回合制战斗</li>
+<li>决定敌我双方先攻，核心玩法为回合制战斗</li>
+<li>战斗数值涵盖能力数值、装备（遗器）、武器（光锥）等维度</li>
+</ul>
+<h3>二、角色养成系统</h3>
+<h4>2.1 等级养成与突破</h4>
+<ul class="analysis-list">
+<li>等级养成、等级突破；突破点：20/30/40/50/60/70/80</li>
+<li>升级增益：一级属性增加、角色等级上限提升、属性增长率提升</li>
+<li>额外奖励：抽卡卷；养成材料：经验书+金币</li>
+<li>养成负担：等级提升经验值上限需求增大</li>
+<li>角色获取来源：角色抽取、活动赠送（商业化数值付费）</li>
+</ul>
+<h4>2.2 技能与天赋</h4>
+<ul class="analysis-list">
+<li>基础技能等级养成，额外天赋属性解锁条件开放</li>
+<li>技能系统养成上限提升；技能养成+天赋系统</li>
+<li>养成材料：专属材料+突破材料+金币</li>
+</ul>
+<h4>2.3 命座（星魂）</h4>
+<ul class="analysis-list">
+<li>数值提升、机制改变；获取来源：获得相同角色</li>
+<li>设计目的：主要驱动力/每日游戏内容</li>
+</ul>
+<h3>三、武器养成（光锥）</h3>
+<ul class="analysis-list">
+<li>武器等级提升、武器等级突破、武器技能养成</li>
+<li>同名卡武器合成提升技能等级</li>
+<li>获取来源：卡池获得、玩法获得、活动获得（商业化数值付费）</li>
+</ul>
+<h3>四、装备养成（遗器）</h3>
+<ul class="analysis-list">
+<li>装备等级养成、装备套装（4+2）、装备部件</li>
+<li>设计思路：随机性产出装备部件，装备词条属性</li>
+<li>体力限制产出量，增加玩家获取周期</li>
+<li>合成系统产出保底，回收无用装备</li>
+</ul>
+<h3>五、玩家系统</h3>
+<ul class="analysis-list">
+<li>玩家等级、均衡等级——根据玩家均衡等级限定角色能力</li>
+<li>均衡等级提升，材料收益逐渐增大，怪物等级越高</li>
+<li>动态难度 I-II-III-IV-V，解锁需达到对应均衡等级，作为时间度量衡</li>
+<li>弹性设计：要求养成深度、游戏时长达到一定量级；若不能达到，刺激付费快速解锁</li>
+<li>玩家收集：角色、成就、手机壁纸、头像、聊天气泡</li>
+<li>玩家名片：UID、名字、简介、角色展示、头像展示、支援系统</li>
+</ul>
+<h3>六、体力系统</h3>
+<ul class="analysis-list">
+<li>体力恢复、体力溢出储存、体力药</li>
+<li>装备本、材料本、日常本、金币本、周常本</li>
+<li>经济数值：材料收益方面、材料减负</li>
+</ul>
+<h3>七、经济数值 · 商城体系</h3>
+<div class="table-wrap scroll-x"><table class="analysis-table"><thead><tr><th>商店类型</th><th>说明</th><th>数值类型</th></tr></thead><tbody>
+<tr><td>IP商店/烹饪商店</td><td>贩卖战斗烹饪食品+IP内容收集道具</td><td>经济数值</td></tr>
+<tr><td>推荐商店</td><td>月卡</td><td>商业化数值付费</td></tr>
+<tr><td>抽卡返利商店</td><td>余烬兑换</td><td>商业化数值</td></tr>
+<tr><td>抽卡溢出商店</td><td>星芒兑换</td><td>商业化数值</td></tr>
+<tr><td>礼包商店</td><td>协议商店</td><td>商业化数值</td></tr>
+<tr><td>人民币商店</td><td>捕获梦华</td><td>商业化数值付费</td></tr>
+<tr><td>抽卡卷商店</td><td>星琼购买</td><td>商业化数值</td></tr>
+<tr><td>累消商店</td><td>资源探索指标商店（非付费）</td><td>经济数值</td></tr>
+<tr><td>NPC商店/系统商店</td><td>基础材料、金币、少量抽卡资源</td><td>经济数值</td></tr>
+</tbody></table></div>
+<h3>八、抽卡系统</h3>
+<ul class="analysis-list">
+<li>角色up、武器up；常驻卡池、限定卡池</li>
+<li>卡池up类型；主要驱动力</li>
+<li>不同的养成深度差异，带来的抽卡资源获取不同</li>
+</ul>
+<h3>九、任务系统</h3>
+<div class="table-wrap scroll-x"><table class="analysis-table"><thead><tr><th>任务类型</th><th>说明</th><th>颁发人</th></tr></thead><tbody>
+<tr><td>开拓任务（主线）</td><td>剧情玩法，通过任务进行</td><td>NPC</td></tr>
+<tr><td>开拓续闻（支线）</td><td>故事章节任务</td><td>NPC</td></tr>
+<tr><td>同行任务</td><td>角色线</td><td>NPC</td></tr>
+<tr><td>冒险任务</td><td>副本入口</td><td>系统</td></tr>
+<tr><td>日常任务</td><td>每日游戏内容</td><td>系统</td></tr>
+<tr><td>委托系统</td><td>周期重置积分，玩家每周游玩指标</td><td>系统</td></tr>
+<tr><td>留存活跃任务</td><td>成就任务、BP、月卡、新人引导</td><td>系统</td></tr>
+</tbody></table></div>
+<h3>十、玩法（PVE）</h3>
+<ul class="analysis-list">
+<li><strong>箱箱探索</strong>：主要驱动力，熟悉游戏新机制内容；世界地图/区域地图/小地图/快捷传送</li>
+<li><strong>忘却之庭（爬塔）</strong>：定位能力验证，战斗数值</li>
+<li><strong>模拟宇宙（肉鸽）</strong>：每日游戏内容</li>
+<li><strong>BOSS玩法</strong>：能力数值验证</li>
+<li><strong>功能/玩法入口场景化</strong>：将传统主页场景化，功能入口与场景结合，提升角色代入感</li>
+</ul>
+<h3>十一、基础系统</h3>
+<ul class="analysis-list">
+<li>背包：道具分类（养成材料、武器、装备、其他材料、消耗品、任务、贵重物）、道具分解/详情/使用</li>
+<li>合成系统：材料合成、材料置换；材料类别：消耗材料、专属材料、材料置换、装备材料</li>
+<li>烹饪系统：服务战斗玩法，战斗玩法减负；确保均衡等级下能力数值性价比边际效应提升</li>
+<li>图鉴：IP设定收录（装备、NPC、怪物、专有名词、元素来源、游戏势力、武器、角色、语音、故事、角色人设）</li>
+<li>拍照系统：游戏内容玩家自主分享，制造热点与自我回忆</li>
+<li>短信系统：玩家与NPC的交流，任务背景</li>
+</ul>
+<h3>十二、社交（弱）</h3>
+<ul class="analysis-list">
+<li>好友系统、支援系统、私聊系统</li>
+<li>构建玩家与陌生玩家的实时交流需求</li>
+<li>不同类型的玩家的能力映射</li>
+</ul>
+<h3>十三、设计要点总结</h3>
+<ul class="analysis-list">
+<li><strong>场景交互</strong>：为剧情提供出发点，符合世界观环境，提升信息沉浸感</li>
+<li><strong>碎片化叙事</strong>：NPC载入，让玩家自主挖掘整合信息了解世界观</li>
+<li><strong>长期消耗</strong>：控制玩家游戏体验的资源与时间投入</li>
+<li><strong>外观复用</strong>：外观属性不同但功能相同，游戏内复用率高</li>
+<li><strong>数值分层</strong>：经济数值 / 能力数值 / 战斗数值 / 商业化数值付费 四类清晰划分</li>
+</ul>
+</div>
+        <div class="flex gap-3 mt-6 flex-wrap">
+            <a href="analysis-assets/崩坏星穹铁道架构.pdf" target="_blank" class="inline-flex items-center gap-2 px-4 py-2 bg-indigo-600 text-white rounded-lg hover:bg-indigo-700 transition text-sm font-medium">
+                <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12h6m-6 4h6m2 5H7a2 2 0 01-2-2V5a2 2 0 012-2h5.586a1 1 0 01.707.293l5.414 5.414a1 1 0 01.293.707V19a2 2 0 01-2 2z"/></svg>
+                下载 PDF 原架构图
+            </a>
+        </div>
+    </div>
+    <div id="tab-arknights" class="analysis-panel">
+        <div class="analysis-content"><div class="arknights-report"><div class="report-meta"><span>作者：林王儒</span><span>分析方法：理智锚点 · 同分支对照 · 标准测试单位 · 阈值卡位</span><span class="report-badge">优化版</span></div><nav class="mini-toc" aria-label="策划案目录">
+        <strong>目录</strong>
+        <a href="#ark-summary">摘要</a><a href="#ark-sec1">1 概述</a><a href="#ark-sec2">2 资源经济</a>
+        <a href="#ark-sec3">3 角色养成</a><a href="#ark-sec4">4 关卡敌人</a><a href="#ark-sec5">5 肉鸽</a>
+        <a href="#ark-sec6">6 长线平衡</a><a href="#ark-sec7">7 设计建议</a><a href="#ark-appendix">附录</a>
+    </nav><h3 id="ark-summary">摘要：五个核心结论</h3><div class="summary-box"><ul class="analysis-list"><li><strong>资源循环本质：</strong>方舟是一套以「理智」为时间单位的资源转换引擎，基建产出折算后约 180.5 理智/日，已接近甚至超过自然回复上限（180），是事实上的第一产出来源。</li><li><strong>反直觉发现：</strong>同精英阶段下，干员每升 1 级消耗的 EXP 与龙门币与稀有度无关；高星更难养，主要来自等级上限差异与精英化材料成本（见附录 Excel 对照表）。</li><li><strong>经济锚点：</strong>CE-6 / LS-6 均为 36 理智 ≈ 10,000 资源，即 1 理智 ≈ 277 单位；1 抽 ≈ 450 理智，免费玩家约 45 周可攒满 300 抽井。</li><li><strong>战斗阈值：</strong>敌人数值存在明确的 DPS Check 与 HP Check（如重装防御者 DEF 600、碎骨 ATK 1050），数值即机制。</li><li><strong>设计哲学：</strong>透明公式 + 节奏卡点 + 阈值卡位，以简洁数值支撑策略深度，而非堆叠乘区。</li></ul></div><h3 id="ark-sec1">1 游戏概述与核心循环</h3><p>《明日方舟》将塔防玩法与角色养成深度融合，其数值体系并非依赖单一系统，而是多层模块相互啮合形成的稳定经济循环。循环以「理智」（体力）为基本时间单位：玩家消耗理智挑战关卡 → 获取资源 → 投入干员养成 → 提升战力 → 挑战更高难度内容，形成自洽闭环。 从系统分层看，可划分为三层：</p><ul class="analysis-list"><li>玩家系统（外层框架）：控制进度与资源投放节奏；</li><li>对局系统（策略场域）：将干员能力与玩家决策转化为战斗结果；</li><li>干员系统 + 基建系统（养成维度）：控制成长速度与资源转化效率。</li><li>其中，基建系统承上启下——既是离线产出来源，也是连接「抽卡获取」与「养成消耗」的桥梁。从数值策划视角，整体架构可建模为：</li><li>理智（时间） → 关卡/基建（资源） → 养成系统（战力） → 更高效率的资源获取</li><li>战力提升呈指数曲线，但精英化、技能专精等卡点将其分段，从而控制生命周期。这是典型 F2P 设计：持续成长反馈 + 适度障碍延长体验。</li></ul><p class="table-caption">表1  《明日方舟》核心资源类型与主要用途</p><div class="table-wrap"><table class="analysis-table"><thead><tr><th>资源类型​</th><th>主要获取途径​</th><th>主要用途​</th><th>数值控制作用​</th></tr></thead><tbody><tr><td>理智</td><td>时间自然恢复、升级提升、道具回复</td><td>关卡挑战、资源获取</td><td>游戏进度控制的核心阀门</td></tr><tr><td>龙门币</td><td>资源关卡、基建贸易站、关卡掉落</td><td>干员升级、技能升级、基建建设</td><td>基础养成资源，控制早期成长节奏</td></tr><tr><td>经验卡</td><td>资源关卡、基建制造站</td><td>干员等级提升</td><td>与龙门币共同构成基础养成循环</td></tr><tr><td>材料</td><td>各类关卡掉落、基建制造</td><td>干员精英化、技能专精</td><td>中期进阶养成的瓶颈资源</td></tr><tr><td>源石</td><td>首次通关奖励、活动奖励</td><td>抽卡、理智回复、皮肤购买</td><td>付费转化与活跃度奖励的关键</td></tr><tr><td>合成玉</td><td>日常任务、剿灭关卡、基建</td><td>抽卡</td><td>控制抽卡频率，维持玩家日常活跃</td></tr><tr><td>信用</td><td>基建会客室、好友互动</td><td>购买折扣商品、材料</td><td>社交系统的资源补充</td></tr></tbody></table></div><h3 id="ark-sec2">2 资源经济系统数值设计</h3><h4 id="ark-2-1">2.1 抽卡货币体系与概率设计</h4><p>抽卡建立在多层货币之上：源石（付费）、合成玉（免费抽卡）、寻访凭证（直接抽卡）。分层设计形成心理账户效应，并通过获取途径差异调节抽卡行为。 免费抽卡节奏（不含活动/额外商店产出）： 每周合成玉 = 剿灭 1800 + 每日任务 100×7 + 周常 500 = 4000 合成玉 ≈ 6.6 抽/周 → 300 抽井约需 45 周（≈11 个月） 配合每年三轮限定池（周年 / 夏活 / 春节），休闲免费玩家仍可获得基础抽卡体验，与高活跃/付费玩家形成差异化。 概率方面采用软保底 + 硬保底双轨：</p><ul class="analysis-list"><li>六星综合概率约 2%；连续 50 抽未出六星后，后续概率递增（触发后重置）；</li><li>轮换限定池硬保底 300 抽；传统轮换池 / 真限定池硬保底 150 抽。</li><li>抽卡与养成深度耦合：重复干员信物可兑换高级/职业凭证，进而换取寻访凭证或精英化材料。即使未命中目标干员，抽卡仍具养成价值——这是经济韧性的关键设计。</li></ul><h4 id="ark-2-2">2.2 养成资源投放与控制</h4><p>养成投放节奏是数值模型的核心控制点：前期提升显著，后期边际效益递减。</p><h4 class="sub-block">【对照实验：同职业同分支】</h4><div class="chart-gallery"><figure class="chart-figure">
+            <img src="analysis-assets/arknights-charts/chart_01.png" alt="图1  六星干员精英0养成消耗曲线" loading="lazy" class="chart-img">
+            <figcaption>图1  六星干员精英0养成消耗曲线</figcaption>
+        </figure><figure class="chart-figure">
+            <img src="analysis-assets/arknights-charts/chart_02.png" alt="图2  五星干员精英0养成消耗曲线" loading="lazy" class="chart-img">
+            <figcaption>图2  五星干员精英0养成消耗曲线</figcaption>
+        </figure><figure class="chart-figure">
+            <img src="analysis-assets/arknights-charts/chart_03.png" alt="图3  四星干员精英0养成消耗曲线" loading="lazy" class="chart-img">
+            <figcaption>图3  四星干员精英0养成消耗曲线</figcaption>
+        </figure><figure class="chart-figure">
+            <img src="analysis-assets/arknights-charts/chart_04.png" alt="图4  精英0阶段 EXP / 龙门币对比" loading="lazy" class="chart-img">
+            <figcaption>图4  精英0阶段 EXP / 龙门币对比</figcaption>
+        </figure><figure class="chart-figure">
+            <img src="analysis-assets/arknights-charts/chart_05.png" alt="图5  精英0阶段消耗曲线（续）" loading="lazy" class="chart-img">
+            <figcaption>图5  精英0阶段消耗曲线（续）</figcaption>
+        </figure></div><p>选取狙击 · 回环射手分支，对比四星（跃跃）、五星（水灯心）、六星（纳尔图雅），详见附录《干员数值养成表》。</p><div class="highlight">核心结论 1：同精英阶段下，每升 1 级的 EXP 与龙门币消耗与稀有度无关。</div><div class="highlight">核心结论 2：EXP 与龙门币的消耗曲线形态不同——</div><ul class="analysis-list"><li>龙门币：阶段性等差递增的二次等差数列（如 1,1,2,2,4,4,7,7…）；</li><li>EXP：精英 0 为线性；精英 1/2 亦为阶段性等差递增，但增幅低于龙门币。</li></ul><div class="highlight">核心结论 3：六星干员精英 2 阶段 60 级（模组解锁点），恰为龙门币与 EXP 消耗曲线交点前的经济最优区间——这解释了「六星练到 60 开模组即可」的玩家共识。</div><h4 class="sub-block">【高星更难养的真正原因】</h4><div class="chart-gallery"><figure class="chart-figure">
+            <img src="analysis-assets/arknights-charts/chart_06.png" alt="图6  精英1阶段 EXP / 龙门币对比" loading="lazy" class="chart-img">
+            <figcaption>图6  精英1阶段 EXP / 龙门币对比</figcaption>
+        </figure><figure class="chart-figure">
+            <img src="analysis-assets/arknights-charts/chart_07.png" alt="图7  各资质等级上限理智消耗对比" loading="lazy" class="chart-img">
+            <figcaption>图7  各资质等级上限理智消耗对比</figcaption>
+        </figure><figure class="chart-figure">
+            <img src="analysis-assets/arknights-charts/chart_08.png" alt="图8  等级上限消耗曲线（续）" loading="lazy" class="chart-img">
+            <figcaption>图8  等级上限消耗曲线（续）</figcaption>
+        </figure><figure class="chart-figure">
+            <img src="analysis-assets/arknights-charts/chart_09.png" alt="图9  理智统一换算示意" loading="lazy" class="chart-img">
+            <figcaption>图9  理智统一换算示意</figcaption>
+        </figure><figure class="chart-figure">
+            <img src="analysis-assets/arknights-charts/chart_10.png" alt="图10  理智换算（续）" loading="lazy" class="chart-img">
+            <figcaption>图10  理智换算（续）</figcaption>
+        </figure></div><p>原因一：同精英阶段等级上限不同（六星精英 2 可达 90 级，四星仅 70 级），折算理智后总成本显著更高（见表 2）。 原因二：精英化材料种类与数量随稀有度递增（见表 3 及附录 Excel）。</p><h4 class="sub-block">【资源关卡效率】</h4><p>CE-6（36 理智）对比 CE-4（12 理智），理智效率提升约 75%，但难度增幅低于 50%，形成「挑战—成长—回报」正循环。</p><p class="table-caption">表2  各资质干员精英阶段理智消耗（同分支对照）</p><div class="table-wrap"><table class="analysis-table"><thead><tr><th>角色资质</th><th>精英阶段</th><th>理智消耗</th></tr></thead><tbody><tr><td>6</td><td>0</td><td>184.0284</td></tr><tr><td></td><td>1</td><td>2484.4392</td></tr><tr><td></td><td>2(仅升级到60)</td><td>1434.4344</td></tr></tbody></table></div><p class="table-caption">表3  材料等价理智转化（基于关卡统计）</p><div class="table-wrap"><table class="analysis-table"><thead><tr><th>材料名</th><th>理智转化</th><th>材料名</th><th>理智转化</th></tr></thead><tbody><tr><td>任意职业芯片</td><td>18</td><td>任意蓝色材料</td><td>21</td></tr><tr><td>任意芯片组</td><td>36</td><td>任意紫色材料</td><td>63</td></tr><tr><td>任意双芯片组</td><td>72</td><td>任意金色材料</td><td>252</td></tr></tbody></table></div><h4 class="sub-block">【基建系统：被低估的第一产出来源】</h4><h3 id="ark-sec243">243 布局（2 贸易站 + 4 制造站 + 3 发电站），假设每日上线一次、不计干员基建技能加成：</h3><ul class="analysis-list"><li>日产约 30,000 龙门币 + 20,000 经验</li><li>按理智锚点折算：30,000÷277 + 20,000÷277 ≈ 108.3 + 72.2 = 180.5 理智</li><li>注：CE-6 与 LS-6 均为 36 理智 ≈ 10,000 对应资源，统一取 1 理智 ≈ 277 单位。</li></ul><h4 id="ark-180-5">180.5 理智/日已接近甚至超过满级自然回复上限（180），且基建每日两次产出（间隔 12h）鼓励早晚双登。关卡理智（240/日自然回复）与基建产出叠加，构成双层资源循环——这是方舟长留存的底层设计。</h4><h4 id="ark-2-3">2.3 资源消耗与养成周期控制</h4><p>精英化一（早期节点）与精英化二（中期节点）将养成切分为可感知阶段，避免目标过远导致流失。 不同稀有度养成成本差异显著：六星精英化二总成本约为三星的 3–4 倍，但性能提升不成同比例——低星干员前期仍具战术价值。潜能系统为重复干员提供边际收益（部署费用 -1 等），降低重复抽取的负面体验。</p><p class="table-caption">表4  各稀有度干员养成资源需求比较（精英化二满级）</p><div class="table-wrap"><table class="analysis-table"><thead><tr><th>资源类型​</th><th>三星干员​</th><th>四星干员​</th><th>五星干员​</th><th>六星干员​</th><th>比值关系​</th></tr></thead><tbody><tr><td>龙门币总计</td><td>约 300,000</td><td>约 450,000</td><td>约 600,000</td><td>约 900,000</td><td>1:1.5:2:3</td></tr><tr><td>经验值总计</td><td>约 200,000</td><td>约 300,000</td><td>约 400,000</td><td>约 600,000</td><td>1:1.5:2:3</td></tr><tr><td>精英材料总数</td><td>中低阶为主</td><td>中阶为主</td><td>中高阶混合</td><td>高阶为主</td><td>难度递增</td></tr><tr><td>技能专精材料</td><td>不可专精</td><td>少量中阶</td><td>中高阶混合</td><td>大量高阶</td><td>复杂度递增</td></tr><tr><td>总养成时间</td><td>3-5 天</td><td>1-2 周</td><td>2-3 周</td><td>3-4 周</td><td>随稀有度显著提升</td></tr></tbody></table></div><p>活动周期进一步调节投放：常规版本克制投放，大型活动期间峰值投放特定资源，形成波浪式节奏。</p><h3 id="ark-sec3">3 角色养成系统数值设计</h3><h4 id="ark-3-1">3.1 职业划分与数值权重</h4><p>八大职业 + 分支子类构成双层分类。数值策划需为各职业分配属性权重：重装偏生存（HP/DEF/RES），术师偏输出（ATK/AS）。 采用「标准人模型」：确定基准模板（如 HP:ATK = 5:1），再按职业定位调整——重装可能 10:1，术师可能 3:1。分支进一步细化定位：速射手（快攻低伤、可对空）vs 投掷手（慢攻高范围、仅地面），差异体现在数值、攻击特性与技能三层。</p><h4 id="ark-3-2">3.2 稀有度与数值差异控制</h4><p>稀有度采用线性成长 + 效益递减：高星有更高等级上限与更强天赋/技能，但非简单堆基础数值。固定成长曲线（非随机）给予玩家稳定预期。部署费用与再部署时间平衡低星战术价值。 技能专精是高星后期优势的核心来源——投入巨大但提升显著，构成核心玩家长线目标。</p><h4 id="ark-3-3">3.3 伤害公式与属性克制</h4><h4 id="ark-3-3-1">3.3.1 底层时间单位与 DPS</h4><p>逻辑帧 = 30 帧/秒。攻击间隔以帧为单位（如克洛丝 1.0s = 30 帧）。 DPS = 攻击力 ÷ 攻击间隔帧数 × 30 该公式将攻击力与频率统一为可对比的输出指标。</p><h4 id="ark-3-3-2">3.3.2 精确伤害公式（含保底）</h4><div class="formula-block">物理伤害 = max(攻击力 − 防御力, 0.05 × 攻击力)</div><div class="formula-block">法术伤害 = max(攻击力 × (1 − 法术抗性%), 0.05 × 攻击力)</div><p>5% 抛光线确保极端情况下仍有输出，但 DPS 降至正常的 5%。高攻速低攻击干员（能天使）打重甲效率极低；高攻击术师（艾雅法拉）可突破法抗阈值维持高效输出。</p><h4 id="ark-3-3-3">3.3.3 隐性克制关系</h4><p>无显性属性环，但通过分支特性 + 天赋构建隐性克制：</p><ul class="analysis-list"><li>狙击对空优势；特定重装针对高攻单体；</li><li>银灰二天赋破隐 → 克制隐匿单位。</li><li>数值策划需平衡 DEF/RES 分布，避免单一伤害类型垄断环境。</li></ul><h4 id="ark-3-4">3.4 潜能系统与边际收益</h4><p>潜能遵循边际递减：一潜（部署费用 -1）最显著，三潜/六潜增强天赋。优势可控，不破坏平衡。公开招募 + 凭证商店为免费玩家提供特定干员潜能路径。</p><h4 id="ark-3-5">3.5 标准测试单位</h4><p>选取三个典型干员作为基准（数据参考 PRTS Wiki）：</p><p class="table-caption">表5  标准测试单位数值对照</p><div class="table-wrap"><table class="analysis-table"><thead><tr><th>标准测试单位</th><th>养成阶段</th><th>攻击力</th><th>攻击间隔帧数</th><th>防御力</th><th>法抗</th><th>核心特性</th></tr></thead><tbody><tr><td>玫兰莎（近卫）</td><td>精一 50 级</td><td>420</td><td>25 帧（≈0.83s）</td><td>180</td><td>5%</td><td>低费高 DPH，前期物理输出核心</td></tr><tr><td>银灰（近卫）</td><td>精二 40 级</td><td>680</td><td>30 帧（≈1.0s）</td><td>260</td><td>10%</td><td>范围伤害 + 天赋破隐，泛用性强</td></tr><tr><td>艾雅法拉（术师）</td><td>精二 40 级</td><td>590</td><td>35 帧（≈1.17s）</td><td>120</td><td>10%</td><td>群体法术伤害，克制重甲单位</td></tr></tbody></table></div><div class="formula-block">DPS 测算：</div><ul class="analysis-list"><li>玫兰莎（精一 50）：420÷25×30 ≈ 504</li><li>银灰（精二 40）：680÷30×30 = 680</li><li>艾雅法拉（精二 40）：590÷35×30 ≈ 506</li><li>三者输出量级接近，但适用场景截然不同——数值对比必须结合职能与敌人阈值。</li><li>4 关卡与敌人数值设计</li></ul><h4 id="ark-4-1">4.1 难度曲线与节奏控制</h4><p>关卡采用渐进复杂度 + 检查点峰值（如 1-12、2-10、3-8 为章节难点），普通关作为练习与资源积累。地图布局（路线长度、高台/地面分布）可在不改数值的情况下显著改变策略要求。</p><h4 id="ark-4-2">4.2 数值检测（DPS Check / HP Check）</h4><h4 id="ark-4-2-1">4.2.1 防御力梯级</h4><p>游戏设置明确物理防御梯级，引导干员选型：</p><p class="table-caption">表6  典型敌人数值阈值（PRTS Wiki）</p><div class="table-wrap"><table class="analysis-table"><thead><tr><th>敌人类型</th><th>典型单位</th><th>生命值 (HP)</th><th>攻击力 (ATK)</th><th>防御力 (DEF)</th><th>法抗 (RES)</th><th>攻击间隔帧数</th><th>攻击间隔</th><th>核心设计意图</th></tr></thead><tbody><tr><td>轻甲杂兵</td><td>士兵 1</td><td>500</td><td>220</td><td>50</td><td>0%</td><td>60 帧</td><td>2.0s</td><td>低防低抗，先锋、速射狙击可高效处理，对应物理伤害公式的常规输出场景</td></tr><tr><td>高防单位</td><td>重装防御者</td><td>3500</td><td>400</td><td>600</td><td>0%</td><td>78 帧</td><td>2.6s</td><td>物理减法公式的试金石，防御阈值 600，强制玩家切换法术伤害或高 DPH 近卫</td></tr><tr><td>高法抗单位</td><td>术师 1</td><td>1800</td><td>250（法伤）</td><td>100</td><td>30%</td><td>90 帧</td><td>3.0s</td><td>法术乘法公式的试金石，30% 法抗降低法术伤害收益，需高法伤干员突破</td></tr><tr><td>精英 Boss</td><td>霜星（4-10）</td><td>35000</td><td>520</td><td>350</td><td>25%</td><td>90 帧</td><td>3.0s</td><td>多阶段机制与数值结合，考验阵容综合生存与输出能力</td></tr></tbody></table></div><p>破防阈值：重装防御者 DEF 600 → 物理干员 ATK 需 &gt; 631（600÷0.95）才能有效输出。</p><ul class="analysis-list"><li>玫兰莎 ATK 420 → 仅 5% 保底，DPS ≈ 21，几乎无效；</li><li>艾雅法拉 ATK 590 vs 术师 1（30% RES）→ 413 伤害/击，DPS ≈ 353，仍高效。</li><li>结论：重甲用术师，低甲用物理——数值底层确立策略铁律。</li></ul><h4 id="ark-4-2-2">4.2.2 生存压力（HP Check）</h4><p>以 BOSS「碎骨」为例：</p><ul class="analysis-list"><li>常态 ATK 700，间隔 78 帧（2.6s）；半血狂暴 ATK 1050，间隔 60 帧（2.0s）。</li><li>精一满级蛇屠箱开技能 DEF ≈ 1100–1200。</li><li>1050 攻被精确卡在 DEF 阈值边缘：DEF &lt; 1000 → 刀刀真伤；DEF ≥ 1100 → 仅 52.5 抛光伤害。</li><li>精确到百位数的卡位，构成「数值即机制」的硬核策略底层。</li></ul><h4 id="ark-4-2-3">4.2.3 波次压力递进</h4><p>早期低威胁建线 → 中期混合测试 → 最终波 BOSS 高潮。波浪式压力符合心流理论。</p><h4 id="ark-4-3">4.3 数值感知与认知负荷</h4><p>同敌人数值跨关卡保持一致（危机合约/肉鸽除外），降低记忆负担。敌人外观与数值特性一致（重甲 = 高 DEF），辅助直觉判断。突袭模式通过限制条件 + 数值提升服务核心玩家，且敌人行为模式不变，经验可迁移。</p><h3 id="ark-sec5">5 集成战略（Roguelike）数值要点</h3><p>集成战略与主线数值逻辑不同：强调干员池广度与配队理解，而非单干员天花板。 核心变量：</p><ul class="analysis-list"><li>希望：限制高星招募速度；</li><li>收藏品：提供局内指数成长，需防「必胜组合」（如水月「积攒之手 + 断杖」纯法体系）；</li><li>元进度（生态认知）：局外永久加成，有上限，避免碾压高难度；</li><li>灯火值：全局变量影响随机事件，但低灯火以惩罚为主、缺乏补偿，策略深度受限（对比《暗黑地牢》亮度系统的风险—回报双向设计）。</li><li>对主数值框架的启示：Roguelike 作为「缓冲带」，通过随机招募和收藏品限制高强度干员的泛化 dominance。</li><li>6 长线平衡与付费设计</li></ul><h4 id="ark-6-1">6.1 数值膨胀控制</h4><p>新干员强度阶段性上升，间隔两个版本可能分差较大。控制手段：机制创新 &gt; 纯数值、环境特化、体系依赖。 「百万伤害」讨论（2023 鸿雪 / 2025 联动）需区分：爆炸输出往往依赖特定站位、预热、敌型，实战泛用性有限。危机合约词条系统进一步限制单干员 dominance。</p><h4 id="ark-6-2">6.2 付费与公平性</h4><p>抽卡定价：1 源石 = 135 理智（满级），1 抽 = 600 合成玉 ≈ 3.33 源石 ≈ 450 理智——同类中等水平，但干员保值高、重复惩罚低。 公开招募保障免费玩家四星及以下获取路径。活动初期高难度 + 后期动态调节，分层服务不同练度玩家。</p><h3 id="ark-sec7">7 设计启示与优化建议</h3><p>基于以上拆解，若由本人参与类似产品设计，提出以下建议：</p><h4 class="sub-block">【经济可视化】</h4><p>在精英化 / 模组解锁等关键节点，向玩家展示「距下一节点还需 X 理智」的折算预期，降低因等级上限差异导致的认知落差（尤其六星 vs 低星）。</p><h4 class="sub-block">【基建引导强化】</h4><h3 id="ark-sec243">243 布局的产出价值被大量玩家低估。建议在等级 30–40 区间加入基建效率对比引导，帮助新手理解「基建 ≈ 第一产出来源」。</h3><h4 class="sub-block">【灯火值机制改进】</h4><p>参考《暗黑地牢》亮度系统，为低灯火值增加可识别的补偿收益（如更高稀有度掉率），将单向惩罚改为风险—回报权衡。</p><h4 class="sub-block">【数值膨胀监测】</h4><p>建立「标准敌人 DPS Check 通过率」指标：新干员上线后，监测其对表 6 各梯级敌人的击杀效率变化，防止单版本突破过多阈值。</p><h4 class="sub-block">【干员回溯系统】</h4><p>随着干员数量增加，建议引入部分资源回收机制，降低新干员试错成本，缓解新手入门门槛攀升。</p><h3 id="ark-conclusion">结语</h3><p>《明日方舟》的数值架构展示了可接近性与深度之间的平衡：透明公式、节奏卡点、阈值卡位，以简洁系统支撑丰富策略。 优秀数值设计的核心不在于复杂乘区，而在于：</p><ol class="analysis-list"><li>清晰的资源流动规则；</li><li>精心校准的养成节奏；</li><li>精确的敌人阈值卡位；</li><li>玩家与设计师之间的数值默契。</li></ol><p>这套方法论——理智锚点、对照实验、标准测试单位、阈值分析——可直接迁移至其他 F2P 塔防 / RPG 产品的数值拆解与方案设计。</p><h3 id="ark-appendix">附录：干员数值养成 Excel 对照表</h3><h3 id="ark-appendix">附录包含同分支（回环射手）四星 / 五星 / 六星干员完整养成数据：</h3><ul class="analysis-list"><li>《方舟数值养成表（4星）》— 跃跃</li><li>《方舟数值养成表（5星）》— 水灯心</li><li>《方舟数值养成表（6星）》— 纳尔图雅</li><li>每表含精英 0/1/2 全等级 EXP、龙门币、理智转化及精英化材料消耗，支撑 2.2 节全部定量结论。</li></ul><h4 id="ark-excel">附录 Excel 逐等级数据</h4><p class="text-sm text-gray-500">同分支（回环射手）四星 / 五星 / 六星干员完整养成数据，支撑 2.2 节定量结论。</p><h4>干员数值养成表（4星 · 跃跃）</h4><div class="table-wrap scroll-x"><table class="analysis-table xlsx-table"><thead><tr><th>干员资质</th><th>干员名称</th><th>主职业</th><th>职业分支</th><th>精英等级</th><th>当前等级</th><th>目标等级</th><th>消耗经验</th><th>消耗龙门币</th><th>理智转化</th></tr></thead><tbody><tr><td></td><td>4</td><td>跃跃</td><td>狙击</td><td>回环射手</td><td>0</td><td>1</td><td>2</td><td>100</td><td>30</td><td>0.46799999999999997</td></tr><tr><td></td><td></td><td></td><td></td><td></td><td>0</td><td>2</td><td>3</td><td>117</td><td>36</td><td>0.5508</td></tr><tr><td></td><td></td><td></td><td></td><td></td><td>0</td><td>3</td><td>4</td><td>134</td><td>43</td><td>0.6372</td></tr><tr><td></td><td></td><td></td><td></td><td></td><td>0</td><td>4</td><td>5</td><td>151</td><td>50</td><td>0.7236</td></tr><tr><td></td><td></td><td></td><td></td><td></td><td>0</td><td>5</td><td>6</td><td>168</td><td>57</td><td>0.81</td></tr><tr><td></td><td></td><td></td><td></td><td></td><td>0</td><td>6</td><td>7</td><td>185</td><td>65</td><td>0.8999999999999999</td></tr><tr><td></td><td></td><td></td><td></td><td></td><td>0</td><td>7</td><td>8</td><td>202</td><td>73</td><td>0.99</td></tr><tr><td></td><td></td><td></td><td></td><td></td><td>0</td><td>8</td><td>9</td><td>219</td><td>81</td><td>1.08</td></tr><tr><td></td><td></td><td></td><td></td><td></td><td>0</td><td>9</td><td>10</td><td>236</td><td>90</td><td>1.1736</td></tr><tr><td></td><td></td><td></td><td></td><td></td><td>0</td><td>10</td><td>11</td><td>253</td><td>99</td><td>1.2671999999999999</td></tr><tr><td></td><td></td><td></td><td></td><td></td><td>0</td><td>11</td><td>12</td><td>270</td><td>108</td><td>1.3608</td></tr><tr><td></td><td></td><td></td><td></td><td></td><td>0</td><td>12</td><td>13</td><td>287</td><td>118</td><td>1.458</td></tr><tr><td></td><td></td><td></td><td></td><td></td><td>0</td><td>13</td><td>14</td><td>304</td><td>128</td><td>1.5552000000000001</td></tr><tr><td></td><td></td><td></td><td></td><td></td><td>0</td><td>14</td><td>15</td><td>321</td><td>138</td><td>1.6524</td></tr><tr><td></td><td></td><td></td><td></td><td></td><td>0</td><td>15</td><td>16</td><td>338</td><td>149</td><td>1.7531999999999999</td></tr><tr><td></td><td></td><td></td><td></td><td></td><td>0</td><td>16</td><td>17</td><td>355</td><td>160</td><td>1.8539999999999999</td></tr><tr><td></td><td></td><td></td><td></td><td></td><td>0</td><td>17</td><td>18</td><td>372</td><td>182</td><td>1.9944</td></tr><tr><td></td><td></td><td></td><td></td><td></td><td>0</td><td>18</td><td>19</td><td>389</td><td>206</td><td>2.142</td></tr><tr><td></td><td></td><td></td><td></td><td></td><td>0</td><td>19</td><td>20</td><td>406</td><td>231</td><td>2.2931999999999997</td></tr><tr><td></td><td></td><td></td><td></td><td></td><td>0</td><td>20</td><td>21</td><td>423</td><td>258</td><td>2.4516</td></tr><tr><td></td><td></td><td></td><td></td><td></td><td>0</td><td>21</td><td>22</td><td>440</td><td>286</td><td>2.6136</td></tr><tr><td></td><td></td><td></td><td></td><td></td><td>0</td><td>22</td><td>23</td><td>457</td><td>315</td><td>2.7792</td></tr><tr><td></td><td></td><td></td><td></td><td></td><td>0</td><td>23</td><td>24</td><td>474</td><td>346</td><td>2.952</td></tr><tr><td></td><td></td><td></td><td></td><td></td><td>0</td><td>24</td><td>25</td><td>491</td><td>378</td><td>3.1284</td></tr><tr><td></td><td></td><td></td><td></td><td></td><td>0</td><td>25</td><td>26</td><td>508</td><td>411</td><td>3.3084</td></tr><tr><td></td><td></td><td></td><td></td><td></td><td>0</td><td>26</td><td>27</td><td>525</td><td>446</td><td>3.4955999999999996</td></tr><tr><td></td><td></td><td></td><td></td><td></td><td>0</td><td>27</td><td>28</td><td>542</td><td>482</td><td>3.6864</td></tr><tr><td></td><td></td><td></td><td></td><td></td><td>0</td><td>28</td><td>29</td><td>559</td><td>520</td><td>3.8844</td></tr><tr><td></td><td></td><td></td><td></td><td></td><td>0</td><td>29</td><td>30</td><td>574</td><td>557</td><td>4.0716</td></tr><tr><td></td><td></td><td></td><td></td><td></td><td>0</td><td>30</td><td>31</td><td>589</td><td>595</td><td>4.2623999999999995</td></tr><tr><td></td><td></td><td></td><td></td><td></td><td>0</td><td>31</td><td>32</td><td>605</td><td>635</td><td>4.464</td></tr><tr><td></td><td></td><td></td><td></td><td></td><td>0</td><td>32</td><td>33</td><td>621</td><td>677</td><td>4.6728000000000005</td></tr><tr><td></td><td></td><td></td><td></td><td></td><td>0</td><td>33</td><td>34</td><td>637</td><td>720</td><td>4.885199999999999</td></tr><tr><td></td><td></td><td></td><td></td><td></td><td>0</td><td>34</td><td>35</td><td>653</td><td>764</td><td>5.1012</td></tr><tr><td></td><td></td><td></td><td></td><td></td><td>0</td><td>35</td><td>36</td><td>669</td><td>809</td><td>5.3208</td></tr><tr><td></td><td></td><td></td><td></td><td></td><td>0</td><td>36</td><td>37</td><td>685</td><td>856</td><td>5.5476</td></tr><tr><td></td><td></td><td></td><td></td><td></td><td>0</td><td>37</td><td>38</td><td>701</td><td>904</td><td>5.7780000000000005</td></tr><tr><td></td><td></td><td></td><td></td><td></td><td>0</td><td>38</td><td>39</td><td>716</td><td>952</td><td>6.0047999999999995</td></tr><tr><td></td><td></td><td></td><td></td><td></td><td>0</td><td>39</td><td>40</td><td>724</td><td>992</td><td>6.1776</td></tr><tr><td></td><td></td><td></td><td></td><td></td><td>0</td><td>40</td><td>41</td><td>739</td><td>1042</td><td>6.4116</td></tr><tr><td></td><td></td><td></td><td></td><td></td><td>0</td><td>41</td><td>42</td><td>749</td><td>1086</td><td>6.606</td></tr><tr><td></td><td></td><td></td><td></td><td></td><td>0</td><td>42</td><td>43</td><td>759</td><td>1131</td><td>6.804</td></tr><tr><td></td><td></td><td></td><td></td><td></td><td>0</td><td>43</td><td>44</td><td>770</td><td>1178</td><td>7.0128</td></tr><tr><td></td><td></td><td></td><td></td><td></td><td>0</td><td>44</td><td>45</td><td>783</td><td>1229</td><td>7.2432</td></tr><tr><td>统计</td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td>19613</td><td>20200</td><td>143.3268</td></tr><tr><td>精英化</td><td>进阶1</td><td>消耗龙门币</td><td>消耗芯片</td><td>消耗材料1</td><td>消耗材料2</td><td>理智转化</td><td></td><td></td><td></td><td></td></tr><tr><td></td><td></td><td>15000</td><td>射手芯片*4</td><td>酮凝脂*1</td><td>糖*1</td><td>150</td><td></td><td></td><td></td><td></td></tr><tr><td></td><td></td><td></td><td></td><td></td><td>1</td><td>1</td><td>2</td><td>120</td><td>48</td><td>0.6048</td></tr><tr><td></td><td></td><td></td><td></td><td></td><td>1</td><td>2</td><td>3</td><td>172</td><td>71</td><td>0.8748</td></tr><tr><td></td><td></td><td></td><td></td><td></td><td>1</td><td>3</td><td>4</td><td>224</td><td>95</td><td>1.1484</td></tr><tr><td></td><td></td><td></td><td></td><td></td><td>1</td><td>4</td><td>5</td><td>276</td><td>120</td><td>1.4256</td></tr><tr><td></td><td></td><td></td><td></td><td></td><td>1</td><td>5</td><td>6</td><td>328</td><td>146</td><td>1.7064</td></tr><tr><td></td><td></td><td></td><td></td><td></td><td>1</td><td>6</td><td>7</td><td>380</td><td>173</td><td>1.9908</td></tr><tr><td></td><td></td><td></td><td></td><td></td><td>1</td><td>7</td><td>8</td><td>432</td><td>201</td><td>2.2788000000000004</td></tr><tr><td></td><td></td><td></td><td></td><td></td><td>1</td><td>8</td><td>9</td><td>484</td><td>231</td><td>2.574</td></tr><tr><td></td><td></td><td></td><td></td><td></td><td>1</td><td>9</td><td>10</td><td>536</td><td>262</td><td>2.8728</td></tr><tr><td></td><td></td><td></td><td></td><td></td><td>1</td><td>10</td><td>11</td><td>588</td><td>293</td><td>3.1715999999999998</td></tr><tr><td></td><td></td><td></td><td></td><td></td><td>1</td><td>11</td><td>12</td><td>640</td><td>326</td><td>3.4776000000000002</td></tr><tr><td></td><td></td><td></td><td></td><td></td><td>1</td><td>12</td><td>13</td><td>692</td><td>361</td><td>3.7908</td></tr><tr><td></td><td></td><td></td><td></td><td></td><td>1</td><td>13</td><td>14</td><td>744</td><td>396</td><td>4.104</td></tr><tr><td></td><td></td><td></td><td></td><td></td><td>1</td><td>14</td><td>15</td><td>796</td><td>432</td><td>4.4208</td></tr><tr><td></td><td></td><td></td><td></td><td></td><td>1</td><td>15</td><td>16</td><td>848</td><td>470</td><td>4.7448</td></tr><tr><td></td><td></td><td></td><td></td><td></td><td>1</td><td>16</td><td>17</td><td>900</td><td>508</td><td>5.0687999999999995</td></tr><tr><td></td><td></td><td></td><td></td><td></td><td>1</td><td>17</td><td>18</td><td>952</td><td>548</td><td>5.4</td></tr><tr><td></td><td></td><td></td><td></td><td></td><td>1</td><td>18</td><td>19</td><td>1004</td><td>589</td><td>5.7348</td></tr><tr><td></td><td></td><td></td><td></td><td></td><td>1</td><td>19</td><td>20</td><td>1056</td><td>631</td><td>6.0732</td></tr><tr><td></td><td></td><td></td><td></td><td></td><td>1</td><td>20</td><td>21</td><td>1108</td><td>675</td><td>6.4188</td></tr><tr><td></td><td></td><td></td><td></td><td></td><td>1</td><td>21</td><td>22</td><td>1160</td><td>719</td><td>6.7644</td></tr><tr><td></td><td></td><td></td><td></td><td></td><td>1</td><td>22</td><td>23</td><td>1212</td><td>765</td><td>7.1172</td></tr><tr><td></td><td></td><td></td><td></td><td></td><td>1</td><td>23</td><td>24</td><td>1264</td><td>811</td><td>7.470000000000001</td></tr><tr><td></td><td></td><td></td><td></td><td></td><td>1</td><td>24</td><td>25</td><td>1316</td><td>859</td><td>7.83</td></tr><tr><td></td><td></td><td></td><td></td><td></td><td>1</td><td>25</td><td>26</td><td>1368</td><td>908</td><td>8.1936</td></tr><tr><td></td><td></td><td></td><td></td><td></td><td>1</td><td>26</td><td>27</td><td>1420</td><td>958</td><td>8.560799999999999</td></tr><tr><td></td><td></td><td></td><td></td><td></td><td>1</td><td>27</td><td>28</td><td>1472</td><td>1010</td><td>8.9352</td></tr><tr><td></td><td></td><td></td><td></td><td></td><td>1</td><td>28</td><td>29</td><td>1524</td><td>1062</td><td>9.3096</td></tr><tr><td></td><td></td><td></td><td></td><td></td><td>1</td><td>29</td><td>30</td><td>1576</td><td>1116</td><td>9.691199999999998</td></tr><tr><td></td><td></td><td></td><td></td><td></td><td>1</td><td>30</td><td>31</td><td>1628</td><td>1171</td><td>10.0764</td></tr><tr><td></td><td></td><td></td><td></td><td></td><td>1</td><td>31</td><td>32</td><td>1702</td><td>1245</td><td>10.6092</td></tr><tr><td></td><td></td><td></td><td></td><td></td><td>1</td><td>32</td><td>33</td><td>1784</td><td>1322</td><td>11.1816</td></tr><tr><td></td><td></td><td></td><td></td><td></td><td>1</td><td>33</td><td>34</td><td>1862</td><td>1400</td><td>11.743200000000002</td></tr><tr><td></td><td></td><td></td><td></td><td></td><td>1</td><td>34</td><td>35</td><td>1940</td><td>1480</td><td>12.312</td></tr><tr><td></td><td></td><td></td><td></td><td></td><td>1</td><td>35</td><td>36</td><td>2018</td><td>1562</td><td>12.888000000000002</td></tr><tr><td></td><td></td><td></td><td></td><td></td><td>1</td><td>36</td><td>37</td><td>2096</td><td>1645</td><td>13.467600000000001</td></tr><tr><td></td><td></td><td></td><td></td><td></td><td>1</td><td>37</td><td>38</td><td>2174</td><td>1731</td><td>14.058</td></tr><tr><td></td><td></td><td></td><td></td><td></td><td>1</td><td>38</td><td>39</td><td>2252</td><td>1817</td><td>14.6484</td></tr><tr><td></td><td></td><td></td><td></td><td></td><td>1</td><td>39</td><td>40</td><td>2330</td><td>1906</td><td>15.2496</td></tr><tr><td></td><td></td><td></td><td></td><td></td><td>1</td><td>40</td><td>41</td><td>2408</td><td>1996</td><td>15.854399999999998</td></tr><tr><td></td><td></td><td></td><td></td><td></td><td>1</td><td>41</td><td>42</td><td>2584</td><td>2171</td><td>17.118000000000002</td></tr><tr><td></td><td></td><td></td><td></td><td></td><td>1</td><td>42</td><td>43</td><td>2760</td><td>2349</td><td>18.392400000000002</td></tr><tr><td></td><td></td><td></td><td></td><td></td><td>1</td><td>43</td><td>44</td><td>2936</td><td>2531</td><td>19.6812</td></tr><tr><td></td><td></td><td></td><td></td><td></td><td>1</td><td>44</td><td>45</td><td>3112</td><td>2717</td><td>20.9844</td></tr><tr><td></td><td></td><td></td><td></td><td></td><td>1</td><td>45</td><td>46</td><td>3288</td><td>2907</td><td>22.302</td></tr><tr><td></td><td></td><td></td><td></td><td></td><td>1</td><td>46</td><td>47</td><td>3464</td><td>3100</td><td>23.6304</td></tr><tr><td></td><td></td><td></td><td></td><td></td><td>1</td><td>47</td><td>48</td><td>3650</td><td>3298</td><td>25.0128</td></tr><tr><td></td><td></td><td></td><td></td><td></td><td>1</td><td>48</td><td>49</td><td>3816</td><td>3499</td><td>26.334</td></tr><tr><td></td><td></td><td></td><td></td><td></td><td>1</td><td>49</td><td>50</td><td>3992</td><td>3705</td><td>27.7092</td></tr><tr><td></td><td></td><td></td><td></td><td></td><td>1</td><td>50</td><td>51</td><td>4168</td><td>3914</td><td>29.0952</td></tr><tr><td></td><td></td><td></td><td></td><td></td><td>1</td><td>51</td><td>52</td><td>4344</td><td>4127</td><td>30.495600000000003</td></tr><tr><td></td><td></td><td></td><td></td><td></td><td>1</td><td>52</td><td>53</td><td>4520</td><td>4344</td><td>31.910400000000003</td></tr><tr><td></td><td></td><td></td><td></td><td></td><td>1</td><td>53</td><td>54</td><td>4696</td><td>4565</td><td>33.339600000000004</td></tr><tr><td></td><td></td><td></td><td></td><td></td><td>1</td><td>54</td><td>55</td><td>4890</td><td>4807</td><td>34.9092</td></tr><tr><td></td><td></td><td></td><td></td><td></td><td>1</td><td>55</td><td>56</td><td>5326</td><td>5294</td><td>38.232</td></tr><tr><td></td><td></td><td></td><td></td><td></td><td>1</td><td>56</td><td>57</td><td>6019</td><td>6094</td><td>43.6068</td></tr><tr><td></td><td></td><td></td><td></td><td></td><td>1</td><td>57</td><td>58</td><td>6312</td><td>6413</td><td>45.81</td></tr><tr><td></td><td></td><td></td><td></td><td></td><td>1</td><td>58</td><td>59</td><td>6505</td><td>6681</td><td>47.4696</td></tr><tr><td></td><td></td><td></td><td></td><td></td><td>1</td><td>59</td><td>60</td><td>6838</td><td>7098</td><td>50.169599999999996</td></tr><tr><td>统计</td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td>130000</td><td>111628</td><td>869.8608</td></tr><tr><td>精英化</td><td>进阶2</td><td>消耗龙门币</td><td>消耗芯片</td><td>消耗材料1</td><td>消耗材料2</td><td>理智转化</td><td></td><td></td><td></td><td></td></tr><tr><td></td><td></td><td>60000</td><td>狙击芯片组*5</td><td>全新装置*11</td><td>环烃聚质*7</td><td>774</td><td></td><td></td><td></td><td></td></tr><tr><td></td><td></td><td></td><td></td><td></td><td>2</td><td>1</td><td>2</td><td>191</td><td>76</td><td>0.9612</td></tr><tr><td></td><td></td><td></td><td></td><td></td><td>2</td><td>2</td><td>3</td><td>303</td><td>124</td><td>1.5372</td></tr><tr><td></td><td></td><td></td><td></td><td></td><td>2</td><td>3</td><td>4</td><td>415</td><td>173</td><td>2.1168</td></tr><tr><td></td><td></td><td></td><td></td><td></td><td>2</td><td>4</td><td>5</td><td>527</td><td>225</td><td>2.7072</td></tr><tr><td></td><td></td><td></td><td></td><td></td><td>2</td><td>5</td><td>6</td><td>639</td><td>279</td><td>3.3047999999999997</td></tr><tr><td></td><td></td><td></td><td></td><td></td><td>2</td><td>6</td><td>7</td><td>751</td><td>334</td><td>3.9059999999999997</td></tr><tr><td></td><td></td><td></td><td></td><td></td><td>2</td><td>7</td><td>8</td><td>863</td><td>392</td><td>4.518000000000001</td></tr><tr><td></td><td></td><td></td><td></td><td></td><td>2</td><td>8</td><td>9</td><td>975</td><td>451</td><td>5.1336</td></tr><tr><td></td><td></td><td></td><td></td><td></td><td>2</td><td>9</td><td>10</td><td>1087</td><td>513</td><td>5.76</td></tr><tr><td></td><td></td><td></td><td></td><td></td><td>2</td><td>10</td><td>11</td><td>1199</td><td>577</td><td>6.393599999999999</td></tr><tr><td></td><td></td><td></td><td></td><td></td><td>2</td><td>11</td><td>12</td><td>1311</td><td>642</td><td>7.030799999999999</td></tr><tr><td></td><td></td><td></td><td></td><td></td><td>2</td><td>12</td><td>13</td><td>1423</td><td>710</td><td>7.678800000000001</td></tr><tr><td></td><td></td><td></td><td></td><td></td><td>2</td><td>13</td><td>14</td><td>1535</td><td>780</td><td>8.334</td></tr><tr><td></td><td></td><td></td><td></td><td></td><td>2</td><td>14</td><td>15</td><td>1647</td><td>851</td><td>8.9928</td></tr><tr><td></td><td></td><td></td><td></td><td></td><td>2</td><td>15</td><td>16</td><td>1759</td><td>925</td><td>9.6624</td></tr><tr><td></td><td></td><td></td><td></td><td></td><td>2</td><td>16</td><td>17</td><td>1871</td><td>1001</td><td>10.3392</td></tr><tr><td></td><td></td><td></td><td></td><td></td><td>2</td><td>17</td><td>18</td><td>1983</td><td>1079</td><td>11.0232</td></tr><tr><td></td><td></td><td></td><td></td><td></td><td>2</td><td>18</td><td>19</td><td>2095</td><td>1159</td><td>11.7144</td></tr><tr><td></td><td></td><td></td><td></td><td></td><td>2</td><td>19</td><td>20</td><td>2207</td><td>1240</td><td>12.4092</td></tr><tr><td></td><td></td><td></td><td></td><td></td><td>2</td><td>20</td><td>21</td><td>2319</td><td>1324</td><td>13.114799999999999</td></tr><tr><td></td><td></td><td></td><td></td><td></td><td>2</td><td>21</td><td>22</td><td>2431</td><td>1410</td><td>13.8276</td></tr><tr><td></td><td></td><td></td><td></td><td></td><td>2</td><td>22</td><td>23</td><td>2543</td><td>1498</td><td>14.547600000000001</td></tr><tr><td></td><td></td><td></td><td></td><td></td><td>2</td><td>23</td><td>24</td><td>2655</td><td>1588</td><td>15.274799999999999</td></tr><tr><td></td><td></td><td></td><td></td><td></td><td>2</td><td>24</td><td>25</td><td>2767</td><td>1680</td><td>16.0092</td></tr><tr><td></td><td></td><td></td><td></td><td></td><td>2</td><td>25</td><td>26</td><td>2879</td><td>1773</td><td>16.7472</td></tr><tr><td></td><td></td><td></td><td></td><td></td><td>2</td><td>26</td><td>27</td><td>2991</td><td>1869</td><td>17.496000000000002</td></tr><tr><td></td><td></td><td></td><td></td><td></td><td>2</td><td>27</td><td>28</td><td>3103</td><td>1967</td><td>18.252000000000002</td></tr><tr><td></td><td></td><td></td><td></td><td></td><td>2</td><td>28</td><td>29</td><td>3215</td><td>2067</td><td>19.0152</td></tr><tr><td></td><td></td><td></td><td></td><td></td><td>2</td><td>29</td><td>30</td><td>3327</td><td>2169</td><td>19.785600000000002</td></tr><tr><td></td><td></td><td></td><td></td><td></td><td>2</td><td>30</td><td>31</td><td>3439</td><td>2273</td><td>20.563200000000002</td></tr><tr><td></td><td></td><td></td><td></td><td></td><td>2</td><td>31</td><td>32</td><td>3602</td><td>2413</td><td>21.654</td></tr><tr><td></td><td></td><td></td><td></td><td></td><td>2</td><td>32</td><td>33</td><td>3765</td><td>2556</td><td>22.7556</td></tr><tr><td></td><td></td><td></td><td></td><td></td><td>2</td><td>33</td><td>34</td><td>3928</td><td>2702</td><td>23.868</td></tr><tr><td></td><td></td><td></td><td></td><td></td><td>2</td><td>34</td><td>35</td><td>4091</td><td>2851</td><td>24.9912</td></tr><tr><td></td><td></td><td></td><td></td><td></td><td>2</td><td>35</td><td>36</td><td>4254</td><td>3003</td><td>26.1252</td></tr><tr><td></td><td></td><td></td><td></td><td></td><td>2</td><td>36</td><td>37</td><td>4417</td><td>3158</td><td>27.27</td></tr><tr><td></td><td></td><td></td><td></td><td></td><td>2</td><td>37</td><td>38</td><td>4580</td><td>3316</td><td>28.4256</td></tr><tr><td></td><td></td><td></td><td></td><td></td><td>2</td><td>38</td><td>39</td><td>4743</td><td>3477</td><td>29.592</td></tr><tr><td></td><td></td><td></td><td></td><td></td><td>2</td><td>39</td><td>40</td><td>4906</td><td>3640</td><td>30.7656</td></tr><tr><td>统计</td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td>92736</td><td>58265</td><td>543.6036</td></tr></tbody></table></div><a href="analysis-assets/方舟数值养成表_（4星）_.xlsx" download class="inline-flex items-center gap-2 px-3 py-1.5 mt-2 mb-4 bg-blue-50 text-blue-700 rounded text-xs font-medium hover:bg-blue-100">下载 Excel 原表（4星）</a><h4>干员数值养成表（5星 · 水灯心）</h4><div class="table-wrap scroll-x"><table class="analysis-table xlsx-table"><thead><tr><th>干员资质</th><th>干员名称</th><th>主职业</th><th>职业分支</th><th>精英等级</th><th>当前等级</th><th>目标等级</th><th>消耗经验</th><th>消耗龙门币</th><th>理智转化</th></tr></thead><tbody><tr><td></td><td>5</td><td>水灯心</td><td>狙击</td><td>回环射手</td><td>0</td><td>1</td><td>2</td><td>100</td><td>30</td><td>0.46799999999999997</td></tr><tr><td></td><td></td><td></td><td></td><td></td><td>0</td><td>2</td><td>3</td><td>117</td><td>36</td><td>0.5508</td></tr><tr><td></td><td></td><td></td><td></td><td></td><td>0</td><td>3</td><td>4</td><td>134</td><td>43</td><td>0.6372</td></tr><tr><td></td><td></td><td></td><td></td><td></td><td>0</td><td>4</td><td>5</td><td>151</td><td>50</td><td>0.7236</td></tr><tr><td></td><td></td><td></td><td></td><td></td><td>0</td><td>5</td><td>6</td><td>168</td><td>57</td><td>0.81</td></tr><tr><td></td><td></td><td></td><td></td><td></td><td>0</td><td>6</td><td>7</td><td>185</td><td>65</td><td>0.8999999999999999</td></tr><tr><td></td><td></td><td></td><td></td><td></td><td>0</td><td>7</td><td>8</td><td>202</td><td>73</td><td>0.99</td></tr><tr><td></td><td></td><td></td><td></td><td></td><td>0</td><td>8</td><td>9</td><td>219</td><td>81</td><td>1.08</td></tr><tr><td></td><td></td><td></td><td></td><td></td><td>0</td><td>9</td><td>10</td><td>236</td><td>90</td><td>1.1736</td></tr><tr><td></td><td></td><td></td><td></td><td></td><td>0</td><td>10</td><td>11</td><td>253</td><td>99</td><td>1.2671999999999999</td></tr><tr><td></td><td></td><td></td><td></td><td></td><td>0</td><td>11</td><td>12</td><td>270</td><td>108</td><td>1.3608</td></tr><tr><td></td><td></td><td></td><td></td><td></td><td>0</td><td>12</td><td>13</td><td>287</td><td>118</td><td>1.458</td></tr><tr><td></td><td></td><td></td><td></td><td></td><td>0</td><td>13</td><td>14</td><td>304</td><td>128</td><td>1.5552000000000001</td></tr><tr><td></td><td></td><td></td><td></td><td></td><td>0</td><td>14</td><td>15</td><td>321</td><td>138</td><td>1.6524</td></tr><tr><td></td><td></td><td></td><td></td><td></td><td>0</td><td>15</td><td>16</td><td>338</td><td>149</td><td>1.7531999999999999</td></tr><tr><td></td><td></td><td></td><td></td><td></td><td>0</td><td>16</td><td>17</td><td>355</td><td>160</td><td>1.8539999999999999</td></tr><tr><td></td><td></td><td></td><td></td><td></td><td>0</td><td>17</td><td>18</td><td>372</td><td>182</td><td>1.9944</td></tr><tr><td></td><td></td><td></td><td></td><td></td><td>0</td><td>18</td><td>19</td><td>389</td><td>206</td><td>2.142</td></tr><tr><td></td><td></td><td></td><td></td><td></td><td>0</td><td>19</td><td>20</td><td>406</td><td>231</td><td>2.2931999999999997</td></tr><tr><td></td><td></td><td></td><td></td><td></td><td>0</td><td>20</td><td>21</td><td>423</td><td>258</td><td>2.4516</td></tr><tr><td></td><td></td><td></td><td></td><td></td><td>0</td><td>21</td><td>22</td><td>440</td><td>286</td><td>2.6136</td></tr><tr><td></td><td></td><td></td><td></td><td></td><td>0</td><td>22</td><td>23</td><td>457</td><td>315</td><td>2.7792</td></tr><tr><td></td><td></td><td></td><td></td><td></td><td>0</td><td>23</td><td>24</td><td>474</td><td>346</td><td>2.952</td></tr><tr><td></td><td></td><td></td><td></td><td></td><td>0</td><td>24</td><td>25</td><td>491</td><td>378</td><td>3.1284</td></tr><tr><td></td><td></td><td></td><td></td><td></td><td>0</td><td>25</td><td>26</td><td>508</td><td>411</td><td>3.3084</td></tr><tr><td></td><td></td><td></td><td></td><td></td><td>0</td><td>26</td><td>27</td><td>525</td><td>446</td><td>3.4955999999999996</td></tr><tr><td></td><td></td><td></td><td></td><td></td><td>0</td><td>27</td><td>28</td><td>542</td><td>482</td><td>3.6864</td></tr><tr><td></td><td></td><td></td><td></td><td></td><td>0</td><td>28</td><td>29</td><td>559</td><td>520</td><td>3.8844</td></tr><tr><td></td><td></td><td></td><td></td><td></td><td>0</td><td>29</td><td>30</td><td>574</td><td>557</td><td>4.0716</td></tr><tr><td></td><td></td><td></td><td></td><td></td><td>0</td><td>30</td><td>31</td><td>589</td><td>595</td><td>4.2623999999999995</td></tr><tr><td></td><td></td><td></td><td></td><td></td><td>0</td><td>31</td><td>32</td><td>605</td><td>635</td><td>4.464</td></tr><tr><td></td><td></td><td></td><td></td><td></td><td>0</td><td>32</td><td>33</td><td>621</td><td>677</td><td>4.6728000000000005</td></tr><tr><td></td><td></td><td></td><td></td><td></td><td>0</td><td>33</td><td>34</td><td>637</td><td>720</td><td>4.885199999999999</td></tr><tr><td></td><td></td><td></td><td></td><td></td><td>0</td><td>34</td><td>35</td><td>653</td><td>764</td><td>5.1012</td></tr><tr><td></td><td></td><td></td><td></td><td></td><td>0</td><td>35</td><td>36</td><td>669</td><td>809</td><td>5.3208</td></tr><tr><td></td><td></td><td></td><td></td><td></td><td>0</td><td>36</td><td>37</td><td>685</td><td>856</td><td>5.5476</td></tr><tr><td></td><td></td><td></td><td></td><td></td><td>0</td><td>37</td><td>38</td><td>701</td><td>904</td><td>5.7780000000000005</td></tr><tr><td></td><td></td><td></td><td></td><td></td><td>0</td><td>38</td><td>39</td><td>716</td><td>952</td><td>6.0047999999999995</td></tr><tr><td></td><td></td><td></td><td></td><td></td><td>0</td><td>39</td><td>40</td><td>724</td><td>992</td><td>6.1776</td></tr><tr><td></td><td></td><td></td><td></td><td></td><td>0</td><td>40</td><td>41</td><td>739</td><td>1042</td><td>6.4116</td></tr><tr><td></td><td></td><td></td><td></td><td></td><td>0</td><td>41</td><td>42</td><td>749</td><td>1086</td><td>6.606</td></tr><tr><td></td><td></td><td></td><td></td><td></td><td>0</td><td>42</td><td>43</td><td>759</td><td>1131</td><td>6.804</td></tr><tr><td></td><td></td><td></td><td></td><td></td><td>0</td><td>43</td><td>44</td><td>770</td><td>1178</td><td>7.0128</td></tr><tr><td></td><td></td><td></td><td></td><td></td><td>0</td><td>44</td><td>45</td><td>783</td><td>1229</td><td>7.2432</td></tr><tr><td></td><td></td><td></td><td></td><td></td><td>0</td><td>45</td><td>46</td><td>804</td><td>1294</td><td>7.5527999999999995</td></tr><tr><td></td><td></td><td></td><td></td><td></td><td>0</td><td>46</td><td>47</td><td>820</td><td>1353</td><td>7.8228</td></tr><tr><td></td><td></td><td></td><td></td><td></td><td>0</td><td>47</td><td>48</td><td>836</td><td>1413</td><td>8.0964</td></tr><tr><td></td><td></td><td></td><td></td><td></td><td>0</td><td>48</td><td>49</td><td>852</td><td>1474</td><td>8.3736</td></tr><tr><td></td><td></td><td></td><td></td><td></td><td>0</td><td>49</td><td>50</td><td>888</td><td>1572</td><td>8.856</td></tr><tr><td>统计</td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td>24400</td><td>26719</td><td>184.0284</td></tr><tr><td>精英化</td><td>进阶1</td><td>消耗龙门币</td><td>消耗芯片</td><td>消耗材料1</td><td>消耗材料2</td><td>理智转化</td><td></td><td></td><td></td><td></td></tr><tr><td></td><td></td><td>20000</td><td>射手芯片*4</td><td>酮凝聚*3</td><td>糖*4</td><td>228</td><td></td><td></td><td></td><td></td></tr><tr><td></td><td></td><td></td><td></td><td></td><td>1</td><td>1</td><td>2</td><td>120</td><td>48</td><td>0.6048</td></tr><tr><td></td><td></td><td></td><td></td><td></td><td>1</td><td>2</td><td>3</td><td>172</td><td>71</td><td>0.8748</td></tr><tr><td></td><td></td><td></td><td></td><td></td><td>1</td><td>3</td><td>4</td><td>224</td><td>95</td><td>1.1484</td></tr><tr><td></td><td></td><td></td><td></td><td></td><td>1</td><td>4</td><td>5</td><td>276</td><td>120</td><td>1.4256</td></tr><tr><td></td><td></td><td></td><td></td><td></td><td>1</td><td>5</td><td>6</td><td>328</td><td>146</td><td>1.7064</td></tr><tr><td></td><td></td><td></td><td></td><td></td><td>1</td><td>6</td><td>7</td><td>380</td><td>173</td><td>1.9908</td></tr><tr><td></td><td></td><td></td><td></td><td></td><td>1</td><td>7</td><td>8</td><td>432</td><td>201</td><td>2.2788000000000004</td></tr><tr><td></td><td></td><td></td><td></td><td></td><td>1</td><td>8</td><td>9</td><td>484</td><td>231</td><td>2.574</td></tr><tr><td></td><td></td><td></td><td></td><td></td><td>1</td><td>9</td><td>10</td><td>536</td><td>262</td><td>2.8728</td></tr><tr><td></td><td></td><td></td><td></td><td></td><td>1</td><td>10</td><td>11</td><td>588</td><td>293</td><td>3.1715999999999998</td></tr><tr><td></td><td></td><td></td><td></td><td></td><td>1</td><td>11</td><td>12</td><td>640</td><td>326</td><td>3.4776000000000002</td></tr><tr><td></td><td></td><td></td><td></td><td></td><td>1</td><td>12</td><td>13</td><td>692</td><td>361</td><td>3.7908</td></tr><tr><td></td><td></td><td></td><td></td><td></td><td>1</td><td>13</td><td>14</td><td>744</td><td>396</td><td>4.104</td></tr><tr><td></td><td></td><td></td><td></td><td></td><td>1</td><td>14</td><td>15</td><td>796</td><td>432</td><td>4.4208</td></tr><tr><td></td><td></td><td></td><td></td><td></td><td>1</td><td>15</td><td>16</td><td>848</td><td>470</td><td>4.7448</td></tr><tr><td></td><td></td><td></td><td></td><td></td><td>1</td><td>16</td><td>17</td><td>900</td><td>508</td><td>5.0687999999999995</td></tr><tr><td></td><td></td><td></td><td></td><td></td><td>1</td><td>17</td><td>18</td><td>952</td><td>548</td><td>5.4</td></tr><tr><td></td><td></td><td></td><td></td><td></td><td>1</td><td>18</td><td>19</td><td>1004</td><td>589</td><td>5.7348</td></tr><tr><td></td><td></td><td></td><td></td><td></td><td>1</td><td>19</td><td>20</td><td>1056</td><td>631</td><td>6.0732</td></tr><tr><td></td><td></td><td></td><td></td><td></td><td>1</td><td>20</td><td>21</td><td>1108</td><td>675</td><td>6.4188</td></tr><tr><td></td><td></td><td></td><td></td><td></td><td>1</td><td>21</td><td>22</td><td>1160</td><td>719</td><td>6.7644</td></tr><tr><td></td><td></td><td></td><td></td><td></td><td>1</td><td>22</td><td>23</td><td>1212</td><td>765</td><td>7.1172</td></tr><tr><td></td><td></td><td></td><td></td><td></td><td>1</td><td>23</td><td>24</td><td>1264</td><td>811</td><td>7.470000000000001</td></tr><tr><td></td><td></td><td></td><td></td><td></td><td>1</td><td>24</td><td>25</td><td>1316</td><td>859</td><td>7.83</td></tr><tr><td></td><td></td><td></td><td></td><td></td><td>1</td><td>25</td><td>26</td><td>1368</td><td>908</td><td>8.1936</td></tr><tr><td></td><td></td><td></td><td></td><td></td><td>1</td><td>26</td><td>27</td><td>1420</td><td>958</td><td>8.560799999999999</td></tr><tr><td></td><td></td><td></td><td></td><td></td><td>1</td><td>27</td><td>28</td><td>1472</td><td>1010</td><td>8.9352</td></tr><tr><td></td><td></td><td></td><td></td><td></td><td>1</td><td>28</td><td>29</td><td>1524</td><td>1062</td><td>9.3096</td></tr><tr><td></td><td></td><td></td><td></td><td></td><td>1</td><td>29</td><td>30</td><td>1576</td><td>1116</td><td>9.691199999999998</td></tr><tr><td></td><td></td><td></td><td></td><td></td><td>1</td><td>30</td><td>31</td><td>1628</td><td>1171</td><td>10.0764</td></tr><tr><td></td><td></td><td></td><td></td><td></td><td>1</td><td>31</td><td>32</td><td>1702</td><td>1245</td><td>10.6092</td></tr><tr><td></td><td></td><td></td><td></td><td></td><td>1</td><td>32</td><td>33</td><td>1784</td><td>1322</td><td>11.1816</td></tr><tr><td></td><td></td><td></td><td></td><td></td><td>1</td><td>33</td><td>34</td><td>1862</td><td>1400</td><td>11.743200000000002</td></tr><tr><td></td><td></td><td></td><td></td><td></td><td>1</td><td>34</td><td>35</td><td>1940</td><td>1480</td><td>12.312</td></tr><tr><td></td><td></td><td></td><td></td><td></td><td>1</td><td>35</td><td>36</td><td>2018</td><td>1562</td><td>12.888000000000002</td></tr><tr><td></td><td></td><td></td><td></td><td></td><td>1</td><td>36</td><td>37</td><td>2096</td><td>1645</td><td>13.467600000000001</td></tr><tr><td></td><td></td><td></td><td></td><td></td><td>1</td><td>37</td><td>38</td><td>2174</td><td>1731</td><td>14.058</td></tr><tr><td></td><td></td><td></td><td></td><td></td><td>1</td><td>38</td><td>39</td><td>2252</td><td>1817</td><td>14.6484</td></tr><tr><td></td><td></td><td></td><td></td><td></td><td>1</td><td>39</td><td>40</td><td>2330</td><td>1906</td><td>15.2496</td></tr><tr><td></td><td></td><td></td><td></td><td></td><td>1</td><td>40</td><td>41</td><td>2408</td><td>1996</td><td>15.854399999999998</td></tr><tr><td></td><td></td><td></td><td></td><td></td><td>1</td><td>41</td><td>42</td><td>2584</td><td>2171</td><td>17.118000000000002</td></tr><tr><td></td><td></td><td></td><td></td><td></td><td>1</td><td>42</td><td>43</td><td>2760</td><td>2349</td><td>18.392400000000002</td></tr><tr><td></td><td></td><td></td><td></td><td></td><td>1</td><td>43</td><td>44</td><td>2936</td><td>2531</td><td>19.6812</td></tr><tr><td></td><td></td><td></td><td></td><td></td><td>1</td><td>44</td><td>45</td><td>3112</td><td>2717</td><td>20.9844</td></tr><tr><td></td><td></td><td></td><td></td><td></td><td>1</td><td>45</td><td>46</td><td>3288</td><td>2907</td><td>22.302</td></tr><tr><td></td><td></td><td></td><td></td><td></td><td>1</td><td>46</td><td>47</td><td>3464</td><td>3100</td><td>23.6304</td></tr><tr><td></td><td></td><td></td><td></td><td></td><td>1</td><td>47</td><td>48</td><td>3650</td><td>3298</td><td>25.0128</td></tr><tr><td></td><td></td><td></td><td></td><td></td><td>1</td><td>48</td><td>49</td><td>3816</td><td>3499</td><td>26.334</td></tr><tr><td></td><td></td><td></td><td></td><td></td><td>1</td><td>49</td><td>50</td><td>3992</td><td>3705</td><td>27.7092</td></tr><tr><td></td><td></td><td></td><td></td><td></td><td>1</td><td>50</td><td>51</td><td>4168</td><td>3914</td><td>29.0952</td></tr><tr><td></td><td></td><td></td><td></td><td></td><td>1</td><td>51</td><td>52</td><td>4344</td><td>4127</td><td>30.495600000000003</td></tr><tr><td></td><td></td><td></td><td></td><td></td><td>1</td><td>52</td><td>53</td><td>4520</td><td>4344</td><td>31.910400000000003</td></tr><tr><td></td><td></td><td></td><td></td><td></td><td>1</td><td>53</td><td>54</td><td>4696</td><td>4565</td><td>33.339600000000004</td></tr><tr><td></td><td></td><td></td><td></td><td></td><td>1</td><td>54</td><td>55</td><td>4890</td><td>4807</td><td>34.9092</td></tr><tr><td></td><td></td><td></td><td></td><td></td><td>1</td><td>55</td><td>56</td><td>5326</td><td>5294</td><td>38.232</td></tr><tr><td></td><td></td><td></td><td></td><td></td><td>1</td><td>56</td><td>57</td><td>6019</td><td>6094</td><td>43.6068</td></tr><tr><td></td><td></td><td></td><td></td><td></td><td>1</td><td>57</td><td>58</td><td>6312</td><td>6413</td><td>45.81</td></tr><tr><td></td><td></td><td></td><td></td><td></td><td>1</td><td>58</td><td>59</td><td>6505</td><td>6681</td><td>47.4696</td></tr><tr><td></td><td></td><td></td><td></td><td></td><td>1</td><td>59</td><td>60</td><td>6838</td><td>7098</td><td>50.169599999999996</td></tr><tr><td></td><td></td><td></td><td></td><td></td><td>1</td><td>60</td><td>61</td><td>7391</td><td>7753</td><td>54.5184</td></tr><tr><td></td><td></td><td></td><td></td><td></td><td>1</td><td>61</td><td>62</td><td>7657</td><td>8116</td><td>56.7828</td></tr><tr><td></td><td></td><td></td><td></td><td></td><td>1</td><td>62</td><td>63</td><td>7823</td><td>8378</td><td>58.3236</td></tr><tr><td></td><td></td><td></td><td></td><td></td><td>1</td><td>63</td><td>64</td><td>8089</td><td>8752</td><td>60.627599999999994</td></tr><tr><td></td><td></td><td></td><td></td><td></td><td>1</td><td>64</td><td>65</td><td>8355</td><td>9132</td><td>62.953199999999995</td></tr><tr><td></td><td></td><td></td><td></td><td></td><td>1</td><td>65</td><td>66</td><td>8621</td><td>9518</td><td>65.3004</td></tr><tr><td></td><td></td><td></td><td></td><td></td><td>1</td><td>66</td><td>67</td><td>8887</td><td>9909</td><td>67.66560000000001</td></tr><tr><td></td><td></td><td></td><td></td><td></td><td>1</td><td>67</td><td>68</td><td>9153</td><td>10306</td><td>70.0524</td></tr><tr><td></td><td></td><td></td><td></td><td></td><td>1</td><td>68</td><td>69</td><td>9419</td><td>10709</td><td>72.4608</td></tr><tr><td></td><td></td><td></td><td></td><td></td><td>1</td><td>69</td><td>70</td><td>9605</td><td>11027</td><td>74.27520000000001</td></tr><tr><td>统计</td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td>215000</td><td>205228</td><td>1512.8208</td></tr><tr><td>精英化</td><td>进阶2</td><td>消耗龙门币</td><td>消耗芯片</td><td>消耗材料1</td><td>消耗材料2</td><td>理智转化</td><td></td><td></td><td></td><td></td></tr><tr><td></td><td></td><td>120000</td><td>狙击双芯片*3</td><td>固化纤维板*4</td><td>轻锰矿*12</td><td>1152</td><td></td><td></td><td></td><td></td></tr><tr><td></td><td></td><td></td><td></td><td></td><td>2</td><td>1</td><td>2</td><td>191</td><td>76</td><td>0.9612</td></tr><tr><td></td><td></td><td></td><td></td><td></td><td>2</td><td>2</td><td>3</td><td>303</td><td>124</td><td>1.5372</td></tr><tr><td></td><td></td><td></td><td></td><td></td><td>2</td><td>3</td><td>4</td><td>415</td><td>173</td><td>2.1168</td></tr><tr><td></td><td></td><td></td><td></td><td></td><td>2</td><td>4</td><td>5</td><td>527</td><td>225</td><td>2.7072</td></tr><tr><td></td><td></td><td></td><td></td><td></td><td>2</td><td>5</td><td>6</td><td>639</td><td>279</td><td>3.3047999999999997</td></tr><tr><td></td><td></td><td></td><td></td><td></td><td>2</td><td>6</td><td>7</td><td>751</td><td>334</td><td>3.9059999999999997</td></tr><tr><td></td><td></td><td></td><td></td><td></td><td>2</td><td>7</td><td>8</td><td>863</td><td>392</td><td>4.518000000000001</td></tr><tr><td></td><td></td><td></td><td></td><td></td><td>2</td><td>8</td><td>9</td><td>975</td><td>451</td><td>5.1336</td></tr><tr><td></td><td></td><td></td><td></td><td></td><td>2</td><td>9</td><td>10</td><td>1087</td><td>513</td><td>5.76</td></tr><tr><td></td><td></td><td></td><td></td><td></td><td>2</td><td>10</td><td>11</td><td>1199</td><td>577</td><td>6.393599999999999</td></tr><tr><td></td><td></td><td></td><td></td><td></td><td>2</td><td>11</td><td>12</td><td>1311</td><td>642</td><td>7.030799999999999</td></tr><tr><td></td><td></td><td></td><td></td><td></td><td>2</td><td>12</td><td>13</td><td>1423</td><td>710</td><td>7.678800000000001</td></tr><tr><td></td><td></td><td></td><td></td><td></td><td>2</td><td>13</td><td>14</td><td>1535</td><td>780</td><td>8.334</td></tr><tr><td></td><td></td><td></td><td></td><td></td><td>2</td><td>14</td><td>15</td><td>1647</td><td>851</td><td>8.9928</td></tr><tr><td></td><td></td><td></td><td></td><td></td><td>2</td><td>15</td><td>16</td><td>1759</td><td>925</td><td>9.6624</td></tr><tr><td></td><td></td><td></td><td></td><td></td><td>2</td><td>16</td><td>17</td><td>1871</td><td>1001</td><td>10.3392</td></tr><tr><td></td><td></td><td></td><td></td><td></td><td>2</td><td>17</td><td>18</td><td>1983</td><td>1079</td><td>11.0232</td></tr><tr><td></td><td></td><td></td><td></td><td></td><td>2</td><td>18</td><td>19</td><td>2095</td><td>1159</td><td>11.7144</td></tr><tr><td></td><td></td><td></td><td></td><td></td><td>2</td><td>19</td><td>20</td><td>2207</td><td>1240</td><td>12.4092</td></tr><tr><td></td><td></td><td></td><td></td><td></td><td>2</td><td>20</td><td>21</td><td>2319</td><td>1324</td><td>13.114799999999999</td></tr><tr><td></td><td></td><td></td><td></td><td></td><td>2</td><td>21</td><td>22</td><td>2431</td><td>1410</td><td>13.8276</td></tr><tr><td></td><td></td><td></td><td></td><td></td><td>2</td><td>22</td><td>23</td><td>2543</td><td>1498</td><td>14.547600000000001</td></tr><tr><td></td><td></td><td></td><td></td><td></td><td>2</td><td>23</td><td>24</td><td>2655</td><td>1588</td><td>15.274799999999999</td></tr><tr><td></td><td></td><td></td><td></td><td></td><td>2</td><td>24</td><td>25</td><td>2767</td><td>1680</td><td>16.0092</td></tr><tr><td></td><td></td><td></td><td></td><td></td><td>2</td><td>25</td><td>26</td><td>2879</td><td>1773</td><td>16.7472</td></tr><tr><td></td><td></td><td></td><td></td><td></td><td>2</td><td>26</td><td>27</td><td>2991</td><td>1869</td><td>17.496000000000002</td></tr><tr><td></td><td></td><td></td><td></td><td></td><td>2</td><td>27</td><td>28</td><td>3103</td><td>1967</td><td>18.252000000000002</td></tr><tr><td></td><td></td><td></td><td></td><td></td><td>2</td><td>28</td><td>29</td><td>3215</td><td>2067</td><td>19.0152</td></tr><tr><td></td><td></td><td></td><td></td><td></td><td>2</td><td>29</td><td>30</td><td>3327</td><td>2169</td><td>19.785600000000002</td></tr><tr><td></td><td></td><td></td><td></td><td></td><td>2</td><td>30</td><td>31</td><td>3439</td><td>2273</td><td>20.563200000000002</td></tr><tr><td></td><td></td><td></td><td></td><td></td><td>2</td><td>31</td><td>32</td><td>3602</td><td>2413</td><td>21.654</td></tr><tr><td></td><td></td><td></td><td></td><td></td><td>2</td><td>32</td><td>33</td><td>3765</td><td>2556</td><td>22.7556</td></tr><tr><td></td><td></td><td></td><td></td><td></td><td>2</td><td>33</td><td>34</td><td>3928</td><td>2702</td><td>23.868</td></tr><tr><td></td><td></td><td></td><td></td><td></td><td>2</td><td>34</td><td>35</td><td>4091</td><td>2851</td><td>24.9912</td></tr><tr><td></td><td></td><td></td><td></td><td></td><td>2</td><td>35</td><td>36</td><td>4254</td><td>3003</td><td>26.1252</td></tr><tr><td></td><td></td><td></td><td></td><td></td><td>2</td><td>36</td><td>37</td><td>4417</td><td>3158</td><td>27.27</td></tr><tr><td></td><td></td><td></td><td></td><td></td><td>2</td><td>37</td><td>38</td><td>4580</td><td>3316</td><td>28.4256</td></tr><tr><td></td><td></td><td></td><td></td><td></td><td>2</td><td>38</td><td>39</td><td>4743</td><td>3477</td><td>29.592</td></tr><tr><td></td><td></td><td></td><td></td><td></td><td>2</td><td>39</td><td>40</td><td>4906</td><td>3640</td><td>30.7656</td></tr><tr><td></td><td></td><td></td><td></td><td></td><td>2</td><td>40</td><td>41</td><td>5069</td><td>3807</td><td>31.9536</td></tr><tr><td></td><td></td><td></td><td></td><td></td><td>2</td><td>41</td><td>42</td><td>5232</td><td>3976</td><td>33.1488</td></tr><tr><td></td><td></td><td></td><td></td><td></td><td>2</td><td>42</td><td>43</td><td>5395</td><td>4149</td><td>34.3584</td></tr><tr><td></td><td></td><td></td><td></td><td></td><td>2</td><td>43</td><td>44</td><td>5558</td><td>4324</td><td>35.575199999999995</td></tr><tr><td></td><td></td><td></td><td></td><td></td><td>2</td><td>44</td><td>45</td><td>5721</td><td>4502</td><td>36.802800000000005</td></tr><tr><td></td><td></td><td></td><td></td><td></td><td>2</td><td>45</td><td>46</td><td>5884</td><td>4684</td><td>38.0448</td></tr><tr><td></td><td></td><td></td><td></td><td></td><td>2</td><td>46</td><td>47</td><td>6047</td><td>4868</td><td>39.294</td></tr><tr><td></td><td></td><td></td><td></td><td></td><td>2</td><td>47</td><td>48</td><td>6210</td><td>5055</td><td>40.554</td></tr><tr><td></td><td></td><td></td><td></td><td></td><td>2</td><td>48</td><td>49</td><td>6373</td><td>5245</td><td>41.824799999999996</td></tr><tr><td></td><td></td><td></td><td></td><td></td><td>2</td><td>49</td><td>50</td><td>6536</td><td>5438</td><td>43.106399999999994</td></tr><tr><td>统计</td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td>150761</td><td>104313</td><td>918.2664</td></tr></tbody></table></div><a href="analysis-assets/方舟数值养成表_（5星）.xlsx" download class="inline-flex items-center gap-2 px-3 py-1.5 mt-2 mb-4 bg-blue-50 text-blue-700 rounded text-xs font-medium hover:bg-blue-100">下载 Excel 原表（5星）</a><h4>干员数值养成表（6星 · 纳尔图雅）</h4><div class="table-wrap scroll-x"><table class="analysis-table xlsx-table"><thead><tr><th>干员资质</th><th>干员名称</th><th>主职业</th><th>职业分支</th><th>精英等级</th><th>当前等级</th><th>目标等级</th><th>消耗经验</th><th>消耗龙门币</th><th>理智转化</th></tr></thead><tbody><tr><td></td><td>6</td><td>娜仁图亚</td><td>狙击</td><td>回环射手</td><td>0</td><td>1</td><td>2</td><td>100</td><td>30</td><td>0.46799999999999997</td></tr><tr><td></td><td></td><td></td><td></td><td></td><td>0</td><td>2</td><td>3</td><td>117</td><td>36</td><td>0.5508</td></tr><tr><td></td><td></td><td></td><td></td><td></td><td>0</td><td>3</td><td>4</td><td>134</td><td>43</td><td>0.6372</td></tr><tr><td></td><td></td><td></td><td></td><td></td><td>0</td><td>4</td><td>5</td><td>151</td><td>50</td><td>0.7236</td></tr><tr><td></td><td></td><td></td><td></td><td></td><td>0</td><td>5</td><td>6</td><td>168</td><td>57</td><td>0.81</td></tr><tr><td></td><td></td><td></td><td></td><td></td><td>0</td><td>6</td><td>7</td><td>185</td><td>65</td><td>0.8999999999999999</td></tr><tr><td></td><td></td><td></td><td></td><td></td><td>0</td><td>7</td><td>8</td><td>202</td><td>73</td><td>0.99</td></tr><tr><td></td><td></td><td></td><td></td><td></td><td>0</td><td>8</td><td>9</td><td>219</td><td>81</td><td>1.08</td></tr><tr><td></td><td></td><td></td><td></td><td></td><td>0</td><td>9</td><td>10</td><td>236</td><td>90</td><td>1.1736</td></tr><tr><td></td><td></td><td></td><td></td><td></td><td>0</td><td>10</td><td>11</td><td>253</td><td>99</td><td>1.2671999999999999</td></tr><tr><td></td><td></td><td></td><td></td><td></td><td>0</td><td>11</td><td>12</td><td>270</td><td>108</td><td>1.3608</td></tr><tr><td></td><td></td><td></td><td></td><td></td><td>0</td><td>12</td><td>13</td><td>287</td><td>118</td><td>1.458</td></tr><tr><td></td><td></td><td></td><td></td><td></td><td>0</td><td>13</td><td>14</td><td>304</td><td>128</td><td>1.5552000000000001</td></tr><tr><td></td><td></td><td></td><td></td><td></td><td>0</td><td>14</td><td>15</td><td>321</td><td>138</td><td>1.6524</td></tr><tr><td></td><td></td><td></td><td></td><td></td><td>0</td><td>15</td><td>16</td><td>338</td><td>149</td><td>1.7531999999999999</td></tr><tr><td></td><td></td><td></td><td></td><td></td><td>0</td><td>16</td><td>17</td><td>355</td><td>160</td><td>1.8539999999999999</td></tr><tr><td></td><td></td><td></td><td></td><td></td><td>0</td><td>17</td><td>18</td><td>372</td><td>182</td><td>1.9944</td></tr><tr><td></td><td></td><td></td><td></td><td></td><td>0</td><td>18</td><td>19</td><td>389</td><td>206</td><td>2.142</td></tr><tr><td></td><td></td><td></td><td></td><td></td><td>0</td><td>19</td><td>20</td><td>406</td><td>231</td><td>2.2931999999999997</td></tr><tr><td></td><td></td><td></td><td></td><td></td><td>0</td><td>20</td><td>21</td><td>423</td><td>258</td><td>2.4516</td></tr><tr><td></td><td></td><td></td><td></td><td></td><td>0</td><td>21</td><td>22</td><td>440</td><td>286</td><td>2.6136</td></tr><tr><td></td><td></td><td></td><td></td><td></td><td>0</td><td>22</td><td>23</td><td>457</td><td>315</td><td>2.7792</td></tr><tr><td></td><td></td><td></td><td></td><td></td><td>0</td><td>23</td><td>24</td><td>474</td><td>346</td><td>2.952</td></tr><tr><td></td><td></td><td></td><td></td><td></td><td>0</td><td>24</td><td>25</td><td>491</td><td>378</td><td>3.1284</td></tr><tr><td></td><td></td><td></td><td></td><td></td><td>0</td><td>25</td><td>26</td><td>508</td><td>411</td><td>3.3084</td></tr><tr><td></td><td></td><td></td><td></td><td></td><td>0</td><td>26</td><td>27</td><td>525</td><td>446</td><td>3.4955999999999996</td></tr><tr><td></td><td></td><td></td><td></td><td></td><td>0</td><td>27</td><td>28</td><td>542</td><td>482</td><td>3.6864</td></tr><tr><td></td><td></td><td></td><td></td><td></td><td>0</td><td>28</td><td>29</td><td>559</td><td>520</td><td>3.8844</td></tr><tr><td></td><td></td><td></td><td></td><td></td><td>0</td><td>29</td><td>30</td><td>574</td><td>557</td><td>4.0716</td></tr><tr><td></td><td></td><td></td><td></td><td></td><td>0</td><td>30</td><td>31</td><td>589</td><td>595</td><td>4.2623999999999995</td></tr><tr><td></td><td></td><td></td><td></td><td></td><td>0</td><td>31</td><td>32</td><td>605</td><td>635</td><td>4.464</td></tr><tr><td></td><td></td><td></td><td></td><td></td><td>0</td><td>32</td><td>33</td><td>621</td><td>677</td><td>4.6728000000000005</td></tr><tr><td></td><td></td><td></td><td></td><td></td><td>0</td><td>33</td><td>34</td><td>637</td><td>720</td><td>4.885199999999999</td></tr><tr><td></td><td></td><td></td><td></td><td></td><td>0</td><td>34</td><td>35</td><td>653</td><td>764</td><td>5.1012</td></tr><tr><td></td><td></td><td></td><td></td><td></td><td>0</td><td>35</td><td>36</td><td>669</td><td>809</td><td>5.3208</td></tr><tr><td></td><td></td><td></td><td></td><td></td><td>0</td><td>36</td><td>37</td><td>685</td><td>856</td><td>5.5476</td></tr><tr><td></td><td></td><td></td><td></td><td></td><td>0</td><td>37</td><td>38</td><td>701</td><td>904</td><td>5.7780000000000005</td></tr><tr><td></td><td></td><td></td><td></td><td></td><td>0</td><td>38</td><td>39</td><td>716</td><td>952</td><td>6.0047999999999995</td></tr><tr><td></td><td></td><td></td><td></td><td></td><td>0</td><td>39</td><td>40</td><td>724</td><td>992</td><td>6.1776</td></tr><tr><td></td><td></td><td></td><td></td><td></td><td>0</td><td>40</td><td>41</td><td>739</td><td>1042</td><td>6.4116</td></tr><tr><td></td><td></td><td></td><td></td><td></td><td>0</td><td>41</td><td>42</td><td>749</td><td>1086</td><td>6.606</td></tr><tr><td></td><td></td><td></td><td></td><td></td><td>0</td><td>42</td><td>43</td><td>759</td><td>1131</td><td>6.804</td></tr><tr><td></td><td></td><td></td><td></td><td></td><td>0</td><td>43</td><td>44</td><td>770</td><td>1178</td><td>7.0128</td></tr><tr><td></td><td></td><td></td><td></td><td></td><td>0</td><td>44</td><td>45</td><td>783</td><td>1229</td><td>7.2432</td></tr><tr><td></td><td></td><td></td><td></td><td></td><td>0</td><td>45</td><td>46</td><td>804</td><td>1294</td><td>7.5527999999999995</td></tr><tr><td></td><td></td><td></td><td></td><td></td><td>0</td><td>46</td><td>47</td><td>820</td><td>1353</td><td>7.8228</td></tr><tr><td></td><td></td><td></td><td></td><td></td><td>0</td><td>47</td><td>48</td><td>836</td><td>1413</td><td>8.0964</td></tr><tr><td></td><td></td><td></td><td></td><td></td><td>0</td><td>48</td><td>49</td><td>852</td><td>1474</td><td>8.3736</td></tr><tr><td></td><td></td><td></td><td></td><td></td><td>0</td><td>49</td><td>50</td><td>888</td><td>1572</td><td>8.856</td></tr><tr><td>统计</td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td>24400</td><td>26719</td><td>184.0284</td></tr><tr><td>精英化</td><td>进阶1</td><td>消耗龙门币</td><td>消耗芯片</td><td>消耗材料1</td><td>消耗材料2</td><td>理智转化</td><td></td><td></td><td></td><td></td></tr><tr><td></td><td></td><td>30000</td><td>射手芯片*5</td><td>酮凝聚*7</td><td>异铁*4</td><td>330</td><td></td><td></td><td></td><td></td></tr><tr><td></td><td></td><td></td><td></td><td></td><td>1</td><td>1</td><td>2</td><td>120</td><td>48</td><td>0.6048</td></tr><tr><td></td><td></td><td></td><td></td><td></td><td>1</td><td>2</td><td>3</td><td>172</td><td>71</td><td>0.8748</td></tr><tr><td></td><td></td><td></td><td></td><td></td><td>1</td><td>3</td><td>4</td><td>224</td><td>95</td><td>1.1484</td></tr><tr><td></td><td></td><td></td><td></td><td></td><td>1</td><td>4</td><td>5</td><td>276</td><td>120</td><td>1.4256</td></tr><tr><td></td><td></td><td></td><td></td><td></td><td>1</td><td>5</td><td>6</td><td>328</td><td>146</td><td>1.7064</td></tr><tr><td></td><td></td><td></td><td></td><td></td><td>1</td><td>6</td><td>7</td><td>380</td><td>173</td><td>1.9908</td></tr><tr><td></td><td></td><td></td><td></td><td></td><td>1</td><td>7</td><td>8</td><td>432</td><td>201</td><td>2.2788000000000004</td></tr><tr><td></td><td></td><td></td><td></td><td></td><td>1</td><td>8</td><td>9</td><td>484</td><td>231</td><td>2.574</td></tr><tr><td></td><td></td><td></td><td></td><td></td><td>1</td><td>9</td><td>10</td><td>536</td><td>262</td><td>2.8728</td></tr><tr><td></td><td></td><td></td><td></td><td></td><td>1</td><td>10</td><td>11</td><td>588</td><td>293</td><td>3.1715999999999998</td></tr><tr><td></td><td></td><td></td><td></td><td></td><td>1</td><td>11</td><td>12</td><td>640</td><td>326</td><td>3.4776000000000002</td></tr><tr><td></td><td></td><td></td><td></td><td></td><td>1</td><td>12</td><td>13</td><td>692</td><td>361</td><td>3.7908</td></tr><tr><td></td><td></td><td></td><td></td><td></td><td>1</td><td>13</td><td>14</td><td>744</td><td>396</td><td>4.104</td></tr><tr><td></td><td></td><td></td><td></td><td></td><td>1</td><td>14</td><td>15</td><td>796</td><td>432</td><td>4.4208</td></tr><tr><td></td><td></td><td></td><td></td><td></td><td>1</td><td>15</td><td>16</td><td>848</td><td>470</td><td>4.7448</td></tr><tr><td></td><td></td><td></td><td></td><td></td><td>1</td><td>16</td><td>17</td><td>900</td><td>508</td><td>5.0687999999999995</td></tr><tr><td></td><td></td><td></td><td></td><td></td><td>1</td><td>17</td><td>18</td><td>952</td><td>548</td><td>5.4</td></tr><tr><td></td><td></td><td></td><td></td><td></td><td>1</td><td>18</td><td>19</td><td>1004</td><td>589</td><td>5.7348</td></tr><tr><td></td><td></td><td></td><td></td><td></td><td>1</td><td>19</td><td>20</td><td>1056</td><td>631</td><td>6.0732</td></tr><tr><td></td><td></td><td></td><td></td><td></td><td>1</td><td>20</td><td>21</td><td>1108</td><td>675</td><td>6.4188</td></tr><tr><td></td><td></td><td></td><td></td><td></td><td>1</td><td>21</td><td>22</td><td>1160</td><td>719</td><td>6.7644</td></tr><tr><td></td><td></td><td></td><td></td><td></td><td>1</td><td>22</td><td>23</td><td>1212</td><td>765</td><td>7.1172</td></tr><tr><td></td><td></td><td></td><td></td><td></td><td>1</td><td>23</td><td>24</td><td>1264</td><td>811</td><td>7.470000000000001</td></tr><tr><td></td><td></td><td></td><td></td><td></td><td>1</td><td>24</td><td>25</td><td>1316</td><td>859</td><td>7.83</td></tr><tr><td></td><td></td><td></td><td></td><td></td><td>1</td><td>25</td><td>26</td><td>1368</td><td>908</td><td>8.1936</td></tr><tr><td></td><td></td><td></td><td></td><td></td><td>1</td><td>26</td><td>27</td><td>1420</td><td>958</td><td>8.560799999999999</td></tr><tr><td></td><td></td><td></td><td></td><td></td><td>1</td><td>27</td><td>28</td><td>1472</td><td>1010</td><td>8.9352</td></tr><tr><td></td><td></td><td></td><td></td><td></td><td>1</td><td>28</td><td>29</td><td>1524</td><td>1062</td><td>9.3096</td></tr><tr><td></td><td></td><td></td><td></td><td></td><td>1</td><td>29</td><td>30</td><td>1576</td><td>1116</td><td>9.691199999999998</td></tr><tr><td></td><td></td><td></td><td></td><td></td><td>1</td><td>30</td><td>31</td><td>1628</td><td>1171</td><td>10.0764</td></tr><tr><td></td><td></td><td></td><td></td><td></td><td>1</td><td>31</td><td>32</td><td>1702</td><td>1245</td><td>10.6092</td></tr><tr><td></td><td></td><td></td><td></td><td></td><td>1</td><td>32</td><td>33</td><td>1784</td><td>1322</td><td>11.1816</td></tr><tr><td></td><td></td><td></td><td></td><td></td><td>1</td><td>33</td><td>34</td><td>1862</td><td>1400</td><td>11.743200000000002</td></tr><tr><td></td><td></td><td></td><td></td><td></td><td>1</td><td>34</td><td>35</td><td>1940</td><td>1480</td><td>12.312</td></tr><tr><td></td><td></td><td></td><td></td><td></td><td>1</td><td>35</td><td>36</td><td>2018</td><td>1562</td><td>12.888000000000002</td></tr><tr><td></td><td></td><td></td><td></td><td></td><td>1</td><td>36</td><td>37</td><td>2096</td><td>1645</td><td>13.467600000000001</td></tr><tr><td></td><td></td><td></td><td></td><td></td><td>1</td><td>37</td><td>38</td><td>2174</td><td>1731</td><td>14.058</td></tr><tr><td></td><td></td><td></td><td></td><td></td><td>1</td><td>38</td><td>39</td><td>2252</td><td>1817</td><td>14.6484</td></tr><tr><td></td><td></td><td></td><td></td><td></td><td>1</td><td>39</td><td>40</td><td>2330</td><td>1906</td><td>15.2496</td></tr><tr><td></td><td></td><td></td><td></td><td></td><td>1</td><td>40</td><td>41</td><td>2408</td><td>1996</td><td>15.854399999999998</td></tr><tr><td></td><td></td><td></td><td></td><td></td><td>1</td><td>41</td><td>42</td><td>2584</td><td>2171</td><td>17.118000000000002</td></tr><tr><td></td><td></td><td></td><td></td><td></td><td>1</td><td>42</td><td>43</td><td>2760</td><td>2349</td><td>18.392400000000002</td></tr><tr><td></td><td></td><td></td><td></td><td></td><td>1</td><td>43</td><td>44</td><td>2936</td><td>2531</td><td>19.6812</td></tr><tr><td></td><td></td><td></td><td></td><td></td><td>1</td><td>44</td><td>45</td><td>3112</td><td>2717</td><td>20.9844</td></tr><tr><td></td><td></td><td></td><td></td><td></td><td>1</td><td>45</td><td>46</td><td>3288</td><td>2907</td><td>22.302</td></tr><tr><td></td><td></td><td></td><td></td><td></td><td>1</td><td>46</td><td>47</td><td>3464</td><td>3100</td><td>23.6304</td></tr><tr><td></td><td></td><td></td><td></td><td></td><td>1</td><td>47</td><td>48</td><td>3650</td><td>3298</td><td>25.0128</td></tr><tr><td></td><td></td><td></td><td></td><td></td><td>1</td><td>48</td><td>49</td><td>3816</td><td>3499</td><td>26.334</td></tr><tr><td></td><td></td><td></td><td></td><td></td><td>1</td><td>49</td><td>50</td><td>3992</td><td>3705</td><td>27.7092</td></tr><tr><td></td><td></td><td></td><td></td><td></td><td>1</td><td>50</td><td>51</td><td>4168</td><td>3914</td><td>29.0952</td></tr><tr><td></td><td></td><td></td><td></td><td></td><td>1</td><td>51</td><td>52</td><td>4344</td><td>4127</td><td>30.495600000000003</td></tr><tr><td></td><td></td><td></td><td></td><td></td><td>1</td><td>52</td><td>53</td><td>4520</td><td>4344</td><td>31.910400000000003</td></tr><tr><td></td><td></td><td></td><td></td><td></td><td>1</td><td>53</td><td>54</td><td>4696</td><td>4565</td><td>33.339600000000004</td></tr><tr><td></td><td></td><td></td><td></td><td></td><td>1</td><td>54</td><td>55</td><td>4890</td><td>4807</td><td>34.9092</td></tr><tr><td></td><td></td><td></td><td></td><td></td><td>1</td><td>55</td><td>56</td><td>5326</td><td>5294</td><td>38.232</td></tr><tr><td></td><td></td><td></td><td></td><td></td><td>1</td><td>56</td><td>57</td><td>6019</td><td>6094</td><td>43.6068</td></tr><tr><td></td><td></td><td></td><td></td><td></td><td>1</td><td>57</td><td>58</td><td>6312</td><td>6413</td><td>45.81</td></tr><tr><td></td><td></td><td></td><td></td><td></td><td>1</td><td>58</td><td>59</td><td>6505</td><td>6681</td><td>47.4696</td></tr><tr><td></td><td></td><td></td><td></td><td></td><td>1</td><td>59</td><td>60</td><td>6838</td><td>7098</td><td>50.169599999999996</td></tr><tr><td></td><td></td><td></td><td></td><td></td><td>1</td><td>60</td><td>61</td><td>7391</td><td>7753</td><td>54.5184</td></tr><tr><td></td><td></td><td></td><td></td><td></td><td>1</td><td>61</td><td>62</td><td>7657</td><td>8116</td><td>56.7828</td></tr><tr><td></td><td></td><td></td><td></td><td></td><td>1</td><td>62</td><td>63</td><td>7823</td><td>8378</td><td>58.3236</td></tr><tr><td></td><td></td><td></td><td></td><td></td><td>1</td><td>63</td><td>64</td><td>8089</td><td>8752</td><td>60.627599999999994</td></tr><tr><td></td><td></td><td></td><td></td><td></td><td>1</td><td>64</td><td>65</td><td>8355</td><td>9132</td><td>62.953199999999995</td></tr><tr><td></td><td></td><td></td><td></td><td></td><td>1</td><td>65</td><td>66</td><td>8621</td><td>9518</td><td>65.3004</td></tr><tr><td></td><td></td><td></td><td></td><td></td><td>1</td><td>66</td><td>67</td><td>8887</td><td>9909</td><td>67.66560000000001</td></tr><tr><td></td><td></td><td></td><td></td><td></td><td>1</td><td>67</td><td>68</td><td>9153</td><td>10306</td><td>70.0524</td></tr><tr><td></td><td></td><td></td><td></td><td></td><td>1</td><td>68</td><td>69</td><td>9419</td><td>10709</td><td>72.4608</td></tr><tr><td></td><td></td><td></td><td></td><td></td><td>1</td><td>69</td><td>70</td><td>9605</td><td>11027</td><td>74.27520000000001</td></tr><tr><td></td><td></td><td></td><td></td><td></td><td>1</td><td>70</td><td>71</td><td>9951</td><td>11533</td><td>77.3424</td></tr><tr><td></td><td></td><td></td><td></td><td></td><td>1</td><td>71</td><td>72</td><td>10448</td><td>12224</td><td>81.6192</td></tr><tr><td></td><td></td><td></td><td></td><td></td><td>1</td><td>72</td><td>73</td><td>10945</td><td>12926</td><td>85.9356</td></tr><tr><td></td><td></td><td></td><td></td><td></td><td>1</td><td>73</td><td>74</td><td>11442</td><td>13639</td><td>90.29159999999999</td></tr><tr><td></td><td></td><td></td><td></td><td></td><td>1</td><td>74</td><td>75</td><td>11939</td><td>14363</td><td>94.68719999999999</td></tr><tr><td></td><td></td><td></td><td></td><td></td><td>1</td><td>75</td><td>76</td><td>12436</td><td>15097</td><td>99.11880000000001</td></tr><tr><td></td><td></td><td></td><td></td><td></td><td>1</td><td>76</td><td>77</td><td>12933</td><td>15843</td><td>103.59360000000001</td></tr><tr><td></td><td></td><td></td><td></td><td></td><td>1</td><td>77</td><td>78</td><td>13430</td><td>16599</td><td>108.1044</td></tr><tr><td></td><td></td><td></td><td></td><td></td><td>1</td><td>78</td><td>79</td><td>13927</td><td>17367</td><td>112.6584</td></tr><tr><td></td><td></td><td></td><td></td><td></td><td>1</td><td>79</td><td>80</td><td>14549</td><td>18303</td><td>118.2672</td></tr><tr><td>统计</td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td>337000</td><td>353122</td><td>2484.4392</td></tr><tr><td>精英化</td><td>进阶2</td><td>消耗龙门币</td><td>消耗芯片</td><td>消耗材料1</td><td>消耗材料2</td><td>理智转化</td><td></td><td></td><td></td><td></td></tr><tr><td></td><td></td><td>180000</td><td>狙击双芯片*4</td><td>双极纳米片*4</td><td>聚合凝胶*7</td><td>1905</td><td></td><td></td><td></td><td></td></tr><tr><td></td><td></td><td></td><td></td><td></td><td>2</td><td>1</td><td>2</td><td>191</td><td>76</td><td>0.9612</td></tr><tr><td></td><td></td><td></td><td></td><td></td><td>2</td><td>2</td><td>3</td><td>303</td><td>124</td><td>1.5372</td></tr><tr><td></td><td></td><td></td><td></td><td></td><td>2</td><td>3</td><td>4</td><td>415</td><td>173</td><td>2.1168</td></tr><tr><td></td><td></td><td></td><td></td><td></td><td>2</td><td>4</td><td>5</td><td>527</td><td>225</td><td>2.7072</td></tr><tr><td></td><td></td><td></td><td></td><td></td><td>2</td><td>5</td><td>6</td><td>639</td><td>279</td><td>3.3047999999999997</td></tr><tr><td></td><td></td><td></td><td></td><td></td><td>2</td><td>6</td><td>7</td><td>751</td><td>334</td><td>3.9059999999999997</td></tr><tr><td></td><td></td><td></td><td></td><td></td><td>2</td><td>7</td><td>8</td><td>863</td><td>392</td><td>4.518000000000001</td></tr><tr><td></td><td></td><td></td><td></td><td></td><td>2</td><td>8</td><td>9</td><td>975</td><td>451</td><td>5.1336</td></tr><tr><td></td><td></td><td></td><td></td><td></td><td>2</td><td>9</td><td>10</td><td>1087</td><td>513</td><td>5.76</td></tr><tr><td></td><td></td><td></td><td></td><td></td><td>2</td><td>10</td><td>11</td><td>1199</td><td>577</td><td>6.393599999999999</td></tr><tr><td></td><td></td><td></td><td></td><td></td><td>2</td><td>11</td><td>12</td><td>1311</td><td>642</td><td>7.030799999999999</td></tr><tr><td></td><td></td><td></td><td></td><td></td><td>2</td><td>12</td><td>13</td><td>1423</td><td>710</td><td>7.678800000000001</td></tr><tr><td></td><td></td><td></td><td></td><td></td><td>2</td><td>13</td><td>14</td><td>1535</td><td>780</td><td>8.334</td></tr><tr><td></td><td></td><td></td><td></td><td></td><td>2</td><td>14</td><td>15</td><td>1647</td><td>851</td><td>8.9928</td></tr><tr><td></td><td></td><td></td><td></td><td></td><td>2</td><td>15</td><td>16</td><td>1759</td><td>925</td><td>9.6624</td></tr><tr><td></td><td></td><td></td><td></td><td></td><td>2</td><td>16</td><td>17</td><td>1871</td><td>1001</td><td>10.3392</td></tr><tr><td></td><td></td><td></td><td></td><td></td><td>2</td><td>17</td><td>18</td><td>1983</td><td>1079</td><td>11.0232</td></tr><tr><td></td><td></td><td></td><td></td><td></td><td>2</td><td>18</td><td>19</td><td>2095</td><td>1159</td><td>11.7144</td></tr><tr><td></td><td></td><td></td><td></td><td></td><td>2</td><td>19</td><td>20</td><td>2207</td><td>1240</td><td>12.4092</td></tr><tr><td></td><td></td><td></td><td></td><td></td><td>2</td><td>20</td><td>21</td><td>2319</td><td>1324</td><td>13.114799999999999</td></tr><tr><td></td><td></td><td></td><td></td><td></td><td>2</td><td>21</td><td>22</td><td>2431</td><td>1410</td><td>13.8276</td></tr><tr><td></td><td></td><td></td><td></td><td></td><td>2</td><td>22</td><td>23</td><td>2543</td><td>1498</td><td>14.547600000000001</td></tr><tr><td></td><td></td><td></td><td></td><td></td><td>2</td><td>23</td><td>24</td><td>2655</td><td>1588</td><td>15.274799999999999</td></tr><tr><td></td><td></td><td></td><td></td><td></td><td>2</td><td>24</td><td>25</td><td>2767</td><td>1680</td><td>16.0092</td></tr><tr><td></td><td></td><td></td><td></td><td></td><td>2</td><td>25</td><td>26</td><td>2879</td><td>1773</td><td>16.7472</td></tr><tr><td></td><td></td><td></td><td></td><td></td><td>2</td><td>26</td><td>27</td><td>2991</td><td>1869</td><td>17.496000000000002</td></tr><tr><td></td><td></td><td></td><td></td><td></td><td>2</td><td>27</td><td>28</td><td>3103</td><td>1967</td><td>18.252000000000002</td></tr><tr><td></td><td></td><td></td><td></td><td></td><td>2</td><td>28</td><td>29</td><td>3215</td><td>2067</td><td>19.0152</td></tr><tr><td></td><td></td><td></td><td></td><td></td><td>2</td><td>29</td><td>30</td><td>3327</td><td>2169</td><td>19.785600000000002</td></tr><tr><td></td><td></td><td></td><td></td><td></td><td>2</td><td>30</td><td>31</td><td>3439</td><td>2273</td><td>20.563200000000002</td></tr><tr><td></td><td></td><td></td><td></td><td></td><td>2</td><td>31</td><td>32</td><td>3602</td><td>2413</td><td>21.654</td></tr><tr><td></td><td></td><td></td><td></td><td></td><td>2</td><td>32</td><td>33</td><td>3765</td><td>2556</td><td>22.7556</td></tr><tr><td></td><td></td><td></td><td></td><td></td><td>2</td><td>33</td><td>34</td><td>3928</td><td>2702</td><td>23.868</td></tr><tr><td></td><td></td><td></td><td></td><td></td><td>2</td><td>34</td><td>35</td><td>4091</td><td>2851</td><td>24.9912</td></tr><tr><td></td><td></td><td></td><td></td><td></td><td>2</td><td>35</td><td>36</td><td>4254</td><td>3003</td><td>26.1252</td></tr><tr><td></td><td></td><td></td><td></td><td></td><td>2</td><td>36</td><td>37</td><td>4417</td><td>3158</td><td>27.27</td></tr><tr><td></td><td></td><td></td><td></td><td></td><td>2</td><td>37</td><td>38</td><td>4580</td><td>3316</td><td>28.4256</td></tr><tr><td></td><td></td><td></td><td></td><td></td><td>2</td><td>38</td><td>39</td><td>4743</td><td>3477</td><td>29.592</td></tr><tr><td></td><td></td><td></td><td></td><td></td><td>2</td><td>39</td><td>40</td><td>4906</td><td>3640</td><td>30.7656</td></tr><tr><td></td><td></td><td></td><td></td><td></td><td>2</td><td>40</td><td>41</td><td>5069</td><td>3807</td><td>31.9536</td></tr><tr><td></td><td></td><td></td><td></td><td></td><td>2</td><td>41</td><td>42</td><td>5232</td><td>3976</td><td>33.1488</td></tr><tr><td></td><td></td><td></td><td></td><td></td><td>2</td><td>42</td><td>43</td><td>5395</td><td>4149</td><td>34.3584</td></tr><tr><td></td><td></td><td></td><td></td><td></td><td>2</td><td>43</td><td>44</td><td>5558</td><td>4324</td><td>35.575199999999995</td></tr><tr><td></td><td></td><td></td><td></td><td></td><td>2</td><td>44</td><td>45</td><td>5721</td><td>4502</td><td>36.802800000000005</td></tr><tr><td></td><td></td><td></td><td></td><td></td><td>2</td><td>45</td><td>46</td><td>5884</td><td>4684</td><td>38.0448</td></tr><tr><td></td><td></td><td></td><td></td><td></td><td>2</td><td>46</td><td>47</td><td>6047</td><td>4868</td><td>39.294</td></tr><tr><td></td><td></td><td></td><td></td><td></td><td>2</td><td>47</td><td>48</td><td>6210</td><td>5055</td><td>40.554</td></tr><tr><td></td><td></td><td></td><td></td><td></td><td>2</td><td>48</td><td>49</td><td>6373</td><td>5245</td><td>41.824799999999996</td></tr><tr><td></td><td></td><td></td><td></td><td></td><td>2</td><td>49</td><td>50</td><td>6536</td><td>5438</td><td>43.106399999999994</td></tr><tr><td></td><td></td><td></td><td></td><td></td><td>2</td><td>50</td><td>51</td><td>6659</td><td>5634</td><td>44.2548</td></tr><tr><td></td><td></td><td></td><td></td><td></td><td>2</td><td>51</td><td>52</td><td>6902</td><td>5867</td><td>45.9684</td></tr><tr><td></td><td></td><td></td><td></td><td></td><td>2</td><td>52</td><td>53</td><td>7105</td><td>6103</td><td>47.5488</td></tr><tr><td></td><td></td><td></td><td></td><td></td><td>2</td><td>53</td><td>54</td><td>7308</td><td>6343</td><td>49.1436</td></tr><tr><td></td><td></td><td></td><td></td><td></td><td>2</td><td>54</td><td>55</td><td>7511</td><td>6587</td><td>50.75279999999999</td></tr><tr><td></td><td></td><td></td><td></td><td></td><td>2</td><td>55</td><td>56</td><td>7714</td><td>6835</td><td>52.376400000000004</td></tr><tr><td></td><td></td><td></td><td></td><td></td><td>2</td><td>56</td><td>57</td><td>7917</td><td>7086</td><td>54.010799999999996</td></tr><tr><td></td><td></td><td></td><td></td><td></td><td>2</td><td>57</td><td>58</td><td>8120</td><td>7340</td><td>55.656000000000006</td></tr><tr><td></td><td></td><td></td><td></td><td></td><td>2</td><td>58</td><td>59</td><td>8323</td><td>7599</td><td>57.3192</td></tr><tr><td></td><td></td><td></td><td></td><td></td><td>2</td><td>59</td><td>60</td><td>8526</td><td>7861</td><td>58.9932</td></tr><tr><td>统计</td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td>226886</td><td>171568</td><td>1434.4344</td></tr></tbody></table></div><a href="analysis-assets/方舟数值养成表（6星）.xlsx" download class="inline-flex items-center gap-2 px-3 py-1.5 mt-2 mb-4 bg-blue-50 text-blue-700 rounded text-xs font-medium hover:bg-blue-100">下载 Excel 原表（6星）</a></div></div>
+        <div class="flex gap-3 mt-6 flex-wrap">
+            <a href="analysis-assets/明日方舟数值策划案.pdf" target="_blank" class="inline-flex items-center gap-2 px-4 py-2 bg-blue-600 text-white rounded-lg hover:bg-blue-700 transition text-sm font-medium">
+                下载 PDF（优化版 · 含目录）
+            </a>
+            <a href="analysis-assets/明日方舟数值策划案_完整版含图表.docx" download class="inline-flex items-center gap-2 px-4 py-2 bg-gray-700 text-white rounded-lg hover:bg-gray-800 transition text-sm font-medium">
+                下载 Word 完整版（含16张图表）
+            </a>
+        </div>
+    </div>
+</article>
 
             <!-- Other Projects -->
             <article class="project-card bg-white rounded-2xl p-8 shadow-sm border border-gray-100">
@@ -470,6 +913,16 @@
             modal.classList.remove('active');
         }
         
+        // 分析模块 Tab 切换
+        function switchAnalysisTab(tabId) {
+            document.querySelectorAll('.analysis-tab').forEach(btn => {
+                btn.classList.toggle('active', btn.dataset.tab === tabId);
+            });
+            document.querySelectorAll('.analysis-panel').forEach(panel => {
+                panel.classList.toggle('active', panel.id === 'tab-' + tabId);
+            });
+        }
+
         // ESC键关闭视频
         document.addEventListener('keydown', function(e) {
             if (e.key === 'Escape') {
