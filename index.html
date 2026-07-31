@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Lin WangRu · 游戏开发作品集</title>
+    <title>Lin WangRu · 游戏策划作品集</title>
     <script src="https://cdn.tailwindcss.com"></script>
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;700&display=swap" rel="stylesheet">
     <style>
@@ -223,17 +223,17 @@
     <section class="max-w-5xl mx-auto px-6 py-16">
         <div class="flex flex-col md:flex-row items-center justify-between gap-12">
             <div class="flex-1">
-                <h2 class="text-4xl md:text-5xl font-bold mb-4 text-gray-900">游戏开发作品集</h2>
+                <h2 class="text-4xl md:text-5xl font-bold mb-4 text-gray-900">游戏策划作品集</h2>
                 <p class="text-xl text-gray-600 mb-6 leading-relaxed">
-                    专注游戏系统架构、关卡流程设计与产品分析。<br>
-                    从 Endless War 猜拳博弈到 Unity 俯视生存探索与 UE4 指令战斗，兼顾玩法深度与可扩展性。
+                    专注系统策划、产品分析与关卡流程设计。<br>
+                    从 Goods Match / 星穹铁道 / 明日方舟策划案，到「重启」双战斗体系与生存关卡落地，兼顾规则设计与可执行方案。
                 </p>
                 <div class="flex gap-3 flex-wrap">
-                    <span class="tag px-4 py-2 bg-purple-100 text-purple-700 rounded-full text-sm font-medium">Unity</span>
-                    <span class="tag px-4 py-2 bg-indigo-100 text-indigo-700 rounded-full text-sm font-medium">Unreal Engine</span>
-                    <span class="tag px-4 py-2 bg-blue-100 text-blue-700 rounded-full text-sm font-medium">C# / C++</span>
-                    <span class="tag px-4 py-2 bg-red-100 text-red-700 rounded-full text-sm font-medium">技术策划</span>
-                    <span class="tag px-4 py-2 bg-green-100 text-green-700 rounded-full text-sm font-medium">系统架构</span>
+                    <span class="tag px-4 py-2 bg-amber-100 text-amber-700 rounded-full text-sm font-medium">产品分析</span>
+                    <span class="tag px-4 py-2 bg-indigo-100 text-indigo-700 rounded-full text-sm font-medium">系统策划</span>
+                    <span class="tag px-4 py-2 bg-emerald-100 text-emerald-700 rounded-full text-sm font-medium">关卡流程</span>
+                    <span class="tag px-4 py-2 bg-blue-100 text-blue-700 rounded-full text-sm font-medium">数值策划</span>
+                    <span class="tag px-4 py-2 bg-purple-100 text-purple-700 rounded-full text-sm font-medium">配置表驱动</span>
                 </div>
             </div>
             
@@ -256,198 +256,6 @@
         <h3 class="text-2xl font-bold mb-8 text-gray-900 border-l-4 border-purple-500 pl-4">精选项目</h3>
         
         <div class="space-y-8">
-            
-            <!-- Endless War (Rock Paper Scissors) -->
-            <article class="project-card bg-white rounded-2xl p-8 shadow-md border-2 border-red-100 relative overflow-hidden">
-                <div class="absolute top-0 right-0 bg-gradient-to-l from-red-500 to-orange-500 text-white px-4 py-1 text-xs font-bold rounded-bl-lg">
-                    核心作品
-                </div>
-                
-                <div class="flex items-start gap-4 mb-4">
-                    <div class="game-icon bg-gradient-to-br from-red-400 to-orange-400 text-white">✊</div>
-                    <div class="flex-1">
-                        <div class="flex flex-col md:flex-row justify-between items-start md:items-center">
-                            <div>
-                                <h4 class="text-2xl font-bold text-gray-900 mb-1">Endless War</h4>
-                                <p class="text-gray-600">猜拳博弈 · 回合制策略战斗系统</p>
-                            </div>
-                            <span class="mt-2 md:mt-0 px-3 py-1 bg-red-100 text-red-600 rounded-full text-sm font-medium">独立开发</span>
-                        </div>
-                    </div>
-                </div>
-                
-                <div class="flex gap-2 flex-wrap mb-4">
-                    <span class="tag px-3 py-1 bg-red-50 text-red-600 rounded text-xs font-medium">猜拳行动权机制</span>
-                    <span class="tag px-3 py-1 bg-orange-50 text-orange-600 rounded text-xs font-medium">Utility AI</span>
-                    <span class="tag px-3 py-1 bg-purple-50 text-purple-600 rounded text-xs font-medium">技能框架</span>
-                    <span class="tag px-3 py-1 bg-blue-50 text-blue-600 rounded text-xs font-medium">C#抽象类</span>
-                    <span class="tag px-3 py-1 bg-green-50 text-green-600 rounded text-xs font-medium">动态空间算法</span>
-                </div>
-
-                <div class="bg-gray-50 rounded-lg p-4 mb-4">
-                    <h5 class="font-semibold text-gray-700 mb-2">核心机制（按简历描述）：</h5>
-                    <ul class="list-disc list-inside text-gray-600 space-y-1 text-sm">
-                        <li><strong>猜拳行动权机制</strong>：用"猜拳"替代传统速度属性决定行动顺序，增加博弈维度</li>
-                        <li><strong>高扩展性技能框架</strong>：基于C#抽象类与钩子函数(OnBeforeTakeDamage/OnAfterDealDamage等)，将伤害拦截、吸血、反伤等效果模块化，策划仅需继承基类、配置参数即可实现新技能</li>
-                        <li><strong>拟人化AI决策模型</strong>：双层AI系统——战术层用Utility AI实现斩杀预判、治疗优先级决策；博弈层根据队友状态动态切换猜拳策略(如"配合队友集火"或"绝望随机")</li>
-                        <li><strong>动态空间算法</strong>：独立开发GetDynamicDistance算法，通过逻辑数组动态维护战场坐标关系，为技能范围、位移特性提供稳定的空间参考</li>
-                        <li><strong>标准化战斗管线</strong>：构建"前置拦截→闪避判定→减伤计算→后置反馈"四阶段流水线，明确区分物理/法术/真实伤害类型</li>
-                    </ul>
-                </div>
-
-                <div class="flex gap-4">
-                    <a href="https://github.com/LinWangRu/Rock-Paper-Scissors" target="_blank" 
-                       class="inline-flex items-center gap-2 px-4 py-2 bg-gray-900 text-white rounded-lg hover:bg-gray-800 transition text-sm font-medium">
-                        <svg class="w-4 h-4" fill="currentColor" viewBox="0 0 24 24"><path d="M12 0c-6.626 0-12 5.373-12 12 0 5.302 3.438 9.8 8.207 11.387.599.111.793-.261.793-.577v-2.234c-3.338.726-4.033-1.416-4.033-1.416-.546-1.387-1.333-1.756-1.333-1.756-1.089-.745.083-.729.083-.729 1.205.084 1.839 1.237 1.839 1.237 1.07 1.834 2.807 1.304 3.492.997.107-.775.418-1.305.762-1.604-2.665-.305-5.467-1.334-5.467-5.931 0-1.311.469-2.381 1.236-3.221-.124-.303-.535-1.524.117-3.176 0 0 1.008-.322 3.301 1.23.957-.266 1.983-.399 3.003-.404 1.02.005 2.047.138 3.006.404 2.291-1.552 3.297-1.23 3.297-1.23.653 1.653.242 2.874.118 3.176.77.84 1.235 1.911 1.235 3.221 0 4.609-2.807 5.624-5.479 5.921.43.372.823 1.102.823 2.222v3.293c0 .319.192.694.801.576 4.765-1.589 8.199-6.086 8.199-11.386 0-6.627-5.373-12-12-12z"/></svg>
-                        查看代码
-                    </a>
-                    <button onclick="playVideo('演示0.mp4')" 
-                            class="inline-flex items-center gap-2 px-4 py-2 bg-red-600 text-white rounded-lg hover:bg-red-700 transition text-sm font-medium">
-                        <svg class="w-4 h-4" fill="currentColor" viewBox="0 0 24 24"><path d="M8 5v14l11-7z"/></svg>
-                        玩法演示
-                    </button>
-                </div>
-            </article>
-
-            <!-- 欺心恋曲 (Galgame/视觉小说引擎) -->
-            <article class="project-card bg-white rounded-2xl p-8 shadow-sm border border-gray-100">
-                <div class="flex items-start gap-4 mb-4">
-                    <div class="game-icon bg-gradient-to-br from-pink-400 to-purple-400 text-white">💕</div>
-                    <div class="flex-1">
-                        <div class="flex flex-col md:flex-row justify-between items-start md:items-center">
-                            <div>
-                                <h4 class="text-2xl font-bold text-gray-900 mb-1">欺心恋曲</h4>
-                                <p class="text-gray-600">视觉小说引擎 · 数据驱动工作流</p>
-                            </div>
-                            <span class="mt-2 md:mt-0 px-3 py-1 bg-pink-100 text-pink-600 rounded-full text-sm">2025.04-2025.10</span>
-                        </div>
-                    </div>
-                </div>
-                
-                <div class="flex gap-2 flex-wrap mb-4">
-                    <span class="tag px-3 py-1 bg-pink-50 text-pink-600 rounded text-xs font-medium">Excel数据驱动</span>
-                    <span class="tag px-3 py-1 bg-purple-50 text-purple-600 rounded text-xs font-medium">像素级存档</span>
-                    <span class="tag px-3 py-1 bg-blue-50 text-blue-600 rounded text-xs font-medium">Newtonsoft.Json</span>
-                    <span class="tag px-3 py-1 bg-green-50 text-green-600 rounded text-xs font-medium">对象池优化</span>
-                </div>
-
-                <div class="bg-gray-50 rounded-lg p-4 mb-4">
-                    <h5 class="font-semibold text-gray-700 mb-2">核心功能（按简历描述）：</h5>
-                    <ul class="list-disc list-inside text-gray-600 space-y-1 text-sm">
-                        <li><strong>数据驱动工作流</strong>：设计Excel配置系统，将对话、立绘、音效、分支跳转完全数据化，策划可独立完成剧本编写与演出配置，迭代效率提升60%</li>
-                        <li><strong>像素级存档系统</strong>：针对视觉小说玩家"随时存档、反复读档探索分支"的行为习惯，设计上下文完整序列化方案(含打字机状态、角色好感度、演出进度)，实现读档秒开、状态无损还原</li>
-                        <li><strong>可配置演出工具</strong>：封装运镜(缩放/平移)、淡入淡出等动画接口为策划可配置的指令，使策划能直接设计过场节奏</li>
-                        <li><strong>性能保障</strong>：引入对象池管理立绘资源，避免频繁切换场景的内存波动，保障中低端设备流畅运行</li>
-                        <li><strong>多媒体管理</strong>：使用AudioMixer实现音量分层控制(BGM/Voice/SFX)，VideoPlayer处理过场动画与结局视频</li>
-                    </ul>
-                </div>
-
-                <div class="flex gap-4">
-                    <a href="https://github.com/LinWangRu/Galgame" target="_blank" 
-                       class="inline-flex items-center gap-2 px-4 py-2 bg-gray-900 text-white rounded-lg hover:bg-gray-800 transition text-sm font-medium">
-                        <svg class="w-4 h-4" fill="currentColor" viewBox="0 0 24 24"><path d="M12 0c-6.626 0-12 5.373-12 12 0 5.302 3.438 9.8 8.207 11.387.599.111.793-.261.793-.577v-2.234c-3.338.726-4.033-1.416-4.033-1.416-.546-1.387-1.333-1.756-1.333-1.756-1.089-.745.083-.729.083-.729 1.205.084 1.839 1.237 1.839 1.237 1.07 1.834 2.807 1.304 3.492.997.107-.775.418-1.305.762-1.604-2.665-.305-5.467-1.334-5.467-5.931 0-1.311.469-2.381 1.236-3.221-.124-.303-.535-1.524.117-3.176 0 0 1.008-.322 3.301 1.23.957-.266 1.983-.399 3.003-.404 1.02.005 2.047.138 3.006.404 2.291-1.552 3.297-1.23 3.297-1.23.653 1.653.242 2.874.118 3.176.77.84 1.235 1.911 1.235 3.221 0 4.609-2.807 5.624-5.479 5.921.43.372.823 1.102.823 2.222v3.293c0 .319.192.694.801.576 4.765-1.589 8.199-6.086 8.199-11.386 0-6.627-5.373-12-12-12z"/></svg>
-                        查看代码
-                    </a>
-                    <button onclick="playVideo('演示1.mp4')" 
-                            class="inline-flex items-center gap-2 px-4 py-2 bg-pink-600 text-white rounded-lg hover:bg-pink-700 transition text-sm font-medium">
-                        <svg class="w-4 h-4" fill="currentColor" viewBox="0 0 24 24"><path d="M8 5v14l11-7z"/></svg>
-                        玩法演示
-                    </button>
-                </div>
-            </article>
-
-            <!-- 需平园区 (俯视生存探索) -->
-            <article class="project-card bg-white rounded-2xl p-8 shadow-md border-2 border-emerald-100 relative overflow-hidden">
-                <div class="absolute top-0 right-0 bg-gradient-to-l from-emerald-500 to-teal-500 text-white px-4 py-1 text-xs font-bold rounded-bl-lg">
-                    关卡设计
-                </div>
-
-                <div class="flex items-start gap-4 mb-4">
-                    <div class="game-icon bg-gradient-to-br from-emerald-400 to-teal-500 text-white">🏚️</div>
-                    <div class="flex-1">
-                        <div class="flex flex-col md:flex-row justify-between items-start md:items-center">
-                            <div>
-                                <h4 class="text-2xl font-bold text-gray-900 mb-1">需平园区</h4>
-                                <p class="text-gray-600">俯视视角 2D 类生存探索 · 流程设计与场景演示</p>
-                            </div>
-                            <span class="mt-2 md:mt-0 px-3 py-1 bg-emerald-100 text-emerald-700 rounded-full text-sm font-medium">Unity Demo</span>
-                        </div>
-                    </div>
-                </div>
-
-                <div class="flex gap-2 flex-wrap mb-4">
-                    <span class="tag px-3 py-1 bg-emerald-50 text-emerald-600 rounded text-xs font-medium">俯视探索</span>
-                    <span class="tag px-3 py-1 bg-teal-50 text-teal-600 rounded text-xs font-medium">生存搜刮</span>
-                    <span class="tag px-3 py-1 bg-orange-50 text-orange-600 rounded text-xs font-medium">门槛设计</span>
-                    <span class="tag px-3 py-1 bg-blue-50 text-blue-600 rounded text-xs font-medium">室内外切换</span>
-                    <span class="tag px-3 py-1 bg-purple-50 text-purple-600 rounded text-xs font-medium">Unity</span>
-                    <span class="tag px-3 py-1 bg-purple-50 text-purple-600 rounded text-xs font-medium">流程文档</span>
-                </div>
-
-                <div class="bg-gray-50 rounded-lg p-4 mb-4">
-                    <h5 class="font-semibold text-gray-700 mb-2">关卡流程设计（参考《阿瑞斯病毒2》探索节奏）：</h5>
-                    <ul class="list-disc list-inside text-gray-600 space-y-1 text-sm">
-                        <li><strong>场景结构</strong>：室外主路枢纽 + 多栋室内独立场景，靠近门口按 F 进入，搜刮物资、解谜、战斗</li>
-                        <li><strong>三段式节奏</strong>：左下屋拿斧头（安全教学）→ 右下屋拿钥匙（中风险情报）→ 警备室拿武器 → 右上屋战斗+破障拿地图（危险区）</li>
-                        <li><strong>道具门槛</strong>：斧头破障、武器进危险区、钥匙开侧翼建筑，三类道具分工明确</li>
-                        <li><strong>通关目标</strong>：在右上屋储物间获得「园区地图」；北门与园区钥匙作为后续章节预留</li>
-                        <li><strong>交互规范</strong>：WASD 移动、F 交互、场景切换与重要道具拾取提示 UI</li>
-                    </ul>
-                </div>
-
-                <div class="flex gap-4 flex-wrap">
-                    <a href="https://github.com/LinWangRu/Aruis" target="_blank"
-                       class="inline-flex items-center gap-2 px-4 py-2 bg-gray-900 text-white rounded-lg hover:bg-gray-800 transition text-sm font-medium">
-                        <svg class="w-4 h-4" fill="currentColor" viewBox="0 0 24 24"><path d="M12 0c-6.626 0-12 5.373-12 12 0 5.302 3.438 9.8 8.207 11.387.599.111.793-.261.793-.577v-2.234c-3.338.726-4.033-1.416-4.033-1.416-.546-1.387-1.333-1.756-1.333-1.756-1.089-.745.083-.729.083-.729 1.205.084 1.839 1.237 1.839 1.237 1.07 1.834 2.807 1.304 3.492.997.107-.775.418-1.305.762-1.604-2.665-.305-5.467-1.334-5.467-5.931 0-1.311.469-2.381 1.236-3.221-.124-.303-.535-1.524.117-3.176 0 0 1.008-.322 3.301 1.23.957-.266 1.983-.399 3.003-.404 1.02.005 2.047.138 3.006.404 2.291-1.552 3.297-1.23 3.297-1.23.653 1.653.242 2.874.118 3.176.77.84 1.235 1.911 1.235 3.221 0 4.609-2.807 5.624-5.479 5.921.43.372.823 1.102.823 2.222v3.293c0 .319.192.694.801.576 4.765-1.589 8.199-6.086 8.199-11.386 0-6.627-5.373-12-12-12z"/></svg>
-                        查看代码
-                    </a>
-                    <a href="林王儒流程设计说明.docx" download
-                       class="inline-flex items-center gap-2 px-4 py-2 bg-emerald-600 text-white rounded-lg hover:bg-emerald-700 transition text-sm font-medium">
-                        <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 10v6m0 0l-3-3m3 3l3-3m2 8H7a2 2 0 01-2-2V5a2 2 0 012-2h5.586a1 1 0 01.707.293l5.414 5.414a1 1 0 01.293.707V19a2 2 0 01-2 2z"/></svg>
-                        流程设计说明
-                    </a>
-                    <button onclick="playVideo('需平园区演示.mp4')"
-                            class="inline-flex items-center gap-2 px-4 py-2 bg-teal-600 text-white rounded-lg hover:bg-teal-700 transition text-sm font-medium">
-                        <svg class="w-4 h-4" fill="currentColor" viewBox="0 0 24 24"><path d="M8 5v14l11-7z"/></svg>
-                        场景演示
-                    </button>
-                </div>
-            </article>
-
-            <!-- ActionRPG (UE4 指令战斗) -->
-            <article class="project-card bg-white rounded-2xl p-8 shadow-sm border border-gray-100">
-                <div class="flex items-start gap-4 mb-4">
-                    <div class="game-icon bg-gradient-to-br from-indigo-400 to-blue-500 text-white">⚔️</div>
-                    <div class="flex-1">
-                        <div class="flex flex-col md:flex-row justify-between items-start md:items-center">
-                            <div>
-                                <h4 class="text-2xl font-bold text-gray-900 mb-1">ActionRPG</h4>
-                                <p class="text-gray-600">UE4 动作 RPG · 双模式战斗与指令回合系统</p>
-                            </div>
-                            <span class="mt-2 md:mt-0 px-3 py-1 bg-indigo-100 text-indigo-600 rounded-full text-sm">Unreal Engine 4</span>
-                        </div>
-                    </div>
-                </div>
-
-                <div class="flex gap-2 flex-wrap mb-4">
-                    <span class="tag px-3 py-1 bg-indigo-50 text-indigo-600 rounded text-xs font-medium">GAS 技能系统</span>
-                    <span class="tag px-3 py-1 bg-blue-50 text-blue-600 rounded text-xs font-medium">AT 时间轴</span>
-                    <span class="tag px-3 py-1 bg-purple-50 text-purple-600 rounded text-xs font-medium">指令战斗</span>
-                    <span class="tag px-3 py-1 bg-red-50 text-red-600 rounded text-xs font-medium">状态/Buff</span>
-                    <span class="tag px-3 py-1 bg-green-50 text-green-600 rounded text-xs font-medium">技能范围判定</span>
-                </div>
-
-                <div class="bg-gray-50 rounded-lg p-4 mb-4">
-                    <h5 class="font-semibold text-gray-700 mb-2">核心系统（C++ 实现）：</h5>
-                    <ul class="list-disc list-inside text-gray-600 space-y-1 text-sm">
-                        <li><strong>双模式战斗</strong>：Swift 即时场战与 Command 指令战（轨迹系列 AT 时间轴）可切换，Boss 战强制进入指令模式</li>
-                        <li><strong>AT 回合管理</strong>：<code>ARPGTurnManager</code> 负责遭遇圈快照、行动条填充、回合预约与菜单指令结算</li>
-                        <li><strong>技能与 Craft 点</strong>：Attack / Craft / Art / Item / Defend / S-Break 等指令菜单，Craft 点消耗与受击回复驱动技能释放</li>
-                        <li><strong>回合制子系统</strong>：能力阶段（Pokemon 式 Stat Stage）、状态效果（如「撕裂」叠层）、四段伤害流水线与 2D 技能范围判定</li>
-                        <li><strong>网络同步</strong>：指令战阶段、活跃单位与遭遇状态支持 Replication / Multicast 同步</li>
-                    </ul>
-                </div>
-            </article>
 
 <!-- 游戏分析与数值策划 · 合并模块 -->
 <!-- 游戏分析与数值策划 · 合并模块 -->
@@ -806,6 +614,202 @@
         </div>
     </div>
 </article>
+
+            <!-- 重启 / ActionRPG (UE4 系统策划) -->
+            <article class="project-card bg-white rounded-2xl p-8 shadow-md border-2 border-indigo-100 relative overflow-hidden">
+                <div class="absolute top-0 right-0 bg-gradient-to-l from-indigo-500 to-blue-500 text-white px-4 py-1 text-xs font-bold rounded-bl-lg">
+                    系统策划
+                </div>
+
+                <div class="flex items-start gap-4 mb-4">
+                    <div class="game-icon bg-gradient-to-br from-indigo-400 to-blue-500 text-white">⚔️</div>
+                    <div class="flex-1">
+                        <div class="flex flex-col md:flex-row justify-between items-start md:items-center">
+                            <div>
+                                <h4 class="text-2xl font-bold text-gray-900 mb-1">重启（ActionRPG）</h4>
+                                <p class="text-gray-600">动作 RPG · 双战斗体系系统设计与规则落地</p>
+                            </div>
+                            <span class="mt-2 md:mt-0 px-3 py-1 bg-indigo-100 text-indigo-600 rounded-full text-sm">2026.04 - 至今 · 主策划</span>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="flex gap-2 flex-wrap mb-4">
+                    <span class="tag px-3 py-1 bg-indigo-50 text-indigo-600 rounded text-xs font-medium">双模式战斗规则</span>
+                    <span class="tag px-3 py-1 bg-blue-50 text-blue-600 rounded text-xs font-medium">AT 行动条</span>
+                    <span class="tag px-3 py-1 bg-purple-50 text-purple-600 rounded text-xs font-medium">TurnManager 策划案</span>
+                    <span class="tag px-3 py-1 bg-red-50 text-red-600 rounded text-xs font-medium">Buff / 伤害公式</span>
+                    <span class="tag px-3 py-1 bg-green-50 text-green-600 rounded text-xs font-medium">Craft 数值闭环</span>
+                </div>
+
+                <div class="bg-gray-50 rounded-lg p-4 mb-4">
+                    <h5 class="font-semibold text-gray-700 mb-2">策划设计要点：</h5>
+                    <ul class="list-disc list-inside text-gray-600 space-y-1 text-sm">
+                        <li><strong>项目定位</strong>：融合动作操作与策略回合的双战斗体系 RPG，负责从玩法规则、系统框架到配置规范的全流程策划落地</li>
+                        <li><strong>双模式战斗规则</strong>：设计即时操作 / 指令回合双模式切换规则，设定 Boss 强制回合机制，平衡操作爽感与策略深度</li>
+                        <li><strong>AT 行动条系统</strong>：搭建完整 AT 充能、预约、结算流程，输出 TurnManager 系统完整策划案，明确各阶段输入输出与异常处理</li>
+                        <li><strong>指令与数值闭环</strong>：设计 Attack / Craft / Art / Item / Defend / S-Break 等指令循环，搭建 Craft 点数产出消耗数值闭环</li>
+                        <li><strong>Buff 与伤害规范</strong>：分层标准化 Buff 与伤害计算公式，配套 2D 技能范围判定规则，并预留多人联机同步所需的状态口径</li>
+                    </ul>
+                </div>
+            </article>
+
+            <!-- Endless War (Rock Paper Scissors) -->
+            <article class="project-card bg-white rounded-2xl p-8 shadow-md border-2 border-red-100 relative overflow-hidden">
+                <div class="absolute top-0 right-0 bg-gradient-to-l from-red-500 to-orange-500 text-white px-4 py-1 text-xs font-bold rounded-bl-lg">
+                    核心作品
+                </div>
+                
+                <div class="flex items-start gap-4 mb-4">
+                    <div class="game-icon bg-gradient-to-br from-red-400 to-orange-400 text-white">✊</div>
+                    <div class="flex-1">
+                        <div class="flex flex-col md:flex-row justify-between items-start md:items-center">
+                            <div>
+                                <h4 class="text-2xl font-bold text-gray-900 mb-1">Endless War</h4>
+                                <p class="text-gray-600">猜拳博弈 · 回合制策略战斗系统</p>
+                            </div>
+                            <span class="mt-2 md:mt-0 px-3 py-1 bg-red-100 text-red-600 rounded-full text-sm font-medium">独立开发</span>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="flex gap-2 flex-wrap mb-4">
+                    <span class="tag px-3 py-1 bg-red-50 text-red-600 rounded text-xs font-medium">猜拳行动权机制</span>
+                    <span class="tag px-3 py-1 bg-orange-50 text-orange-600 rounded text-xs font-medium">Utility AI</span>
+                    <span class="tag px-3 py-1 bg-purple-50 text-purple-600 rounded text-xs font-medium">技能框架</span>
+                    <span class="tag px-3 py-1 bg-blue-50 text-blue-600 rounded text-xs font-medium">C#抽象类</span>
+                    <span class="tag px-3 py-1 bg-green-50 text-green-600 rounded text-xs font-medium">动态空间算法</span>
+                </div>
+
+                <div class="bg-gray-50 rounded-lg p-4 mb-4">
+                    <h5 class="font-semibold text-gray-700 mb-2">核心机制（按简历描述）：</h5>
+                    <ul class="list-disc list-inside text-gray-600 space-y-1 text-sm">
+                        <li><strong>猜拳行动权机制</strong>：用"猜拳"替代传统速度属性决定行动顺序，增加博弈维度</li>
+                        <li><strong>高扩展性技能框架</strong>：基于C#抽象类与钩子函数(OnBeforeTakeDamage/OnAfterDealDamage等)，将伤害拦截、吸血、反伤等效果模块化，策划仅需继承基类、配置参数即可实现新技能</li>
+                        <li><strong>拟人化AI决策模型</strong>：双层AI系统——战术层用Utility AI实现斩杀预判、治疗优先级决策；博弈层根据队友状态动态切换猜拳策略(如"配合队友集火"或"绝望随机")</li>
+                        <li><strong>动态空间算法</strong>：独立开发GetDynamicDistance算法，通过逻辑数组动态维护战场坐标关系，为技能范围、位移特性提供稳定的空间参考</li>
+                        <li><strong>标准化战斗管线</strong>：构建"前置拦截→闪避判定→减伤计算→后置反馈"四阶段流水线，明确区分物理/法术/真实伤害类型</li>
+                    </ul>
+                </div>
+
+                <div class="flex gap-4">
+                    <a href="https://github.com/LinWangRu/Rock-Paper-Scissors" target="_blank" 
+                       class="inline-flex items-center gap-2 px-4 py-2 bg-gray-900 text-white rounded-lg hover:bg-gray-800 transition text-sm font-medium">
+                        <svg class="w-4 h-4" fill="currentColor" viewBox="0 0 24 24"><path d="M12 0c-6.626 0-12 5.373-12 12 0 5.302 3.438 9.8 8.207 11.387.599.111.793-.261.793-.577v-2.234c-3.338.726-4.033-1.416-4.033-1.416-.546-1.387-1.333-1.756-1.333-1.756-1.089-.745.083-.729.083-.729 1.205.084 1.839 1.237 1.839 1.237 1.07 1.834 2.807 1.304 3.492.997.107-.775.418-1.305.762-1.604-2.665-.305-5.467-1.334-5.467-5.931 0-1.311.469-2.381 1.236-3.221-.124-.303-.535-1.524.117-3.176 0 0 1.008-.322 3.301 1.23.957-.266 1.983-.399 3.003-.404 1.02.005 2.047.138 3.006.404 2.291-1.552 3.297-1.23 3.297-1.23.653 1.653.242 2.874.118 3.176.77.84 1.235 1.911 1.235 3.221 0 4.609-2.807 5.624-5.479 5.921.43.372.823 1.102.823 2.222v3.293c0 .319.192.694.801.576 4.765-1.589 8.199-6.086 8.199-11.386 0-6.627-5.373-12-12-12z"/></svg>
+                        查看代码
+                    </a>
+                    <button onclick="playVideo('演示0.mp4')" 
+                            class="inline-flex items-center gap-2 px-4 py-2 bg-red-600 text-white rounded-lg hover:bg-red-700 transition text-sm font-medium">
+                        <svg class="w-4 h-4" fill="currentColor" viewBox="0 0 24 24"><path d="M8 5v14l11-7z"/></svg>
+                        玩法演示
+                    </button>
+                </div>
+            </article>
+
+            <!-- 需平园区 (俯视生存探索) -->
+            <article class="project-card bg-white rounded-2xl p-8 shadow-md border-2 border-emerald-100 relative overflow-hidden">
+                <div class="absolute top-0 right-0 bg-gradient-to-l from-emerald-500 to-teal-500 text-white px-4 py-1 text-xs font-bold rounded-bl-lg">
+                    关卡设计
+                </div>
+
+                <div class="flex items-start gap-4 mb-4">
+                    <div class="game-icon bg-gradient-to-br from-emerald-400 to-teal-500 text-white">🏚️</div>
+                    <div class="flex-1">
+                        <div class="flex flex-col md:flex-row justify-between items-start md:items-center">
+                            <div>
+                                <h4 class="text-2xl font-bold text-gray-900 mb-1">需平园区</h4>
+                                <p class="text-gray-600">俯视视角 2D 类生存探索 · 流程设计与场景演示</p>
+                            </div>
+                            <span class="mt-2 md:mt-0 px-3 py-1 bg-emerald-100 text-emerald-700 rounded-full text-sm font-medium">Unity Demo</span>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="flex gap-2 flex-wrap mb-4">
+                    <span class="tag px-3 py-1 bg-emerald-50 text-emerald-600 rounded text-xs font-medium">俯视探索</span>
+                    <span class="tag px-3 py-1 bg-teal-50 text-teal-600 rounded text-xs font-medium">生存搜刮</span>
+                    <span class="tag px-3 py-1 bg-orange-50 text-orange-600 rounded text-xs font-medium">门槛设计</span>
+                    <span class="tag px-3 py-1 bg-blue-50 text-blue-600 rounded text-xs font-medium">室内外切换</span>
+                    <span class="tag px-3 py-1 bg-purple-50 text-purple-600 rounded text-xs font-medium">Unity</span>
+                    <span class="tag px-3 py-1 bg-purple-50 text-purple-600 rounded text-xs font-medium">流程文档</span>
+                </div>
+
+                <div class="bg-gray-50 rounded-lg p-4 mb-4">
+                    <h5 class="font-semibold text-gray-700 mb-2">关卡流程设计（参考《阿瑞斯病毒2》探索节奏）：</h5>
+                    <ul class="list-disc list-inside text-gray-600 space-y-1 text-sm">
+                        <li><strong>场景结构</strong>：室外主路枢纽 + 多栋室内独立场景，靠近门口按 F 进入，搜刮物资、解谜、战斗</li>
+                        <li><strong>三段式节奏</strong>：左下屋拿斧头（安全教学）→ 右下屋拿钥匙（中风险情报）→ 警备室拿武器 → 右上屋战斗+破障拿地图（危险区）</li>
+                        <li><strong>道具门槛</strong>：斧头破障、武器进危险区、钥匙开侧翼建筑，三类道具分工明确</li>
+                        <li><strong>通关目标</strong>：在右上屋储物间获得「园区地图」；北门与园区钥匙作为后续章节预留</li>
+                        <li><strong>交互规范</strong>：WASD 移动、F 交互、场景切换与重要道具拾取提示 UI</li>
+                    </ul>
+                </div>
+
+                <div class="flex gap-4 flex-wrap">
+                    <a href="https://github.com/LinWangRu/Aruis" target="_blank"
+                       class="inline-flex items-center gap-2 px-4 py-2 bg-gray-900 text-white rounded-lg hover:bg-gray-800 transition text-sm font-medium">
+                        <svg class="w-4 h-4" fill="currentColor" viewBox="0 0 24 24"><path d="M12 0c-6.626 0-12 5.373-12 12 0 5.302 3.438 9.8 8.207 11.387.599.111.793-.261.793-.577v-2.234c-3.338.726-4.033-1.416-4.033-1.416-.546-1.387-1.333-1.756-1.333-1.756-1.089-.745.083-.729.083-.729 1.205.084 1.839 1.237 1.839 1.237 1.07 1.834 2.807 1.304 3.492.997.107-.775.418-1.305.762-1.604-2.665-.305-5.467-1.334-5.467-5.931 0-1.311.469-2.381 1.236-3.221-.124-.303-.535-1.524.117-3.176 0 0 1.008-.322 3.301 1.23.957-.266 1.983-.399 3.003-.404 1.02.005 2.047.138 3.006.404 2.291-1.552 3.297-1.23 3.297-1.23.653 1.653.242 2.874.118 3.176.77.84 1.235 1.911 1.235 3.221 0 4.609-2.807 5.624-5.479 5.921.43.372.823 1.102.823 2.222v3.293c0 .319.192.694.801.576 4.765-1.589 8.199-6.086 8.199-11.386 0-6.627-5.373-12-12-12z"/></svg>
+                        查看代码
+                    </a>
+                    <a href="林王儒流程设计说明.docx" download
+                       class="inline-flex items-center gap-2 px-4 py-2 bg-emerald-600 text-white rounded-lg hover:bg-emerald-700 transition text-sm font-medium">
+                        <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 10v6m0 0l-3-3m3 3l3-3m2 8H7a2 2 0 01-2-2V5a2 2 0 012-2h5.586a1 1 0 01.707.293l5.414 5.414a1 1 0 01.293.707V19a2 2 0 01-2 2z"/></svg>
+                        流程设计说明
+                    </a>
+                    <button onclick="playVideo('需平园区演示.mp4')"
+                            class="inline-flex items-center gap-2 px-4 py-2 bg-teal-600 text-white rounded-lg hover:bg-teal-700 transition text-sm font-medium">
+                        <svg class="w-4 h-4" fill="currentColor" viewBox="0 0 24 24"><path d="M8 5v14l11-7z"/></svg>
+                        场景演示
+                    </button>
+                </div>
+            </article>
+
+            <!-- 欺心恋曲 (Galgame/视觉小说引擎) -->
+            <article class="project-card bg-white rounded-2xl p-8 shadow-sm border border-gray-100">
+                <div class="flex items-start gap-4 mb-4">
+                    <div class="game-icon bg-gradient-to-br from-pink-400 to-purple-400 text-white">💕</div>
+                    <div class="flex-1">
+                        <div class="flex flex-col md:flex-row justify-between items-start md:items-center">
+                            <div>
+                                <h4 class="text-2xl font-bold text-gray-900 mb-1">欺心恋曲</h4>
+                                <p class="text-gray-600">视觉小说引擎 · 数据驱动工作流</p>
+                            </div>
+                            <span class="mt-2 md:mt-0 px-3 py-1 bg-pink-100 text-pink-600 rounded-full text-sm">2025.04-2025.10</span>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="flex gap-2 flex-wrap mb-4">
+                    <span class="tag px-3 py-1 bg-pink-50 text-pink-600 rounded text-xs font-medium">Excel数据驱动</span>
+                    <span class="tag px-3 py-1 bg-purple-50 text-purple-600 rounded text-xs font-medium">像素级存档</span>
+                    <span class="tag px-3 py-1 bg-blue-50 text-blue-600 rounded text-xs font-medium">Newtonsoft.Json</span>
+                    <span class="tag px-3 py-1 bg-green-50 text-green-600 rounded text-xs font-medium">对象池优化</span>
+                </div>
+
+                <div class="bg-gray-50 rounded-lg p-4 mb-4">
+                    <h5 class="font-semibold text-gray-700 mb-2">核心功能（按简历描述）：</h5>
+                    <ul class="list-disc list-inside text-gray-600 space-y-1 text-sm">
+                        <li><strong>数据驱动工作流</strong>：设计Excel配置系统，将对话、立绘、音效、分支跳转完全数据化，策划可独立完成剧本编写与演出配置，迭代效率提升60%</li>
+                        <li><strong>像素级存档系统</strong>：针对视觉小说玩家"随时存档、反复读档探索分支"的行为习惯，设计上下文完整序列化方案(含打字机状态、角色好感度、演出进度)，实现读档秒开、状态无损还原</li>
+                        <li><strong>可配置演出工具</strong>：封装运镜(缩放/平移)、淡入淡出等动画接口为策划可配置的指令，使策划能直接设计过场节奏</li>
+                        <li><strong>性能保障</strong>：引入对象池管理立绘资源，避免频繁切换场景的内存波动，保障中低端设备流畅运行</li>
+                        <li><strong>多媒体管理</strong>：使用AudioMixer实现音量分层控制(BGM/Voice/SFX)，VideoPlayer处理过场动画与结局视频</li>
+                    </ul>
+                </div>
+
+                <div class="flex gap-4">
+                    <a href="https://github.com/LinWangRu/Galgame" target="_blank" 
+                       class="inline-flex items-center gap-2 px-4 py-2 bg-gray-900 text-white rounded-lg hover:bg-gray-800 transition text-sm font-medium">
+                        <svg class="w-4 h-4" fill="currentColor" viewBox="0 0 24 24"><path d="M12 0c-6.626 0-12 5.373-12 12 0 5.302 3.438 9.8 8.207 11.387.599.111.793-.261.793-.577v-2.234c-3.338.726-4.033-1.416-4.033-1.416-.546-1.387-1.333-1.756-1.333-1.756-1.089-.745.083-.729.083-.729 1.205.084 1.839 1.237 1.839 1.237 1.07 1.834 2.807 1.304 3.492.997.107-.775.418-1.305.762-1.604-2.665-.305-5.467-1.334-5.467-5.931 0-1.311.469-2.381 1.236-3.221-.124-.303-.535-1.524.117-3.176 0 0 1.008-.322 3.301 1.23.957-.266 1.983-.399 3.003-.404 1.02.005 2.047.138 3.006.404 2.291-1.552 3.297-1.23 3.297-1.23.653 1.653.242 2.874.118 3.176.77.84 1.235 1.911 1.235 3.221 0 4.609-2.807 5.624-5.479 5.921.43.372.823 1.102.823 2.222v3.293c0 .319.192.694.801.576 4.765-1.589 8.199-6.086 8.199-11.386 0-6.627-5.373-12-12-12z"/></svg>
+                        查看代码
+                    </a>
+                    <button onclick="playVideo('演示1.mp4')" 
+                            class="inline-flex items-center gap-2 px-4 py-2 bg-pink-600 text-white rounded-lg hover:bg-pink-700 transition text-sm font-medium">
+                        <svg class="w-4 h-4" fill="currentColor" viewBox="0 0 24 24"><path d="M8 5v14l11-7z"/></svg>
+                        玩法演示
+                    </button>
+                </div>
+            </article>
 
             <!-- Other Projects -->
             <article class="project-card bg-white rounded-2xl p-8 shadow-sm border border-gray-100">
