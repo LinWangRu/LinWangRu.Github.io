@@ -225,8 +225,8 @@
             <div class="flex-1">
                 <h2 class="text-4xl md:text-5xl font-bold mb-4 text-gray-900">游戏策划作品集</h2>
                 <p class="text-xl text-gray-600 mb-6 leading-relaxed">
-                    专注系统策划、产品分析与关卡流程设计。<br>
-                    从 Goods Match / 星穹铁道 / 明日方舟策划案，到「重启」双战斗体系与生存关卡落地，兼顾规则设计与可执行方案。
+                    专注系统策划：先定体验与规则，再用数值做验算。<br>
+                    从《明日方舟》新手激励系统、「重启」双战斗，到 Goods Match / 星穹铁道拆解，兼顾规则设计与可执行方案。
                 </p>
                 <div class="flex gap-3 flex-wrap">
                     <span class="tag px-4 py-2 bg-amber-100 text-amber-700 rounded-full text-sm font-medium">产品分析</span>
@@ -269,8 +269,8 @@
         <div class="flex-1">
             <div class="flex flex-col md:flex-row justify-between items-start md:items-center">
                 <div>
-                    <h4 class="text-2xl font-bold text-gray-900 mb-1">游戏分析与数值策划</h4>
-                    <p class="text-gray-600">产品体验分析 · 系统架构拆解 · 数值策划案</p>
+                    <h4 class="text-2xl font-bold text-gray-900 mb-1">游戏分析与系统策划</h4>
+                    <p class="text-gray-600">产品体验 · 系统规则 · 可用数值验算</p>
                 </div>
                 <span class="mt-2 md:mt-0 px-3 py-1 bg-amber-100 text-amber-700 rounded-full text-sm">2025–2026</span>
             </div>
@@ -279,16 +279,18 @@
     <div class="flex gap-2 flex-wrap mb-4">
         <span class="tag px-3 py-1 bg-amber-50 text-amber-600 rounded text-xs font-medium">产品分析</span>
         <span class="tag px-3 py-1 bg-indigo-50 text-indigo-600 rounded text-xs font-medium">系统架构</span>
+        <span class="tag px-3 py-1 bg-teal-50 text-teal-700 rounded text-xs font-medium">可用数值验算</span>
         <span class="tag px-3 py-1 bg-blue-50 text-blue-600 rounded text-xs font-medium">数值策划</span>
         <span class="tag px-3 py-1 bg-green-50 text-green-600 rounded text-xs font-medium">竞品对比</span>
         <span class="tag px-3 py-1 bg-purple-50 text-purple-600 rounded text-xs font-medium">Excel数据表</span>
     </div>
-    <p class="text-sm text-gray-600 mb-6">涵盖 Goods Match 三消产品体验报告、《崩坏：星穹铁道》游戏架构拆解，以及《明日方舟》数值策划案与干员养成 Excel 数据表。</p>
+    <p class="text-sm text-gray-600 mb-6">涵盖 Goods Match 三消产品体验报告、《崩坏：星穹铁道》架构拆解，《明日方舟》新手入坑激励系统案，以及可用理智锚点验算的数值策划案与干员养成 Excel。</p>
     
     <!-- Tab Navigation -->
     <div class="analysis-tabs mb-6">
         <button class="analysis-tab active" data-tab="match3" onclick="switchAnalysisTab('match3')">Goods Match 产品分析</button>
         <button class="analysis-tab" data-tab="hsr" onclick="switchAnalysisTab('hsr')">星穹铁道 架构拆解</button>
+        <button class="analysis-tab" data-tab="arksys" onclick="switchAnalysisTab('arksys')">明日方舟 系统策划</button>
         <button class="analysis-tab" data-tab="arknights" onclick="switchAnalysisTab('arknights')">明日方舟 数值策划</button>
     </div>
     
@@ -567,6 +569,78 @@
             </a>
         </div>
     </div>
+    <div id="tab-arksys" class="analysis-panel">
+        <div class="analysis-content">
+            <div class="arknights-report">
+                <div class="report-meta">
+                    <span>作者：林王儒</span>
+                    <span>性质：系统设计（激励与开荒循环）· 数值仅作验算</span>
+                    <span class="report-badge">系统策划</span>
+                </div>
+                <nav class="mini-toc" aria-label="系统案目录">
+                    <strong>目录</strong>
+                    <a href="#arksys-goal">体验目标</a>
+                    <a href="#arksys-loop">激励结构</a>
+                    <a href="#arksys-map">关卡教学</a>
+                    <a href="#arksys-num">数值验算</a>
+                    <a href="#arksys-fail">失败路径</a>
+                </nav>
+                <h3 id="arksys-goal">体验目标：开荒策略不同，体验仍能成立</h3>
+                <p>新手入坑怕三件事：没高强度角色、养成不知道砸谁、关卡要求完整编队。方舟用一套<strong>系统激励</strong>同时服务两条开荒策略，而不是只奖励一种「正确练法」：</p>
+                <ul class="analysis-list">
+                    <li><strong>高星主 C：</strong>新手池保证强度角色入手；升级的经验与龙门币不按星级收税；前两章单蓝门允许高星独守。</li>
+                    <li><strong>低星开门：</strong>助战锁精英化、不锁等级；先把便宜的低星精 2，即可借用更高档助战，低星养成有情绪反馈。</li>
+                </ul>
+                <div class="highlight">系统结论：不管新手采取哪条开荒策略，都能在第一周「能玩、能过、愿意再登」。七日签到给的是「能上场的人」，不是「养成已经完成」。</div>
+
+                <h3 id="arksys-loop">激励结构：卡池 · 养成税 · 助战 · 七日登录</h3>
+                <p class="table-caption">表 A  各系统服务哪一层新手、故意不做什么</p>
+                <div class="table-wrap"><table class="analysis-table">
+                    <thead><tr><th>系统</th><th>激励</th><th>服务的开荒策略</th><th>故意不保证的</th></tr></thead>
+                    <tbody>
+                        <tr><td>新手寻访池</td><td>提高六星/核心干员入手率</td><td>高星主 C</td><td>不保证精 2 成型</td></tr>
+                        <tr><td>升级消耗不看星级</td><td>养六星与养五星的 EXP/龙门币一样贵</td><td>把资源砸在能推图的高星上</td><td>不降低精英化材料墙</td></tr>
+                        <tr><td>精英化材料随星级变贵</td><td>要质变就必须推更深的材料关</td><td>把养成变成「去体验更多关卡」</td><td>不让主线中后期无脑铺塔</td></tr>
+                        <tr><td>助战（锁精不锁级）</td><td>推关可借人；低星精 2 抬助战档</td><td>低星开门 + 借来的高星输出</td><td>不让未精 2 的号直接借满配精 2</td></tr>
+                        <tr><td>七日登录</td><td>第一周发关键职能干员（如先锋）与资源</td><td>两种策略的「能上场」底线</td><td>不替代 8 天量级的材料养成</td></tr>
+                    </tbody>
+                </table></div>
+                <p>升级不按星级收税，必须说清边界：<strong>经验和龙门币按当前等级走，三星到六星升 1 级一样贵；精英化材料才按星级拉开。</strong> 设计意图不是「六星养成很便宜」，而是避免萌新去养一堆低星觉得更省，从而打断「高星推图 → 开材料关」的正循环。</p>
+                <p>助战与高星主 C 并不打架：精英化仍要自己走，等级和即时战力可以借。低星精 2 比六星便宜，抬高队伍最高精英化，等于给自己打开更高一档助战——低星是开门砖，不是跟六星比 DPS 的废号。</p>
+
+                <h3 id="arksys-map">关卡结构：前两章单蓝门 = 高星独守教学</h3>
+                <p>序章与前两章大量关卡只有一个进兵口（蓝门）。塔防里这意味着：一名高阻挡或高输出的高星，可以在教学关里独守一路，编队压力被刻意压低。这和「新手池 + 升级不惩罚养六星」是同一套故事——关卡先允许你用一个能打的人过，而不是开局就要八职业齐套。</p>
+                <ul class="analysis-list">
+                    <li>单蓝门降低空间题难度，把失败归因从「我不会布阵」推迟到后章多路线。</li>
+                    <li>与七日登录发放的先锋/职能干员配合：有人开费、有人守门，第一周循环能闭合。</li>
+                    <li>后章出现多蓝门、装置与高难机制时，才把玩家从「独守」推进到「编队解题」；此时精英化材料墙也开始要求推资源关。</li>
+                </ul>
+
+                <h3 id="arksys-num">数值验算（锚点来自既有数值案，不另起一套表）</h3>
+                <p>下列数字全部可回查本页「明日方舟 数值策划」Tab：理智锚点 1 理智 ≈ 277 资源单位；基建 243 布局日产折算约 <strong>180.5 理智/日</strong>；同分支对照表 2：六星精 1 阶段升级（EXP+龙门币，<strong>不计精英化材料</strong>）≈ <strong>2484 理智</strong>；附录六星精 2 精英化材料折算 ≈ <strong>1905 理智</strong>，精 1 精英化材料 ≈ <strong>330 理智</strong>。</p>
+                <div class="table-wrap"><table class="analysis-table">
+                    <thead><tr><th>口径</th><th>算法</th><th>结果</th><th>用来验收什么</th></tr></thead>
+                    <tbody>
+                        <tr><td>材料养成窗口（不计精英化）</td><td>2484 ÷（基建 180.5 + 基础体力，不含日常/周常，按约 300/日）</td><td>≈ <strong>8 天</strong></td><td>精 1 升级这一截赶在新手还没流失的窗口</td></tr>
+                        <tr><td>仅基建、不计体力</td><td>2484 ÷ 180.5</td><td>≈ 13.8 天</td><td>说明「8 天」依赖基建已启动 + 基础体力，不是纯离线产出</td></tr>
+                        <tr><td>计入精英化本体</td><td>2484 + 330 + 1905 ≈ 4719，约 <strong>4600</strong> 量级</td><td>按 300/日 ≈ <strong>两周</strong></td><td>精 2 整包仍是墙；不把 8 天说成质变完成</td></tr>
+                        <tr><td>七日登录 vs 养成</td><td>签到 7 天 &lt; 材料窗口 8 天 &lt; 精 2 整包 14 天量级</td><td>三层错开</td><td>签到解决「有人」，8 天解决「能练」，两周解决「质变」</td></tr>
+                    </tbody>
+                </table></div>
+                <div class="highlight">验算纪律：8 天只覆盖「精 1 升级、不计精英化材料」。把精 2 精英化算进去后约 4600 理智当量、两周量级。七日签到短于养成窗口，所以它发的是职能干员，不是精 2。</div>
+                <p>若加上自然回复（数值案另记约 240/日），窗口会更快；本系统案取不含日常周常的保守口径，避免把墙说薄。</p>
+
+                <h3 id="arksys-fail">失败路径与设计取舍</h3>
+                <ul class="analysis-list">
+                    <li>资源摊给一堆低星、谁都不精 2：助战档位抬不上去，正循环自断——系统惩罚的是「不完成精英化」，不是「养了低星」。</li>
+                    <li>只养一只六星、从不让低星上场：错过便宜精 2 开门，也错过单蓝门之后的机制位。设计鼓励有主 C，也有能精 2 的工具人。</li>
+                    <li>后遗症：理智仍劝退不想解题的人；后章多蓝门会突然加课。新手激励只保证入坑，不保证后期零肝。</li>
+                </ul>
+                <p>若只改一处：把「先精 2 一个低星 → 打开高档助战 → 再把约 4600 砸进第一只六星」写进教程，而不是默认萌新自己悟。数值案里对基建被低估的建议，与此同向——8 天窗口的前提是基建已经在转。</p>
+                <p class="text-sm text-gray-500">完整曲线、Excel 与敌人阈值见右侧 Tab「明日方舟 数值策划」。两份是同一套锚点：系统讲激励，数值讲量。</p>
+            </div>
+        </div>
+    </div>
     <div id="tab-arknights" class="analysis-panel">
         <div class="analysis-content"><div class="arknights-report"><div class="report-meta"><span>作者：林王儒</span><span>分析方法：理智锚点 · 同分支对照 · 标准测试单位 · 阈值卡位</span><span class="report-badge">优化版</span></div><nav class="mini-toc" aria-label="策划案目录">
         <strong>目录</strong>
@@ -627,7 +701,7 @@
                         <div class="flex flex-col md:flex-row justify-between items-start md:items-center">
                             <div>
                                 <h4 class="text-2xl font-bold text-gray-900 mb-1">重启（ActionRPG）</h4>
-                                <p class="text-gray-600">单机动作 RPG · 双战斗规则如何自己把人留下来（v0.3）</p>
+                                <p class="text-gray-600">单机动作 RPG · 先锁服务群体，再落双战斗规则与场景规范</p>
                             </div>
                             <span class="mt-2 md:mt-0 px-3 py-1 bg-indigo-100 text-indigo-600 rounded-full text-sm">2026.04 - 至今 · 主策划</span>
                         </div>
@@ -640,9 +714,6 @@
                     <span class="tag px-3 py-1 bg-purple-50 text-purple-600 rounded text-xs font-medium">机制与剧情桥接</span>
                     <span class="tag px-3 py-1 bg-amber-50 text-amber-700 rounded text-xs font-medium">野外即时 · Boss 回合</span>
                     <span class="tag px-3 py-1 bg-green-50 text-green-600 rounded text-xs font-medium">剧情 × 养成推进</span>
-                    <span class="tag px-3 py-1 bg-rose-50 text-rose-600 rounded text-xs font-medium">规则吸引</span>
-                    <span class="tag px-3 py-1 bg-cyan-50 text-cyan-700 rounded text-xs font-medium">失败再开</span>
-                    <span class="tag px-3 py-1 bg-slate-100 text-slate-700 rounded text-xs font-medium">心流小循环</span>
                 </div>
 
                 <div class="bg-gray-50 rounded-lg p-4 mb-4">
@@ -652,11 +723,8 @@
                         <li><strong>目标定位</strong>：单机双战斗体系——同一套角色兼顾「连招爽感」与「指令策略深度」，用节奏变奏而非两套割裂玩法硬拼</li>
                         <li><strong>双模式需求</strong>：Swift（即时）服务野外清杂与操作密度；Command（指令·AT）服务精英/Boss，强制策略取舍与资源管理</li>
                         <li><strong>机制桥接</strong>：共享养成、技能身份与数值口径；切换时冻结/归档即时输入，由 TurnManager 接管 AT 充能→预约→结算；Craft 产耗跨模式闭环</li>
-                        <li><strong>规则吸引力</strong>：单机没有段位与对手，乐趣来自可算、可练、可发现的决策。剧情负责「为什么出发」，规则负责「打的时候为什么停不下来」</li>
-                        <li><strong>失败再开</strong>：关键战走策略型重试——死得明白、检查点短路径、差一点可见、资源回退；不做成魂系手操上限，也不做成刷级墙</li>
-                        <li><strong>心流小循环</strong>：Swift 用 3–8 秒运动循环托住探索，Command 用 15–40 秒认知循环托住高潮；会话大循环只管 40–90 分钟「今晚还玩」</li>
                         <li><strong>剧情桥接</strong>：将双模式解释为角色战斗意识的两种状态；关键战用短剧情合理化强制 Command，并立即兑现养成/技能解锁</li>
-                        <li><strong>场景规范</strong>：野外刷怪默认即时；精英/Boss 强制回合；检查点与战前快照保证失败后仍愿意再打这一场</li>
+                        <li><strong>场景规范</strong>：野外刷怪默认即时；精英/Boss 强制回合；用「剧情动机 → 养成解锁 → 战斗验证」推动持续体验</li>
                     </ul>
                 </div>
 
@@ -664,17 +732,12 @@
                     <a href="restart/重启_双战斗体系_系统策划案.pdf" target="_blank"
                        class="inline-flex items-center gap-2 px-4 py-2 bg-indigo-600 text-white rounded-lg hover:bg-indigo-700 transition text-sm font-medium">
                         <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 10v6m0 0l-3-3m3 3l3-3m2 8H7a2 2 0 01-2-2V5a2 2 0 012-2h5.586a1 1 0 01.707.293l5.414 5.414a1 1 0 01.293.707V19a2 2 0 01-2 2z"/></svg>
-                        阅读系统策划案 PDF v0.3
+                        阅读系统策划案 PDF
                     </a>
                     <a href="restart/重启_双战斗体系_系统策划案.docx" download
                        class="inline-flex items-center gap-2 px-4 py-2 bg-white text-indigo-700 border border-indigo-200 rounded-lg hover:bg-indigo-50 transition text-sm font-medium">
                         <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 10v6m0 0l-3-3m3 3l3-3m2 8H7a2 2 0 01-2-2V5a2 2 0 012-2h5.586a1 1 0 01.707.293l5.414 5.414a1 1 0 01.293.707V19a2 2 0 01-2 2z"/></svg>
-                        下载 Word v0.3
-                    </a>
-                    <a href="restart/系统策划示意图.pdf" download
-                       class="inline-flex items-center gap-2 px-4 py-2 bg-white text-indigo-700 border border-indigo-200 rounded-lg hover:bg-indigo-50 transition text-sm font-medium">
-                        <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 10v6m0 0l-3-3m3 3l3-3m2 8H7a2 2 0 01-2-2V5a2 2 0 012-2h5.586a1 1 0 01.707.293l5.414 5.414a1 1 0 01.293.707V19a2 2 0 01-2 2z"/></svg>
-                        下载系统策划示意图
+                        下载 Word v0.2
                     </a>
                 </div>
             </article>
@@ -690,30 +753,39 @@
                     <div class="flex-1">
                         <div class="flex flex-col md:flex-row justify-between items-start md:items-center">
                             <div>
-                                <h4 class="text-2xl font-bold text-gray-900 mb-1">Endless War</h4>
-                                <p class="text-gray-600">猜拳博弈 · 回合制策略战斗系统</p>
+                                <h4 class="text-2xl font-bold text-gray-900 mb-1">Endless War（无尽战争）</h4>
+                                <p class="text-gray-600">单机 4 人 2 队卡牌对战 · Ban 选 + 猜拳争行动权 · 规则写在技能与数值上</p>
                             </div>
-                            <span class="mt-2 md:mt-0 px-3 py-1 bg-red-100 text-red-600 rounded-full text-sm font-medium">独立开发</span>
+                            <span class="mt-2 md:mt-0 px-3 py-1 bg-red-100 text-red-600 rounded-full text-sm font-medium">2025.09 – 2025.10 · 独立策划</span>
                         </div>
                     </div>
                 </div>
                 
                 <div class="flex gap-2 flex-wrap mb-4">
-                    <span class="tag px-3 py-1 bg-red-50 text-red-600 rounded text-xs font-medium">猜拳行动权机制</span>
-                    <span class="tag px-3 py-1 bg-orange-50 text-orange-600 rounded text-xs font-medium">Utility AI</span>
-                    <span class="tag px-3 py-1 bg-purple-50 text-purple-600 rounded text-xs font-medium">技能框架</span>
-                    <span class="tag px-3 py-1 bg-blue-50 text-blue-600 rounded text-xs font-medium">C#抽象类</span>
-                    <span class="tag px-3 py-1 bg-green-50 text-green-600 rounded text-xs font-medium">动态空间算法</span>
+                    <span class="tag px-3 py-1 bg-red-50 text-red-600 rounded text-xs font-medium">猜拳行动权</span>
+                    <span class="tag px-3 py-1 bg-orange-50 text-orange-600 rounded text-xs font-medium">战前 Ban 选</span>
+                    <span class="tag px-3 py-1 bg-purple-50 text-purple-600 rounded text-xs font-medium">技能与数值</span>
+                    <span class="tag px-3 py-1 bg-blue-50 text-blue-600 rounded text-xs font-medium">Buff / Debuff</span>
+                    <span class="tag px-3 py-1 bg-green-50 text-green-600 rounded text-xs font-medium">环形站位</span>
                 </div>
 
                 <div class="bg-gray-50 rounded-lg p-4 mb-4">
-                    <h5 class="font-semibold text-gray-700 mb-2">核心机制（按简历描述）：</h5>
+                    <h5 class="font-semibold text-gray-700 mb-2">一局流程：</h5>
                     <ul class="list-disc list-inside text-gray-600 space-y-1 text-sm">
-                        <li><strong>猜拳行动权机制</strong>：用"猜拳"替代传统速度属性决定行动顺序，增加博弈维度</li>
-                        <li><strong>高扩展性技能框架</strong>：基于C#抽象类与钩子函数(OnBeforeTakeDamage/OnAfterDealDamage等)，将伤害拦截、吸血、反伤等效果模块化，策划仅需继承基类、配置参数即可实现新技能</li>
-                        <li><strong>拟人化AI决策模型</strong>：双层AI系统——战术层用Utility AI实现斩杀预判、治疗优先级决策；博弈层根据队友状态动态切换猜拳策略(如"配合队友集火"或"绝望随机")</li>
-                        <li><strong>动态空间算法</strong>：独立开发GetDynamicDistance算法，通过逻辑数组动态维护战场坐标关系，为技能范围、位移特性提供稳定的空间参考</li>
-                        <li><strong>标准化战斗管线</strong>：构建"前置拦截→闪避判定→减伤计算→后置反馈"四阶段流水线，明确区分物理/法术/真实伤害类型</li>
+                        <li><strong>Ban 选</strong>：1 名玩家 + 3 名 AI，四人依次禁用角色；可按力量 / 智力 / 敏捷 / 辅助筛选；每轮 30 秒，超时跳过</li>
+                        <li><strong>选人</strong>：从剩余角色中随机展示最多 6 个可选卡，Tooltip 查看属性与技能后确认；AI 分配不重复角色，进入 4 人 2 队</li>
+                        <li><strong>战斗</strong>：每回合先猜拳，胜者拿本回合唯一行动权，平局重猜；行动方选择攻击 / 治疗 / 技能，直到一方全灭</li>
+                    </ul>
+                </div>
+
+                <div class="bg-gray-50 rounded-lg p-4 mb-4">
+                    <h5 class="font-semibold text-gray-700 mb-2">战斗规则（技能与数值）：</h5>
+                    <ul class="list-disc list-inside text-gray-600 space-y-1 text-sm">
+                        <li><strong>猜拳只决定谁动手</strong>：打破固定速度条；真正拉开对局的是角色技能、属性匹配和状态效果</li>
+                        <li><strong>攻击</strong>：环形站位算距离，嘲讽会强制目标；伤害分物理 / 魔法 / 真实，走物攻、法攻、物防、法防，并结算暴击、减伤、护盾</li>
+                        <li><strong>治疗与技能</strong>：治疗回自身生命，适配辅助位；每名角色有专属大招（伤害 / 控制 / 辅助 / 增益），另有冲锋等特殊行动</li>
+                        <li><strong>Buff / Debuff</strong>：中毒、眩晕、嘲讽、冰冻等按持续回合结算，可驱散；血条旁用图标显示当前状态</li>
+                        <li><strong>AI 差异</strong>：猜拳上，P1 记你出拳习惯反制、P2 纯随机、P3 一半协助一半干扰；行动上按斩杀残血 → 治疗友方 → 放大招 → 普攻的优先级走，并吃嘲讽和距离约束</li>
                     </ul>
                 </div>
 
@@ -866,9 +938,9 @@
         <h3 class="text-2xl font-bold mb-8 text-gray-900 border-l-4 border-purple-500 pl-4">关于我</h3>
         <div class="bg-white rounded-2xl p-8 shadow-sm border border-gray-100">
             <p class="text-gray-700 leading-relaxed mb-6">
-                具备扎实的独立开发与系统架构能力，擅长运用<strong>数据驱动(Data-Driven)设计模式</strong>，通过配置表高效管理游戏剧情、演出逻辑与系统参数。
-                深入理解面向对象设计与模块化解耦，能基于继承、多态与事件机制构建高扩展性的 Gameplay 系统（技能/Buff、指令回合、关卡流程）。
-                同时具备产品体验分析与竞品拆解能力，注重将设计需求转化为稳定可实现的技术方案。
+                做系统时先定玩家体验与规则激励，再用数值做验算（理智锚点、养成窗口、日产出对照），而不是只堆功能或只填表。
+                具备独立开发与配置表驱动能力，能把技能/Buff、指令回合、关卡流程写成可验收方案。
+                同时具备产品体验分析与竞品拆解，注重把设计需求落到可玩 Demo 与文档。
             </p>
             <div class="grid md:grid-cols-2 gap-6">
                 <div>
@@ -961,3 +1033,4 @@
     </script>
 </body>
 </html>
+
