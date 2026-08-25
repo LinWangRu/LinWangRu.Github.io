@@ -175,6 +175,28 @@
             color: #374151;
         }
         .analysis-table tr:hover td { background: #fffbeb; }
+        .ew-table th { background: #fee2e2; color: #991b1b; }
+        .ew-table tr:hover td { background: #fff5f5; }
+        .ew-char-grid {
+            display: grid;
+            grid-template-columns: 1fr;
+            gap: 10px;
+        }
+        @media (min-width: 768px) {
+            .ew-char-grid { grid-template-columns: 1fr 1fr; }
+        }
+        .ew-char {
+            background: white;
+            border: 1px solid #fecaca;
+            border-radius: 10px;
+            padding: 12px 14px;
+        }
+        .ew-char h6 { font-size: 14px; font-weight: 700; color: #1f2937; margin-bottom: 4px; }
+        .ew-char .ew-role { font-size: 11px; font-weight: 600; color: #be123c; margin-left: 6px; }
+        .ew-stats { font-size: 12px; color: #b91c1c; margin-bottom: 6px; line-height: 1.5; }
+        .ew-char ul { font-size: 13px; color: #4b5563; line-height: 1.6; margin: 0; padding-left: 18px; }
+        .ew-char li { margin-bottom: 4px; }
+        .ew-note { font-size: 12px; color: #6b7280; margin: 0 0 10px; }
         .xlsx-table { font-size: 11px; }
         .xlsx-table td, .xlsx-table th { padding: 4px 8px; }
         .formula-block {
@@ -767,7 +789,8 @@
                     <span class="tag px-3 py-1 bg-purple-50 text-purple-600 rounded text-xs font-medium">技能与数值</span>
                     <span class="tag px-3 py-1 bg-blue-50 text-blue-600 rounded text-xs font-medium">Buff / Debuff</span>
                     <span class="tag px-3 py-1 bg-green-50 text-green-600 rounded text-xs font-medium">环形站位</span>
-                    <span class="tag px-3 py-1 bg-amber-50 text-amber-700 rounded text-xs font-medium">6 角色克制</span>
+                    <span class="tag px-3 py-1 bg-rose-50 text-rose-700 rounded text-xs font-medium">8 套面板</span>
+                    <span class="tag px-3 py-1 bg-amber-50 text-amber-700 rounded text-xs font-medium">克制关系</span>
                 </div>
 
                 <div class="bg-gray-50 rounded-lg p-4 mb-4">
@@ -782,82 +805,110 @@
                 <div class="bg-gray-50 rounded-lg p-4 mb-4">
                     <h5 class="font-semibold text-gray-700 mb-2">战斗规则（技能与数值）：</h5>
                     <ul class="list-disc list-inside text-gray-600 space-y-1 text-sm">
-                        <li><strong>猜拳只决定谁动手</strong>：打破固定速度条；真正拉开对局的是角色技能、属性匹配和状态效果</li>
+                        <li><strong>猜拳只决定谁动手</strong>：打破固定速度条；真正拉开对局的是角色技能、基础数值和状态效果</li>
                         <li><strong>攻击</strong>：环形站位算距离，嘲讽会强制目标；伤害分物理 / 魔法 / 真实，走物攻、法攻、物防、法防，并结算暴击、减伤、护盾</li>
-                        <li><strong>治疗与技能</strong>：治疗可回自身或转给队友；每名角色有专属技能（伤害 / 控制 / 辅助 / 增益），另有冲锋等特殊行动</li>
-                        <li><strong>Buff / Debuff</strong>：冰冻、闪避、嘲讽等按持续回合结算，可驱散；血条旁用图标显示当前状态</li>
-                        <li><strong>AI 差异</strong>：猜拳上，P1 记你出拳习惯反制、P2 纯随机、P3 一半协助一半干扰；行动上按斩杀残血 → 治疗友方 → 放大招 → 普攻的优先级走，并吃嘲讽和距离约束</li>
+                        <li><strong>面板刻度很小</strong>：物攻多在 1–3、体力多在 4–10，1 点伤害就是一次决策；技能层数和距离比堆面板更重要</li>
+                        <li><strong>Buff / Debuff</strong>：冰冻、闪避、风暴、冰盾、刺杀印记等按回合或层数结算；血条旁用图标显示</li>
+                        <li><strong>AI 差异</strong>：猜拳上 P1 记出拳习惯反制、P2 纯随机、P3 一半协助一半干扰；行动上按斩杀残血 → 治疗友方 → 放大招 → 普攻，并吃嘲讽和距离约束</li>
                     </ul>
                 </div>
 
-                <div class="bg-orange-50 border border-orange-100 rounded-lg p-4 mb-4">
-                    <h5 class="font-semibold text-orange-900 mb-2">克制关系（Ban 选看这条）：</h5>
-                    <ul class="list-disc list-inside text-gray-700 space-y-1 text-sm">
-                        <li><strong>真实伤害</strong>（古恩【风暴】、德古拉【血咒】）穿透阿萨辛不闪避减伤、优姬奥娜【冰盾】——这两条都只减非真实伤害。</li>
-                        <li><strong>达克尼斯【暗铠】</strong>免疫异常，克优姬奥娜的【寒冷】/【冰冻】；【马术】让近战实际打到距离 2，克远程风筝（德古拉 / 优姬奥娜 / 梅尔）。</li>
-                        <li><strong>古恩【风暴】</strong>能否决「这一下」，克靠普攻兑现的阿萨辛【乱舞】、达克尼斯【冲锋】、德古拉【嗜血】；梅尔把人奶住，则古恩难叠风暴。</li>
-                        <li><strong>优姬奥娜【冰冻】</strong>打断要连续出手的德古拉、梅尔；德古拉【血咒】反过来破她的冰盾。达克尼斯切骑士后这条控制失效。</li>
-                        <li><strong>梅尔</strong>专奶全场唯一最低血，天然养阿萨辛（血 4）；她被 Ban 掉后，脆皮核没有回复轴。</li>
-                        <li><strong>阿萨辛 vs 达克尼斯【冲锋】</strong>都是额外猜拳闪避，是心理对位，不是面板碾压。</li>
-                    </ul>
+                <div class="bg-gray-50 rounded-lg p-4 mb-4">
+                    <h5 class="font-semibold text-gray-700 mb-2">基础数值（8 套战场面板）：</h5>
+                    <p class="ew-note">可选用角色 7 名；达克尼斯含战马 / 骑士双形态，故按 8 套面板展示。当前物防、魔防均为 0，差距主要在物攻 / 魔攻、体力、回复和攻击距离。</p>
+                    <div class="table-wrap"><table class="analysis-table ew-table">
+                        <thead>
+                            <tr><th>角色</th><th>定位</th><th>物攻</th><th>魔攻</th><th>初始体力</th><th>体力上限</th><th>回复</th><th>距离</th></tr>
+                        </thead>
+                        <tbody>
+                            <tr><td>古恩</td><td>力量 · 打断</td><td>2</td><td>0</td><td>10</td><td>10</td><td>2</td><td>1</td></tr>
+                            <tr><td>巴萨卡</td><td>力量 · 决斗</td><td>2</td><td>0</td><td>8</td><td>8</td><td>2</td><td>1（斗志后 2）</td></tr>
+                            <tr><td>达克尼斯 · 战马</td><td>力量 · 冲锋</td><td>2（冲锋 +1）</td><td>0</td><td>10</td><td>10</td><td>无</td><td>1（算距 −1）</td></tr>
+                            <tr><td>达克尼斯 · 骑士</td><td>力量 · 抗性</td><td>2</td><td>0</td><td>5</td><td>5</td><td>1</td><td>1</td></tr>
+                            <tr><td>德古拉</td><td>智力 · 反伤</td><td>0</td><td>2</td><td>8</td><td>无</td><td>无</td><td>2</td></tr>
+                            <tr><td>优姬奥娜</td><td>智力 · 冰控</td><td>0</td><td>2</td><td>8</td><td>8</td><td>2</td><td>2</td></tr>
+                            <tr><td>阿萨辛</td><td>敏捷 · 刺杀</td><td>3</td><td>0</td><td>4</td><td>4</td><td>1</td><td>1</td></tr>
+                            <tr><td>梅尔</td><td>辅助 · 治疗</td><td>0</td><td>1</td><td>8</td><td>8</td><td>2</td><td>2</td></tr>
+                        </tbody>
+                    </table></div>
                 </div>
 
-                <h5 class="font-semibold text-gray-700 mb-3">代表角色（6）</h5>
-                <div class="grid md:grid-cols-2 gap-3 mb-4">
-                    <div class="border border-red-100 rounded-lg p-3 bg-white">
-                        <div class="flex items-center justify-between mb-1">
-                            <span class="font-bold text-gray-900">古恩</span>
-                            <span class="text-xs px-2 py-0.5 rounded-full bg-red-50 text-red-600">力量</span>
+                <div class="bg-gray-50 rounded-lg p-4 mb-4">
+                    <h5 class="font-semibold text-gray-700 mb-2">代表角色（技能写在卡面上）：</h5>
+                    <div class="ew-char-grid">
+                        <div class="ew-char">
+                            <h6>古恩<span class="ew-role">力量</span></h6>
+                            <p class="ew-stats">物攻 2 / 魔攻 0 / 体力 10（上限 10）/ 回复 2 / 距离 1</p>
+                            <ul>
+                                <li><strong>风暴</strong>：上场 2 层；场上有人濒死或死亡再 +1 层。可消耗 1 层使即将生效的攻击无效，并选任意目标造成 1 点真实伤害。</li>
+                                <li><strong>魔神</strong>：本场首次体力 ≤0 时回复至无限，获得 5 回合【魔化】（物攻翻倍、距离无限），结束后立即死亡。</li>
+                            </ul>
                         </div>
-                        <p class="text-xs text-gray-500 mb-2">物攻 2 · 体力 10 · 回 2 · 距离 1</p>
-                        <p class="text-sm text-gray-600 mb-1">【风暴】否决即将生效的攻击，并改打 1 点真实；队友濒死/死亡叠层。【魔神】第一次倒下变无限体力，5 回合物攻翻倍、距离无限，结束后死亡。</p>
-                        <p class="text-xs text-orange-800">克：单体爆发兑现　怕：梅尔拖死叠层、真实消耗战</p>
-                    </div>
-                    <div class="border border-red-100 rounded-lg p-3 bg-white">
-                        <div class="flex items-center justify-between mb-1">
-                            <span class="font-bold text-gray-900">达克尼斯</span>
-                            <span class="text-xs px-2 py-0.5 rounded-full bg-red-50 text-red-600">力量</span>
+                        <div class="ew-char">
+                            <h6>巴萨卡<span class="ew-role">力量</span></h6>
+                            <p class="ew-stats">物攻 2 / 魔攻 0 / 体力 8（上限 8）/ 回复 2 / 距离 1</p>
+                            <ul>
+                                <li><strong>决斗</strong>：回合开始时若自己不是全场唯一最高体力，可对攻击范围内目标失去 X 点体力并猜拳（计入平局）；结果不为输则对其攻击。X 为连续发动回合数，中断重置。</li>
+                                <li><strong>斗志</strong>：当前体力 ≤4 时，受到的非真实伤害 −1，攻击距离 +1。</li>
+                            </ul>
                         </div>
-                        <p class="text-xs text-gray-500 mb-2">战马 物攻 2 / 体力 10 → 骑士 体力 5</p>
-                        <p class="text-sm text-gray-600 mb-1">【冲锋】物攻 +1 且被打必须加赛猜拳；【马术】算距 −1。【孤勇】战马死后切骑士，【暗铠】免疫异常、非自身伤害减半。</p>
-                        <p class="text-xs text-orange-800">克：远程、冰冻控制　怕：风暴否决冲锋、猜拳被读</p>
-                    </div>
-                    <div class="border border-purple-100 rounded-lg p-3 bg-white">
-                        <div class="flex items-center justify-between mb-1">
-                            <span class="font-bold text-gray-900">德古拉</span>
-                            <span class="text-xs px-2 py-0.5 rounded-full bg-purple-50 text-purple-600">智力</span>
+                        <div class="ew-char">
+                            <h6>达克尼斯<span class="ew-role">力量 · 双形态</span></h6>
+                            <p class="ew-stats">战马：物攻 2 / 体力 10（上限 10）/ 无回复 / 距离 1<br>骑士：物攻 2 / 体力 5（上限 5）/ 回复 1 / 距离 1</p>
+                            <ul>
+                                <li><strong>冲锋</strong>（战马）：获得行动权时可进入冲锋——物攻 +1，被攻击必须再猜一次拳（不计平局）；赢则无效该次攻击，输则退出冲锋。</li>
+                                <li><strong>马术 / 孤勇</strong>：与他人算距离 −1；战马死亡切骑士。</li>
+                                <li><strong>暗铠</strong>（骑士）：免疫异常；受到的非自身伤害 −50%。</li>
+                            </ul>
                         </div>
-                        <p class="text-xs text-gray-500 mb-2">魔攻 2 · 体力 8 · 上限无 · 距离 2</p>
-                        <p class="text-sm text-gray-600 mb-1">【嗜血】命中回 1。【血咒】受伤反 50% 真实。【复活】第一次倒下回 4，5 回合【狂袭】：魔法伤害 +1，嗜血额外再回 1。</p>
-                        <p class="text-xs text-orange-800">克：冰盾 / 非真实减伤　怕：风暴否决普攻、冰冻打断连打</p>
-                    </div>
-                    <div class="border border-purple-100 rounded-lg p-3 bg-white">
-                        <div class="flex items-center justify-between mb-1">
-                            <span class="font-bold text-gray-900">优姬奥娜</span>
-                            <span class="text-xs px-2 py-0.5 rounded-full bg-purple-50 text-purple-600">智力</span>
+                        <div class="ew-char">
+                            <h6>德古拉<span class="ew-role">智力</span></h6>
+                            <p class="ew-stats">物攻 0 / 魔攻 2 / 体力 8 / 上限无 / 回复无 / 距离 2</p>
+                            <ul>
+                                <li><strong>嗜血</strong>：攻击命中回复 1 点体力。</li>
+                                <li><strong>血咒</strong>：受伤时对来源造成所受伤害 50% 的真实伤害（向下取整）。</li>
+                                <li><strong>复活</strong>：本场首次体力 ≤0 时回复至 4，获得 5 回合【狂袭】：魔法伤害 +1，嗜血额外再回 1。</li>
+                            </ul>
                         </div>
-                        <p class="text-xs text-gray-500 mb-2">魔攻 2 · 体力 8 · 回 2 · 距离 2</p>
-                        <p class="text-sm text-gray-600 mb-1">【霜冻】打人或挨非真实都会叠【寒冷】，3 层冻结下一回合，有人被冻则自己回血叠【冰盾】。【冰盾】可减半非真实并反弹法伤。【祝福】死亡时冻一个。</p>
-                        <p class="text-xs text-orange-800">克：要连续出手的德古拉 / 梅尔　怕：暗铠免疫异常、真实破盾</p>
-                    </div>
-                    <div class="border border-blue-100 rounded-lg p-3 bg-white">
-                        <div class="flex items-center justify-between mb-1">
-                            <span class="font-bold text-gray-900">阿萨辛</span>
-                            <span class="text-xs px-2 py-0.5 rounded-full bg-blue-50 text-blue-600">敏捷</span>
+                        <div class="ew-char">
+                            <h6>优姬奥娜<span class="ew-role">智力</span></h6>
+                            <p class="ew-stats">物攻 0 / 魔攻 2 / 体力 8（上限 8）/ 回复 2 / 距离 2</p>
+                            <ul>
+                                <li><strong>霜冻</strong>：攻击命中或受到非真实伤害时，给对方 1 层【寒冷】；满 3 层消耗并使其下回合【冰冻】。场上有人冰冻时，自己回 1 体力并获得 1 层【冰盾】。</li>
+                                <li><strong>冰盾</strong>：行动时可改为获得 1 层；受伤时可消耗 1 层，非真实伤害 −50%（向下取整），并对来源造成与剩余伤害等额的法术伤害。</li>
+                                <li><strong>祝福</strong>：死亡时可令场上一名角色下回合冰冻。</li>
+                            </ul>
                         </div>
-                        <p class="text-xs text-gray-500 mb-2">物攻 3 · 体力 4 · 回 1 · 距离 1</p>
-                        <p class="text-sm text-gray-600 mb-1">【隐匿】被打可选减半非真实，或加赛猜拳：赢则无效并得【刺杀】，输则不减免。【乱舞】花印记回 1 血且本下物理 +1。</p>
-                        <p class="text-xs text-orange-800">克：猜拳心理战、低血斩杀　怕：风暴否决、真实伤害、梅尔被 Ban</p>
-                    </div>
-                    <div class="border border-emerald-100 rounded-lg p-3 bg-white">
-                        <div class="flex items-center justify-between mb-1">
-                            <span class="font-bold text-gray-900">梅尔</span>
-                            <span class="text-xs px-2 py-0.5 rounded-full bg-emerald-50 text-emerald-700">辅助</span>
+                        <div class="ew-char">
+                            <h6>阿萨辛<span class="ew-role">敏捷</span></h6>
+                            <p class="ew-stats">物攻 3 / 魔攻 0 / 体力 4（上限 4）/ 回复 1 / 距离 1</p>
+                            <ul>
+                                <li><strong>隐匿</strong>：成为攻击目标时可选择是否闪避。不闪避：非真实伤害 −50%（向下取整）。闪避：再猜一次拳（不计平局）；赢则无效攻击并获得 1 层【刺杀】；输则伤害不减免。</li>
+                                <li><strong>乱舞</strong>：选攻击目标时可消耗 1 层刺杀，回复 1 点体力且本次物理伤害 +1。</li>
+                            </ul>
                         </div>
-                        <p class="text-xs text-gray-500 mb-2">魔攻 1 · 体力 8 · 回 2 · 距离 2</p>
-                        <p class="text-sm text-gray-600 mb-1">【圣光】回合末若是唯一最低血则回 1。【奉献】自己回血时可改成两人各回 1。【救赎】开回合可自损至多 2 点，等额奶一个目标。</p>
-                        <p class="text-xs text-orange-800">克：养阿萨辛、拖古恩叠风暴　怕：自己被 Ban、冰冻打断抬人</p>
+                        <div class="ew-char">
+                            <h6>梅尔<span class="ew-role">辅助</span></h6>
+                            <p class="ew-stats">物攻 0 / 魔攻 1 / 体力 8（上限 8）/ 回复 2 / 距离 2</p>
+                            <ul>
+                                <li><strong>圣光</strong>：回合末若自己是场上唯一最低体力，回复 1 点。</li>
+                                <li><strong>奉献</strong>：每次回复体力时，可改为自己与另一目标各回 1 点。</li>
+                                <li><strong>救赎</strong>：回合开始时若自己不是全场唯一最高体力，可失去至多 2 点体力，令一名目标回复等额。</li>
+                            </ul>
+                        </div>
                     </div>
+                </div>
+
+                <div class="bg-gray-50 rounded-lg p-4 mb-4">
+                    <h5 class="font-semibold text-gray-700 mb-2">克制关系（由面板差和技能咬合，不是属性相克表）：</h5>
+                    <ul class="list-disc list-inside text-gray-600 space-y-1 text-sm">
+                        <li><strong>真实伤害克减伤盾</strong>：古恩【风暴】1 点真实、德古拉【血咒】50% 真实，绕过优姬奥娜【冰盾】和阿萨辛「不闪避减伤」（两者只挡非真实）。达克尼斯骑士【暗铠】把非自身伤害砍半再向下取整，1 点真实可能打成 0，反而抗得住风暴单点。</li>
+                        <li><strong>高物攻怕打断，也怕反伤</strong>：阿萨辛物攻 3、达克尼斯冲锋后物攻 3，是古恩【风暴】最想改写的一击；打德古拉则吃 50% 真实反伤。梅尔魔攻只有 1，打德古拉几乎喂不出有效反伤。</li>
+                        <li><strong>距离 2 克近战 1</strong>：优姬奥娜 / 德古拉 / 梅尔站 2 格磨近战（古恩、巴萨卡、阿萨辛）。巴萨卡体力 ≤4 时【斗志】距离 +1，残血反克这三人；达克尼斯【马术】算距离 −1，战马可提前咬到远程。</li>
+                        <li><strong>控制怕免疫</strong>：优姬奥娜叠【寒冷】→【冰冻】，骑士【暗铠】免疫异常，这条线打不进达克尼斯第二形态。古恩 10 体力、战马 10 体力常是全场最高，巴萨卡【决斗】专点「不是唯一最高」的人。</li>
+                        <li><strong>低血是刀也是奶口</strong>：阿萨辛体力 4、骑士 5，当队友时梅尔【救赎】【奉献】能托；当敌人时他们容易变成全场最低，梅尔【圣光】会对不上自己。德古拉无上限、无自然回复，吃治疗会无限长，Ban 选要考虑禁梅尔或禁德古拉。</li>
+                        <li><strong>猜拳会叠层</strong>：达克尼斯【冲锋】和阿萨辛【隐匿】都要再猜一次拳。同一队带两个，行动权博弈会变厚，也更容易被古恩在「攻击即将生效」时用风暴拆掉。</li>
+                    </ul>
                 </div>
 
                 <div class="flex gap-4">
