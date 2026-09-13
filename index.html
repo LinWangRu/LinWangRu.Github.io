@@ -251,6 +251,7 @@
                     从《明日方舟》新手激励系统、「重启」双战斗，到 Goods Match / 星穹铁道拆解，兼顾规则设计与可执行方案。
                 </p>
                 <div class="flex gap-3 flex-wrap">
+                    <span class="tag px-4 py-2 bg-rose-100 text-rose-700 rounded-full text-sm font-medium">战斗策划</span>
                     <span class="tag px-4 py-2 bg-amber-100 text-amber-700 rounded-full text-sm font-medium">产品分析</span>
                     <span class="tag px-4 py-2 bg-indigo-100 text-indigo-700 rounded-full text-sm font-medium">系统策划</span>
                     <span class="tag px-4 py-2 bg-emerald-100 text-emerald-700 rounded-full text-sm font-medium">关卡流程</span>
@@ -278,6 +279,230 @@
         <h3 class="text-2xl font-bold mb-8 text-gray-900 border-l-4 border-purple-500 pl-4">精选项目</h3>
         
         <div class="space-y-8">
+
+            <!-- 重启 / ActionRPG (UE4 系统策划) -->
+            <article class="project-card bg-white rounded-2xl p-8 shadow-md border-2 border-indigo-100 relative overflow-hidden">
+                <div class="absolute top-0 right-0 bg-gradient-to-l from-indigo-500 to-blue-500 text-white px-4 py-1 text-xs font-bold rounded-bl-lg">
+                    系统策划
+                </div>
+
+                <div class="flex items-start gap-4 mb-4">
+                    <div class="game-icon bg-gradient-to-br from-indigo-400 to-blue-500 text-white">⚔️</div>
+                    <div class="flex-1">
+                        <div class="flex flex-col md:flex-row justify-between items-start md:items-center">
+                            <div>
+                                <h4 class="text-2xl font-bold text-gray-900 mb-1">重启（ActionRPG）</h4>
+                                <p class="text-gray-600">单机动作 RPG · 先锁服务群体，再落双战斗规则与场景规范</p>
+                            </div>
+                            <span class="mt-2 md:mt-0 px-3 py-1 bg-indigo-100 text-indigo-600 rounded-full text-sm">2026.04 - 至今 · 主策划</span>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="flex gap-2 flex-wrap mb-4">
+                    <span class="tag px-3 py-1 bg-indigo-50 text-indigo-600 rounded text-xs font-medium">服务群体分层</span>
+                    <span class="tag px-3 py-1 bg-blue-50 text-blue-600 rounded text-xs font-medium">Swift / Command</span>
+                    <span class="tag px-3 py-1 bg-purple-50 text-purple-600 rounded text-xs font-medium">机制与剧情桥接</span>
+                    <span class="tag px-3 py-1 bg-amber-50 text-amber-700 rounded text-xs font-medium">野外即时 · Boss 回合</span>
+                    <span class="tag px-3 py-1 bg-green-50 text-green-600 rounded text-xs font-medium">剧情 × 养成推进</span>
+                </div>
+
+                <div class="bg-gray-50 rounded-lg p-4 mb-4">
+                    <h5 class="font-semibold text-gray-700 mb-2">策划设计要点：</h5>
+                    <ul class="list-disc list-inside text-gray-600 space-y-1 text-sm">
+                        <li><strong>服务群体</strong>：核心用户是同时要连招与指令深度的单机 JRPG 玩家；动作手感只降低野外劝退，Boss 战不改回无脑连招</li>
+                        <li><strong>目标定位</strong>：单机双战斗体系——同一套角色兼顾「连招爽感」与「指令策略深度」，用节奏变奏而非两套割裂玩法硬拼</li>
+                        <li><strong>双模式需求</strong>：Swift（即时）服务野外清杂与操作密度；Command（指令·AT）服务精英/Boss，强制策略取舍与资源管理</li>
+                        <li><strong>机制桥接</strong>：共享养成、技能身份与数值口径；切换时冻结/归档即时输入，由 TurnManager 接管 AT 充能→预约→结算；Craft 产耗跨模式闭环</li>
+                        <li><strong>剧情桥接</strong>：将双模式解释为角色战斗意识的两种状态；关键战用短剧情合理化强制 Command，并立即兑现养成/技能解锁</li>
+                        <li><strong>场景规范</strong>：野外刷怪默认即时；精英/Boss 强制回合；用「剧情动机 → 养成解锁 → 战斗验证」推动持续体验</li>
+                    </ul>
+                </div>
+
+                <div class="flex gap-3 flex-wrap">
+                    <a href="restart/重启_双战斗体系_系统策划案.pdf" target="_blank"
+                       class="inline-flex items-center gap-2 px-4 py-2 bg-indigo-600 text-white rounded-lg hover:bg-indigo-700 transition text-sm font-medium">
+                        <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 10v6m0 0l-3-3m3 3l3-3m2 8H7a2 2 0 01-2-2V5a2 2 0 012-2h5.586a1 1 0 01.707.293l5.414 5.414a1 1 0 01.293.707V19a2 2 0 01-2 2z"/></svg>
+                        阅读系统策划案 PDF
+                    </a>
+                    <a href="restart/重启_双战斗体系_系统策划案.docx" download
+                       class="inline-flex items-center gap-2 px-4 py-2 bg-white text-indigo-700 border border-indigo-200 rounded-lg hover:bg-indigo-50 transition text-sm font-medium">
+                        <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 10v6m0 0l-3-3m3 3l3-3m2 8H7a2 2 0 01-2-2V5a2 2 0 012-2h5.586a1 1 0 01.707.293l5.414 5.414a1 1 0 01.293.707V19a2 2 0 01-2 2z"/></svg>
+                        下载 Word v0.2
+                    </a>
+                    <button onclick="playVideo('file:///C:/Users/lwr/Desktop/ARPGdemo/demo演示.mp4')"
+                            class="inline-flex items-center gap-2 px-4 py-2 bg-indigo-600 text-white rounded-lg hover:bg-indigo-700 transition text-sm font-medium">
+                        <svg class="w-4 h-4" fill="currentColor" viewBox="0 0 24 24"><path d="M8 5v14l11-7z"/></svg>
+                        小关卡演示
+                    </button>
+                    <a href="https://github.com/LinWangRu/Action-RPG" target="_blank"
+                       class="inline-flex items-center gap-2 px-4 py-2 bg-gray-900 text-white rounded-lg hover:bg-gray-800 transition text-sm font-medium">
+                        <svg class="w-4 h-4" fill="currentColor" viewBox="0 0 24 24"><path d="M12 0c-6.626 0-12 5.373-12 12 0 5.302 3.438 9.8 8.207 11.387.599.111.793-.261.793-.577v-2.234c-3.338.726-4.033-1.416-4.033-1.416-.546-1.387-1.333-1.756-1.333-1.756-1.089-.745.083-.729.083-.729 1.205.084 1.839 1.237 1.839 1.237 1.07 1.834 2.807 1.304 3.492.997.107-.775.418-1.305.762-1.604-2.665-.305-5.467-1.334-5.467-5.931 0-1.311.469-2.381 1.236-3.221-.124-.303-.535-1.524.117-3.176 0 0 1.008-.322 3.301 1.23.957-.266 1.983-.399 3.003-.404 1.02.005 2.047.138 3.006.404 2.291-1.552 3.297-1.23 3.297-1.23.653 1.653.242 2.874.118 3.176.77.84 1.235 1.911 1.235 3.221 0 4.609-2.807 5.624-5.479 5.921.43.372.823 1.102.823 2.222v3.293c0 .319.192.694.801.576 4.765-1.589 8.199-6.086 8.199-11.386 0-6.627-5.373-12-12-12z"/></svg>
+                        查看代码
+                    </a>
+                </div>
+            </article>
+
+            <!-- Endless War (Rock Paper Scissors) -->
+            <article class="project-card bg-white rounded-2xl p-8 shadow-md border-2 border-red-100 relative overflow-hidden">
+                <div class="absolute top-0 right-0 bg-gradient-to-l from-red-500 to-orange-500 text-white px-4 py-1 text-xs font-bold rounded-bl-lg">
+                    核心作品
+                </div>
+                
+                <div class="flex items-start gap-4 mb-4">
+                    <div class="game-icon bg-gradient-to-br from-red-400 to-orange-400 text-white">✊</div>
+                    <div class="flex-1">
+                        <div class="flex flex-col md:flex-row justify-between items-start md:items-center">
+                            <div>
+                                <h4 class="text-2xl font-bold text-gray-900 mb-1">Endless War（无尽战争）</h4>
+                                <p class="text-gray-600">单机 4 人 2 队卡牌对战 · Ban 选 + 猜拳争行动权 · 规则写在技能与数值上</p>
+                            </div>
+                            <span class="mt-2 md:mt-0 px-3 py-1 bg-red-100 text-red-600 rounded-full text-sm font-medium">2025.09 – 2025.10 · 独立策划</span>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="flex gap-2 flex-wrap mb-4">
+                    <span class="tag px-3 py-1 bg-red-50 text-red-600 rounded text-xs font-medium">猜拳行动权</span>
+                    <span class="tag px-3 py-1 bg-orange-50 text-orange-600 rounded text-xs font-medium">战前 Ban 选</span>
+                    <span class="tag px-3 py-1 bg-purple-50 text-purple-600 rounded text-xs font-medium">技能与数值</span>
+                    <span class="tag px-3 py-1 bg-blue-50 text-blue-600 rounded text-xs font-medium">Buff / Debuff</span>
+                    <span class="tag px-3 py-1 bg-green-50 text-green-600 rounded text-xs font-medium">环形站位</span>
+                    <span class="tag px-3 py-1 bg-rose-50 text-rose-700 rounded text-xs font-medium">8 套面板</span>
+                    <span class="tag px-3 py-1 bg-amber-50 text-amber-700 rounded text-xs font-medium">克制关系</span>
+                </div>
+
+                <div class="bg-gray-50 rounded-lg p-4 mb-4">
+                    <h5 class="font-semibold text-gray-700 mb-2">一局流程：</h5>
+                    <ul class="list-disc list-inside text-gray-600 space-y-1 text-sm">
+                        <li><strong>Ban 选</strong>：1 名玩家 + 3 名 AI，四人依次禁用角色；可按力量 / 智力 / 敏捷 / 辅助筛选；每轮 30 秒，超时跳过</li>
+                        <li><strong>选人</strong>：从剩余角色中随机展示最多 6 个可选卡，Tooltip 查看属性与技能后确认；AI 分配不重复角色，进入 4 人 2 队</li>
+                        <li><strong>战斗</strong>：每回合先猜拳，胜者拿本回合唯一行动权，平局重猜；行动方选择攻击 / 治疗 / 技能，直到一方全灭</li>
+                    </ul>
+                </div>
+
+                <div class="bg-gray-50 rounded-lg p-4 mb-4">
+                    <h5 class="font-semibold text-gray-700 mb-2">战斗规则（技能与数值）：</h5>
+                    <ul class="list-disc list-inside text-gray-600 space-y-1 text-sm">
+                        <li><strong>猜拳只决定谁动手</strong>：打破固定速度条；真正拉开对局的是角色技能、基础数值和状态效果</li>
+                        <li><strong>攻击</strong>：环形站位算距离，嘲讽会强制目标；伤害分物理 / 魔法 / 真实，走物攻、法攻、物防、法防，并结算暴击、减伤、护盾</li>
+                        <li><strong>面板刻度很小</strong>：物攻多在 1–3、体力多在 4–10，1 点伤害就是一次决策；技能层数和距离比堆面板更重要</li>
+                        <li><strong>Buff / Debuff</strong>：冰冻、闪避、风暴、冰盾、刺杀印记等按回合或层数结算；血条旁用图标显示</li>
+                        <li><strong>AI 差异</strong>：猜拳上 P1 记出拳习惯反制、P2 纯随机、P3 一半协助一半干扰；行动上按斩杀残血 → 治疗友方 → 放大招 → 普攻，并吃嘲讽和距离约束</li>
+                    </ul>
+                </div>
+
+                <div class="bg-gray-50 rounded-lg p-4 mb-4">
+                    <h5 class="font-semibold text-gray-700 mb-2">基础数值（8 套战场面板）：</h5>
+                    <p class="ew-note">可选用角色 7 名；达克尼斯含战马 / 骑士双形态，故按 8 套面板展示。当前物防、魔防均为 0，差距主要在物攻 / 魔攻、体力、回复和攻击距离。</p>
+                    <div class="table-wrap"><table class="analysis-table ew-table">
+                        <thead>
+                            <tr><th>角色</th><th>定位</th><th>物攻</th><th>魔攻</th><th>初始体力</th><th>体力上限</th><th>回复</th><th>距离</th></tr>
+                        </thead>
+                        <tbody>
+                            <tr><td>古恩</td><td>力量 · 打断</td><td>2</td><td>0</td><td>10</td><td>10</td><td>2</td><td>1</td></tr>
+                            <tr><td>巴萨卡</td><td>力量 · 决斗</td><td>2</td><td>0</td><td>8</td><td>8</td><td>2</td><td>1（斗志后 2）</td></tr>
+                            <tr><td>达克尼斯 · 战马</td><td>力量 · 冲锋</td><td>2（冲锋 +1）</td><td>0</td><td>10</td><td>10</td><td>无</td><td>1（算距 −1）</td></tr>
+                            <tr><td>达克尼斯 · 骑士</td><td>力量 · 抗性</td><td>2</td><td>0</td><td>5</td><td>5</td><td>1</td><td>1</td></tr>
+                            <tr><td>德古拉</td><td>智力 · 反伤</td><td>0</td><td>2</td><td>8</td><td>无</td><td>无</td><td>2</td></tr>
+                            <tr><td>优姬奥娜</td><td>智力 · 冰控</td><td>0</td><td>2</td><td>8</td><td>8</td><td>2</td><td>2</td></tr>
+                            <tr><td>阿萨辛</td><td>敏捷 · 刺杀</td><td>3</td><td>0</td><td>4</td><td>4</td><td>1</td><td>1</td></tr>
+                            <tr><td>梅尔</td><td>辅助 · 治疗</td><td>0</td><td>1</td><td>8</td><td>8</td><td>2</td><td>2</td></tr>
+                        </tbody>
+                    </table></div>
+                </div>
+
+                <div class="bg-gray-50 rounded-lg p-4 mb-4">
+                    <h5 class="font-semibold text-gray-700 mb-2">代表角色（技能写在卡面上）：</h5>
+                    <div class="ew-char-grid">
+                        <div class="ew-char">
+                            <h6>古恩<span class="ew-role">力量</span></h6>
+                            <p class="ew-stats">物攻 2 / 魔攻 0 / 体力 10（上限 10）/ 回复 2 / 距离 1</p>
+                            <ul>
+                                <li><strong>风暴</strong>：上场 2 层；场上有人濒死或死亡再 +1 层。可消耗 1 层使即将生效的攻击无效，并选任意目标造成 1 点真实伤害。</li>
+                                <li><strong>魔神</strong>：本场首次体力 ≤0 时回复至无限，获得 5 回合【魔化】（物攻翻倍、距离无限），结束后立即死亡。</li>
+                            </ul>
+                        </div>
+                        <div class="ew-char">
+                            <h6>巴萨卡<span class="ew-role">力量</span></h6>
+                            <p class="ew-stats">物攻 2 / 魔攻 0 / 体力 8（上限 8）/ 回复 2 / 距离 1</p>
+                            <ul>
+                                <li><strong>决斗</strong>：回合开始时若自己不是全场唯一最高体力，可对攻击范围内目标失去 X 点体力并猜拳（计入平局）；结果不为输则对其攻击。X 为连续发动回合数，中断重置。</li>
+                                <li><strong>斗志</strong>：当前体力 ≤4 时，受到的非真实伤害 −1，攻击距离 +1。</li>
+                            </ul>
+                        </div>
+                        <div class="ew-char">
+                            <h6>达克尼斯<span class="ew-role">力量 · 双形态</span></h6>
+                            <p class="ew-stats">战马：物攻 2 / 体力 10（上限 10）/ 无回复 / 距离 1<br>骑士：物攻 2 / 体力 5（上限 5）/ 回复 1 / 距离 1</p>
+                            <ul>
+                                <li><strong>冲锋</strong>（战马）：获得行动权时可进入冲锋——物攻 +1，被攻击必须再猜一次拳（不计平局）；赢则无效该次攻击，输则退出冲锋。</li>
+                                <li><strong>马术 / 孤勇</strong>：与他人算距离 −1；战马死亡切骑士。</li>
+                                <li><strong>暗铠</strong>（骑士）：免疫异常；受到的非自身伤害 −50%。</li>
+                            </ul>
+                        </div>
+                        <div class="ew-char">
+                            <h6>德古拉<span class="ew-role">智力</span></h6>
+                            <p class="ew-stats">物攻 0 / 魔攻 2 / 体力 8 / 上限无 / 回复无 / 距离 2</p>
+                            <ul>
+                                <li><strong>嗜血</strong>：攻击命中回复 1 点体力。</li>
+                                <li><strong>血咒</strong>：受伤时对来源造成所受伤害 50% 的真实伤害（向下取整）。</li>
+                                <li><strong>复活</strong>：本场首次体力 ≤0 时回复至 4，获得 5 回合【狂袭】：魔法伤害 +1，嗜血额外再回 1。</li>
+                            </ul>
+                        </div>
+                        <div class="ew-char">
+                            <h6>优姬奥娜<span class="ew-role">智力</span></h6>
+                            <p class="ew-stats">物攻 0 / 魔攻 2 / 体力 8（上限 8）/ 回复 2 / 距离 2</p>
+                            <ul>
+                                <li><strong>霜冻</strong>：攻击命中或受到非真实伤害时，给对方 1 层【寒冷】；满 3 层消耗并使其下回合【冰冻】。场上有人冰冻时，自己回 1 体力并获得 1 层【冰盾】。</li>
+                                <li><strong>冰盾</strong>：行动时可改为获得 1 层；受伤时可消耗 1 层，非真实伤害 −50%（向下取整），并对来源造成与剩余伤害等额的法术伤害。</li>
+                                <li><strong>祝福</strong>：死亡时可令场上一名角色下回合冰冻。</li>
+                            </ul>
+                        </div>
+                        <div class="ew-char">
+                            <h6>阿萨辛<span class="ew-role">敏捷</span></h6>
+                            <p class="ew-stats">物攻 3 / 魔攻 0 / 体力 4（上限 4）/ 回复 1 / 距离 1</p>
+                            <ul>
+                                <li><strong>隐匿</strong>：成为攻击目标时可选择是否闪避。不闪避：非真实伤害 −50%（向下取整）。闪避：再猜一次拳（不计平局）；赢则无效攻击并获得 1 层【刺杀】；输则伤害不减免。</li>
+                                <li><strong>乱舞</strong>：选攻击目标时可消耗 1 层刺杀，回复 1 点体力且本次物理伤害 +1。</li>
+                            </ul>
+                        </div>
+                        <div class="ew-char">
+                            <h6>梅尔<span class="ew-role">辅助</span></h6>
+                            <p class="ew-stats">物攻 0 / 魔攻 1 / 体力 8（上限 8）/ 回复 2 / 距离 2</p>
+                            <ul>
+                                <li><strong>圣光</strong>：回合末若自己是场上唯一最低体力，回复 1 点。</li>
+                                <li><strong>奉献</strong>：每次回复体力时，可改为自己与另一目标各回 1 点。</li>
+                                <li><strong>救赎</strong>：回合开始时若自己不是全场唯一最高体力，可失去至多 2 点体力，令一名目标回复等额。</li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="bg-gray-50 rounded-lg p-4 mb-4">
+                    <h5 class="font-semibold text-gray-700 mb-2">克制关系（由面板差和技能咬合，不是属性相克表）：</h5>
+                    <ul class="list-disc list-inside text-gray-600 space-y-1 text-sm">
+                        <li><strong>真实伤害克减伤盾</strong>：古恩【风暴】1 点真实、德古拉【血咒】50% 真实，绕过优姬奥娜【冰盾】和阿萨辛「不闪避减伤」（两者只挡非真实）。达克尼斯骑士【暗铠】把非自身伤害砍半再向下取整，1 点真实可能打成 0，反而抗得住风暴单点。</li>
+                        <li><strong>高物攻怕打断，也怕反伤</strong>：阿萨辛物攻 3、达克尼斯冲锋后物攻 3，是古恩【风暴】最想改写的一击；打德古拉则吃 50% 真实反伤。梅尔魔攻只有 1，打德古拉几乎喂不出有效反伤。</li>
+                        <li><strong>距离 2 克近战 1</strong>：优姬奥娜 / 德古拉 / 梅尔站 2 格磨近战（古恩、巴萨卡、阿萨辛）。巴萨卡体力 ≤4 时【斗志】距离 +1，残血反克这三人；达克尼斯【马术】算距离 −1，战马可提前咬到远程。</li>
+                        <li><strong>控制怕免疫</strong>：优姬奥娜叠【寒冷】→【冰冻】，骑士【暗铠】免疫异常，这条线打不进达克尼斯第二形态。古恩 10 体力、战马 10 体力常是全场最高，巴萨卡【决斗】专点「不是唯一最高」的人。</li>
+                        <li><strong>低血是刀也是奶口</strong>：阿萨辛体力 4、骑士 5，当队友时梅尔【救赎】【奉献】能托；当敌人时他们容易变成全场最低，梅尔【圣光】会对不上自己。德古拉无上限、无自然回复，吃治疗会无限长，Ban 选要考虑禁梅尔或禁德古拉。</li>
+                        <li><strong>猜拳会叠层</strong>：达克尼斯【冲锋】和阿萨辛【隐匿】都要再猜一次拳。同一队带两个，行动权博弈会变厚，也更容易被古恩在「攻击即将生效」时用风暴拆掉。</li>
+                    </ul>
+                </div>
+
+                <div class="flex gap-4">
+                    <a href="https://github.com/LinWangRu/Rock-Paper-Scissors" target="_blank" 
+                       class="inline-flex items-center gap-2 px-4 py-2 bg-gray-900 text-white rounded-lg hover:bg-gray-800 transition text-sm font-medium">
+                        <svg class="w-4 h-4" fill="currentColor" viewBox="0 0 24 24"><path d="M12 0c-6.626 0-12 5.373-12 12 0 5.302 3.438 9.8 8.207 11.387.599.111.793-.261.793-.577v-2.234c-3.338.726-4.033-1.416-4.033-1.416-.546-1.387-1.333-1.756-1.333-1.756-1.089-.745.083-.729.083-.729 1.205.084 1.839 1.237 1.839 1.237 1.07 1.834 2.807 1.304 3.492.997.107-.775.418-1.305.762-1.604-2.665-.305-5.467-1.334-5.467-5.931 0-1.311.469-2.381 1.236-3.221-.124-.303-.535-1.524.117-3.176 0 0 1.008-.322 3.301 1.23.957-.266 1.983-.399 3.003-.404 1.02.005 2.047.138 3.006.404 2.291-1.552 3.297-1.23 3.297-1.23.653 1.653.242 2.874.118 3.176.77.84 1.235 1.911 1.235 3.221 0 4.609-2.807 5.624-5.479 5.921.43.372.823 1.102.823 2.222v3.293c0 .319.192.694.801.576 4.765-1.589 8.199-6.086 8.199-11.386 0-6.627-5.373-12-12-12z"/></svg>
+                        查看代码
+                    </a>
+                    <button onclick="playVideo('演示0.mp4')" 
+                            class="inline-flex items-center gap-2 px-4 py-2 bg-red-600 text-white rounded-lg hover:bg-red-700 transition text-sm font-medium">
+                        <svg class="w-4 h-4" fill="currentColor" viewBox="0 0 24 24"><path d="M8 5v14l11-7z"/></svg>
+                        玩法演示
+                    </button>
+                </div>
+            </article>
 
 <!-- 游戏分析与数值策划 · 合并模块 -->
 <!-- 游戏分析与数值策划 · 合并模块 -->
@@ -710,230 +935,6 @@
         </div>
     </div>
 </article>
-
-            <!-- 重启 / ActionRPG (UE4 系统策划) -->
-            <article class="project-card bg-white rounded-2xl p-8 shadow-md border-2 border-indigo-100 relative overflow-hidden">
-                <div class="absolute top-0 right-0 bg-gradient-to-l from-indigo-500 to-blue-500 text-white px-4 py-1 text-xs font-bold rounded-bl-lg">
-                    系统策划
-                </div>
-
-                <div class="flex items-start gap-4 mb-4">
-                    <div class="game-icon bg-gradient-to-br from-indigo-400 to-blue-500 text-white">⚔️</div>
-                    <div class="flex-1">
-                        <div class="flex flex-col md:flex-row justify-between items-start md:items-center">
-                            <div>
-                                <h4 class="text-2xl font-bold text-gray-900 mb-1">重启（ActionRPG）</h4>
-                                <p class="text-gray-600">单机动作 RPG · 先锁服务群体，再落双战斗规则与场景规范</p>
-                            </div>
-                            <span class="mt-2 md:mt-0 px-3 py-1 bg-indigo-100 text-indigo-600 rounded-full text-sm">2026.04 - 至今 · 主策划</span>
-                        </div>
-                    </div>
-                </div>
-
-                <div class="flex gap-2 flex-wrap mb-4">
-                    <span class="tag px-3 py-1 bg-indigo-50 text-indigo-600 rounded text-xs font-medium">服务群体分层</span>
-                    <span class="tag px-3 py-1 bg-blue-50 text-blue-600 rounded text-xs font-medium">Swift / Command</span>
-                    <span class="tag px-3 py-1 bg-purple-50 text-purple-600 rounded text-xs font-medium">机制与剧情桥接</span>
-                    <span class="tag px-3 py-1 bg-amber-50 text-amber-700 rounded text-xs font-medium">野外即时 · Boss 回合</span>
-                    <span class="tag px-3 py-1 bg-green-50 text-green-600 rounded text-xs font-medium">剧情 × 养成推进</span>
-                </div>
-
-                <div class="bg-gray-50 rounded-lg p-4 mb-4">
-                    <h5 class="font-semibold text-gray-700 mb-2">策划设计要点：</h5>
-                    <ul class="list-disc list-inside text-gray-600 space-y-1 text-sm">
-                        <li><strong>服务群体</strong>：核心用户是同时要连招与指令深度的单机 JRPG 玩家；动作手感只降低野外劝退，Boss 战不改回无脑连招</li>
-                        <li><strong>目标定位</strong>：单机双战斗体系——同一套角色兼顾「连招爽感」与「指令策略深度」，用节奏变奏而非两套割裂玩法硬拼</li>
-                        <li><strong>双模式需求</strong>：Swift（即时）服务野外清杂与操作密度；Command（指令·AT）服务精英/Boss，强制策略取舍与资源管理</li>
-                        <li><strong>机制桥接</strong>：共享养成、技能身份与数值口径；切换时冻结/归档即时输入，由 TurnManager 接管 AT 充能→预约→结算；Craft 产耗跨模式闭环</li>
-                        <li><strong>剧情桥接</strong>：将双模式解释为角色战斗意识的两种状态；关键战用短剧情合理化强制 Command，并立即兑现养成/技能解锁</li>
-                        <li><strong>场景规范</strong>：野外刷怪默认即时；精英/Boss 强制回合；用「剧情动机 → 养成解锁 → 战斗验证」推动持续体验</li>
-                    </ul>
-                </div>
-
-                <div class="flex gap-3 flex-wrap">
-                    <a href="restart/重启_双战斗体系_系统策划案.pdf" target="_blank"
-                       class="inline-flex items-center gap-2 px-4 py-2 bg-indigo-600 text-white rounded-lg hover:bg-indigo-700 transition text-sm font-medium">
-                        <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 10v6m0 0l-3-3m3 3l3-3m2 8H7a2 2 0 01-2-2V5a2 2 0 012-2h5.586a1 1 0 01.707.293l5.414 5.414a1 1 0 01.293.707V19a2 2 0 01-2 2z"/></svg>
-                        阅读系统策划案 PDF
-                    </a>
-                    <a href="restart/重启_双战斗体系_系统策划案.docx" download
-                       class="inline-flex items-center gap-2 px-4 py-2 bg-white text-indigo-700 border border-indigo-200 rounded-lg hover:bg-indigo-50 transition text-sm font-medium">
-                        <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 10v6m0 0l-3-3m3 3l3-3m2 8H7a2 2 0 01-2-2V5a2 2 0 012-2h5.586a1 1 0 01.707.293l5.414 5.414a1 1 0 01.293.707V19a2 2 0 01-2 2z"/></svg>
-                        下载 Word v0.2
-                    </a>
-                    <button onclick="playVideo('file:///C:/Users/lwr/Desktop/ARPGdemo/demo演示.mp4')"
-                            class="inline-flex items-center gap-2 px-4 py-2 bg-indigo-600 text-white rounded-lg hover:bg-indigo-700 transition text-sm font-medium">
-                        <svg class="w-4 h-4" fill="currentColor" viewBox="0 0 24 24"><path d="M8 5v14l11-7z"/></svg>
-                        小关卡演示
-                    </button>
-                    <a href="https://github.com/LinWangRu/Action-RPG" target="_blank"
-                       class="inline-flex items-center gap-2 px-4 py-2 bg-gray-900 text-white rounded-lg hover:bg-gray-800 transition text-sm font-medium">
-                        <svg class="w-4 h-4" fill="currentColor" viewBox="0 0 24 24"><path d="M12 0c-6.626 0-12 5.373-12 12 0 5.302 3.438 9.8 8.207 11.387.599.111.793-.261.793-.577v-2.234c-3.338.726-4.033-1.416-4.033-1.416-.546-1.387-1.333-1.756-1.333-1.756-1.089-.745.083-.729.083-.729 1.205.084 1.839 1.237 1.839 1.237 1.07 1.834 2.807 1.304 3.492.997.107-.775.418-1.305.762-1.604-2.665-.305-5.467-1.334-5.467-5.931 0-1.311.469-2.381 1.236-3.221-.124-.303-.535-1.524.117-3.176 0 0 1.008-.322 3.301 1.23.957-.266 1.983-.399 3.003-.404 1.02.005 2.047.138 3.006.404 2.291-1.552 3.297-1.23 3.297-1.23.653 1.653.242 2.874.118 3.176.77.84 1.235 1.911 1.235 3.221 0 4.609-2.807 5.624-5.479 5.921.43.372.823 1.102.823 2.222v3.293c0 .319.192.694.801.576 4.765-1.589 8.199-6.086 8.199-11.386 0-6.627-5.373-12-12-12z"/></svg>
-                        查看代码
-                    </a>
-                </div>
-            </article>
-
-            <!-- Endless War (Rock Paper Scissors) -->
-            <article class="project-card bg-white rounded-2xl p-8 shadow-md border-2 border-red-100 relative overflow-hidden">
-                <div class="absolute top-0 right-0 bg-gradient-to-l from-red-500 to-orange-500 text-white px-4 py-1 text-xs font-bold rounded-bl-lg">
-                    核心作品
-                </div>
-                
-                <div class="flex items-start gap-4 mb-4">
-                    <div class="game-icon bg-gradient-to-br from-red-400 to-orange-400 text-white">✊</div>
-                    <div class="flex-1">
-                        <div class="flex flex-col md:flex-row justify-between items-start md:items-center">
-                            <div>
-                                <h4 class="text-2xl font-bold text-gray-900 mb-1">Endless War（无尽战争）</h4>
-                                <p class="text-gray-600">单机 4 人 2 队卡牌对战 · Ban 选 + 猜拳争行动权 · 规则写在技能与数值上</p>
-                            </div>
-                            <span class="mt-2 md:mt-0 px-3 py-1 bg-red-100 text-red-600 rounded-full text-sm font-medium">2025.09 – 2025.10 · 独立策划</span>
-                        </div>
-                    </div>
-                </div>
-                
-                <div class="flex gap-2 flex-wrap mb-4">
-                    <span class="tag px-3 py-1 bg-red-50 text-red-600 rounded text-xs font-medium">猜拳行动权</span>
-                    <span class="tag px-3 py-1 bg-orange-50 text-orange-600 rounded text-xs font-medium">战前 Ban 选</span>
-                    <span class="tag px-3 py-1 bg-purple-50 text-purple-600 rounded text-xs font-medium">技能与数值</span>
-                    <span class="tag px-3 py-1 bg-blue-50 text-blue-600 rounded text-xs font-medium">Buff / Debuff</span>
-                    <span class="tag px-3 py-1 bg-green-50 text-green-600 rounded text-xs font-medium">环形站位</span>
-                    <span class="tag px-3 py-1 bg-rose-50 text-rose-700 rounded text-xs font-medium">8 套面板</span>
-                    <span class="tag px-3 py-1 bg-amber-50 text-amber-700 rounded text-xs font-medium">克制关系</span>
-                </div>
-
-                <div class="bg-gray-50 rounded-lg p-4 mb-4">
-                    <h5 class="font-semibold text-gray-700 mb-2">一局流程：</h5>
-                    <ul class="list-disc list-inside text-gray-600 space-y-1 text-sm">
-                        <li><strong>Ban 选</strong>：1 名玩家 + 3 名 AI，四人依次禁用角色；可按力量 / 智力 / 敏捷 / 辅助筛选；每轮 30 秒，超时跳过</li>
-                        <li><strong>选人</strong>：从剩余角色中随机展示最多 6 个可选卡，Tooltip 查看属性与技能后确认；AI 分配不重复角色，进入 4 人 2 队</li>
-                        <li><strong>战斗</strong>：每回合先猜拳，胜者拿本回合唯一行动权，平局重猜；行动方选择攻击 / 治疗 / 技能，直到一方全灭</li>
-                    </ul>
-                </div>
-
-                <div class="bg-gray-50 rounded-lg p-4 mb-4">
-                    <h5 class="font-semibold text-gray-700 mb-2">战斗规则（技能与数值）：</h5>
-                    <ul class="list-disc list-inside text-gray-600 space-y-1 text-sm">
-                        <li><strong>猜拳只决定谁动手</strong>：打破固定速度条；真正拉开对局的是角色技能、基础数值和状态效果</li>
-                        <li><strong>攻击</strong>：环形站位算距离，嘲讽会强制目标；伤害分物理 / 魔法 / 真实，走物攻、法攻、物防、法防，并结算暴击、减伤、护盾</li>
-                        <li><strong>面板刻度很小</strong>：物攻多在 1–3、体力多在 4–10，1 点伤害就是一次决策；技能层数和距离比堆面板更重要</li>
-                        <li><strong>Buff / Debuff</strong>：冰冻、闪避、风暴、冰盾、刺杀印记等按回合或层数结算；血条旁用图标显示</li>
-                        <li><strong>AI 差异</strong>：猜拳上 P1 记出拳习惯反制、P2 纯随机、P3 一半协助一半干扰；行动上按斩杀残血 → 治疗友方 → 放大招 → 普攻，并吃嘲讽和距离约束</li>
-                    </ul>
-                </div>
-
-                <div class="bg-gray-50 rounded-lg p-4 mb-4">
-                    <h5 class="font-semibold text-gray-700 mb-2">基础数值（8 套战场面板）：</h5>
-                    <p class="ew-note">可选用角色 7 名；达克尼斯含战马 / 骑士双形态，故按 8 套面板展示。当前物防、魔防均为 0，差距主要在物攻 / 魔攻、体力、回复和攻击距离。</p>
-                    <div class="table-wrap"><table class="analysis-table ew-table">
-                        <thead>
-                            <tr><th>角色</th><th>定位</th><th>物攻</th><th>魔攻</th><th>初始体力</th><th>体力上限</th><th>回复</th><th>距离</th></tr>
-                        </thead>
-                        <tbody>
-                            <tr><td>古恩</td><td>力量 · 打断</td><td>2</td><td>0</td><td>10</td><td>10</td><td>2</td><td>1</td></tr>
-                            <tr><td>巴萨卡</td><td>力量 · 决斗</td><td>2</td><td>0</td><td>8</td><td>8</td><td>2</td><td>1（斗志后 2）</td></tr>
-                            <tr><td>达克尼斯 · 战马</td><td>力量 · 冲锋</td><td>2（冲锋 +1）</td><td>0</td><td>10</td><td>10</td><td>无</td><td>1（算距 −1）</td></tr>
-                            <tr><td>达克尼斯 · 骑士</td><td>力量 · 抗性</td><td>2</td><td>0</td><td>5</td><td>5</td><td>1</td><td>1</td></tr>
-                            <tr><td>德古拉</td><td>智力 · 反伤</td><td>0</td><td>2</td><td>8</td><td>无</td><td>无</td><td>2</td></tr>
-                            <tr><td>优姬奥娜</td><td>智力 · 冰控</td><td>0</td><td>2</td><td>8</td><td>8</td><td>2</td><td>2</td></tr>
-                            <tr><td>阿萨辛</td><td>敏捷 · 刺杀</td><td>3</td><td>0</td><td>4</td><td>4</td><td>1</td><td>1</td></tr>
-                            <tr><td>梅尔</td><td>辅助 · 治疗</td><td>0</td><td>1</td><td>8</td><td>8</td><td>2</td><td>2</td></tr>
-                        </tbody>
-                    </table></div>
-                </div>
-
-                <div class="bg-gray-50 rounded-lg p-4 mb-4">
-                    <h5 class="font-semibold text-gray-700 mb-2">代表角色（技能写在卡面上）：</h5>
-                    <div class="ew-char-grid">
-                        <div class="ew-char">
-                            <h6>古恩<span class="ew-role">力量</span></h6>
-                            <p class="ew-stats">物攻 2 / 魔攻 0 / 体力 10（上限 10）/ 回复 2 / 距离 1</p>
-                            <ul>
-                                <li><strong>风暴</strong>：上场 2 层；场上有人濒死或死亡再 +1 层。可消耗 1 层使即将生效的攻击无效，并选任意目标造成 1 点真实伤害。</li>
-                                <li><strong>魔神</strong>：本场首次体力 ≤0 时回复至无限，获得 5 回合【魔化】（物攻翻倍、距离无限），结束后立即死亡。</li>
-                            </ul>
-                        </div>
-                        <div class="ew-char">
-                            <h6>巴萨卡<span class="ew-role">力量</span></h6>
-                            <p class="ew-stats">物攻 2 / 魔攻 0 / 体力 8（上限 8）/ 回复 2 / 距离 1</p>
-                            <ul>
-                                <li><strong>决斗</strong>：回合开始时若自己不是全场唯一最高体力，可对攻击范围内目标失去 X 点体力并猜拳（计入平局）；结果不为输则对其攻击。X 为连续发动回合数，中断重置。</li>
-                                <li><strong>斗志</strong>：当前体力 ≤4 时，受到的非真实伤害 −1，攻击距离 +1。</li>
-                            </ul>
-                        </div>
-                        <div class="ew-char">
-                            <h6>达克尼斯<span class="ew-role">力量 · 双形态</span></h6>
-                            <p class="ew-stats">战马：物攻 2 / 体力 10（上限 10）/ 无回复 / 距离 1<br>骑士：物攻 2 / 体力 5（上限 5）/ 回复 1 / 距离 1</p>
-                            <ul>
-                                <li><strong>冲锋</strong>（战马）：获得行动权时可进入冲锋——物攻 +1，被攻击必须再猜一次拳（不计平局）；赢则无效该次攻击，输则退出冲锋。</li>
-                                <li><strong>马术 / 孤勇</strong>：与他人算距离 −1；战马死亡切骑士。</li>
-                                <li><strong>暗铠</strong>（骑士）：免疫异常；受到的非自身伤害 −50%。</li>
-                            </ul>
-                        </div>
-                        <div class="ew-char">
-                            <h6>德古拉<span class="ew-role">智力</span></h6>
-                            <p class="ew-stats">物攻 0 / 魔攻 2 / 体力 8 / 上限无 / 回复无 / 距离 2</p>
-                            <ul>
-                                <li><strong>嗜血</strong>：攻击命中回复 1 点体力。</li>
-                                <li><strong>血咒</strong>：受伤时对来源造成所受伤害 50% 的真实伤害（向下取整）。</li>
-                                <li><strong>复活</strong>：本场首次体力 ≤0 时回复至 4，获得 5 回合【狂袭】：魔法伤害 +1，嗜血额外再回 1。</li>
-                            </ul>
-                        </div>
-                        <div class="ew-char">
-                            <h6>优姬奥娜<span class="ew-role">智力</span></h6>
-                            <p class="ew-stats">物攻 0 / 魔攻 2 / 体力 8（上限 8）/ 回复 2 / 距离 2</p>
-                            <ul>
-                                <li><strong>霜冻</strong>：攻击命中或受到非真实伤害时，给对方 1 层【寒冷】；满 3 层消耗并使其下回合【冰冻】。场上有人冰冻时，自己回 1 体力并获得 1 层【冰盾】。</li>
-                                <li><strong>冰盾</strong>：行动时可改为获得 1 层；受伤时可消耗 1 层，非真实伤害 −50%（向下取整），并对来源造成与剩余伤害等额的法术伤害。</li>
-                                <li><strong>祝福</strong>：死亡时可令场上一名角色下回合冰冻。</li>
-                            </ul>
-                        </div>
-                        <div class="ew-char">
-                            <h6>阿萨辛<span class="ew-role">敏捷</span></h6>
-                            <p class="ew-stats">物攻 3 / 魔攻 0 / 体力 4（上限 4）/ 回复 1 / 距离 1</p>
-                            <ul>
-                                <li><strong>隐匿</strong>：成为攻击目标时可选择是否闪避。不闪避：非真实伤害 −50%（向下取整）。闪避：再猜一次拳（不计平局）；赢则无效攻击并获得 1 层【刺杀】；输则伤害不减免。</li>
-                                <li><strong>乱舞</strong>：选攻击目标时可消耗 1 层刺杀，回复 1 点体力且本次物理伤害 +1。</li>
-                            </ul>
-                        </div>
-                        <div class="ew-char">
-                            <h6>梅尔<span class="ew-role">辅助</span></h6>
-                            <p class="ew-stats">物攻 0 / 魔攻 1 / 体力 8（上限 8）/ 回复 2 / 距离 2</p>
-                            <ul>
-                                <li><strong>圣光</strong>：回合末若自己是场上唯一最低体力，回复 1 点。</li>
-                                <li><strong>奉献</strong>：每次回复体力时，可改为自己与另一目标各回 1 点。</li>
-                                <li><strong>救赎</strong>：回合开始时若自己不是全场唯一最高体力，可失去至多 2 点体力，令一名目标回复等额。</li>
-                            </ul>
-                        </div>
-                    </div>
-                </div>
-
-                <div class="bg-gray-50 rounded-lg p-4 mb-4">
-                    <h5 class="font-semibold text-gray-700 mb-2">克制关系（由面板差和技能咬合，不是属性相克表）：</h5>
-                    <ul class="list-disc list-inside text-gray-600 space-y-1 text-sm">
-                        <li><strong>真实伤害克减伤盾</strong>：古恩【风暴】1 点真实、德古拉【血咒】50% 真实，绕过优姬奥娜【冰盾】和阿萨辛「不闪避减伤」（两者只挡非真实）。达克尼斯骑士【暗铠】把非自身伤害砍半再向下取整，1 点真实可能打成 0，反而抗得住风暴单点。</li>
-                        <li><strong>高物攻怕打断，也怕反伤</strong>：阿萨辛物攻 3、达克尼斯冲锋后物攻 3，是古恩【风暴】最想改写的一击；打德古拉则吃 50% 真实反伤。梅尔魔攻只有 1，打德古拉几乎喂不出有效反伤。</li>
-                        <li><strong>距离 2 克近战 1</strong>：优姬奥娜 / 德古拉 / 梅尔站 2 格磨近战（古恩、巴萨卡、阿萨辛）。巴萨卡体力 ≤4 时【斗志】距离 +1，残血反克这三人；达克尼斯【马术】算距离 −1，战马可提前咬到远程。</li>
-                        <li><strong>控制怕免疫</strong>：优姬奥娜叠【寒冷】→【冰冻】，骑士【暗铠】免疫异常，这条线打不进达克尼斯第二形态。古恩 10 体力、战马 10 体力常是全场最高，巴萨卡【决斗】专点「不是唯一最高」的人。</li>
-                        <li><strong>低血是刀也是奶口</strong>：阿萨辛体力 4、骑士 5，当队友时梅尔【救赎】【奉献】能托；当敌人时他们容易变成全场最低，梅尔【圣光】会对不上自己。德古拉无上限、无自然回复，吃治疗会无限长，Ban 选要考虑禁梅尔或禁德古拉。</li>
-                        <li><strong>猜拳会叠层</strong>：达克尼斯【冲锋】和阿萨辛【隐匿】都要再猜一次拳。同一队带两个，行动权博弈会变厚，也更容易被古恩在「攻击即将生效」时用风暴拆掉。</li>
-                    </ul>
-                </div>
-
-                <div class="flex gap-4">
-                    <a href="https://github.com/LinWangRu/Rock-Paper-Scissors" target="_blank" 
-                       class="inline-flex items-center gap-2 px-4 py-2 bg-gray-900 text-white rounded-lg hover:bg-gray-800 transition text-sm font-medium">
-                        <svg class="w-4 h-4" fill="currentColor" viewBox="0 0 24 24"><path d="M12 0c-6.626 0-12 5.373-12 12 0 5.302 3.438 9.8 8.207 11.387.599.111.793-.261.793-.577v-2.234c-3.338.726-4.033-1.416-4.033-1.416-.546-1.387-1.333-1.756-1.333-1.756-1.089-.745.083-.729.083-.729 1.205.084 1.839 1.237 1.839 1.237 1.07 1.834 2.807 1.304 3.492.997.107-.775.418-1.305.762-1.604-2.665-.305-5.467-1.334-5.467-5.931 0-1.311.469-2.381 1.236-3.221-.124-.303-.535-1.524.117-3.176 0 0 1.008-.322 3.301 1.23.957-.266 1.983-.399 3.003-.404 1.02.005 2.047.138 3.006.404 2.291-1.552 3.297-1.23 3.297-1.23.653 1.653.242 2.874.118 3.176.77.84 1.235 1.911 1.235 3.221 0 4.609-2.807 5.624-5.479 5.921.43.372.823 1.102.823 2.222v3.293c0 .319.192.694.801.576 4.765-1.589 8.199-6.086 8.199-11.386 0-6.627-5.373-12-12-12z"/></svg>
-                        查看代码
-                    </a>
-                    <button onclick="playVideo('演示0.mp4')" 
-                            class="inline-flex items-center gap-2 px-4 py-2 bg-red-600 text-white rounded-lg hover:bg-red-700 transition text-sm font-medium">
-                        <svg class="w-4 h-4" fill="currentColor" viewBox="0 0 24 24"><path d="M8 5v14l11-7z"/></svg>
-                        玩法演示
-                    </button>
-                </div>
-            </article>
 
             <!-- 需平园区 (俯视生存探索) -->
             <article class="project-card bg-white rounded-2xl p-8 shadow-md border-2 border-emerald-100 relative overflow-hidden">
