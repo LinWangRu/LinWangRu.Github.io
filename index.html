@@ -1109,10 +1109,13 @@
     <div id="videoModal" class="video-modal" onclick="closeVideo(event)">
         <div class="video-container" onclick="event.stopPropagation()">
             <button class="close-btn" onclick="closeVideo()">✕</button>
-            <video id="demoVideo" controls autoplay>
+            <video id="demoVideo" controls playsinline>
                 <source src="" type="video/mp4">
-                您的浏览器不支持视频播放。
+                您的浏览器不支持视频播放。<a id="videoFallbackLink" href="#" target="_blank">直接下载视频</a>
             </video>
+            <div id="videoFallbackNote" style="display:none;color:#fff;text-align:center;margin-top:8px;font-size:14px;opacity:.85">
+                浏览器拦截了自动播放，请点击视频画面或 <a id="videoFallbackLink2" href="#" target="_blank" style="color:#a7f3d0;text-decoration:underline">点这里直接打开视频</a>。
+            </div>
         </div>
     </div>
 
@@ -1127,11 +1130,38 @@
             const modal = document.getElementById('videoModal');
             const video = document.getElementById('demoVideo');
             const source = video.querySelector('source');
-            
-            source.src = videoFile;
-            video.load();
+
+            // 先暂停并清空旧源，避免浏览器复用上一次解码器导致新源失败
+            video.pause();
+            try { video.removeAttribute('src'); } catch (_) {}
+            source.removeAttribute('src');
+            try { video.load(); } catch (_) {}
+
+            // 重新给 video 自身设置 src（部分浏览器对 <source> src 切换不敏感）
+            const cacheBuster = (videoFile.indexOf('?') >= 0 ? '&' : '?') + 't=' + Date.now();
+            const finalUrl = videoFile + cacheBuster;
+            source.src = finalUrl;
+            video.src = finalUrl;
+
+            // 回填 fallback 链接
+            ['videoFallbackLink', 'videoFallbackLink2'].forEach((id) => {
+                const el = document.getElementById(id);
+                if (el) el.href = videoFile;
+            });
+            const note = document.getElementById('videoFallbackNote');
+            if (note) note.style.display = 'none';
+
             modal.classList.add('active');
-            video.play();
+
+            const playPromise = video.play();
+            if (playPromise && typeof playPromise.catch === 'function') {
+                playPromise.catch((err) => {
+                    console.warn('video.play() rejected:', err);
+                    // autoplay 被拦截时，给用户一个明显的提示
+                    const note = document.getElementById('videoFallbackNote');
+                    if (note) note.style.display = 'block';
+                });
+            }
         }
         
         // 关闭视频
