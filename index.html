@@ -235,6 +235,7 @@
             <nav class="space-x-6 text-sm font-medium">
                 <a href="#projects" class="hover:text-purple-600 transition">项目</a>
                 <a href="#game-analysis" class="hover:text-purple-600 transition">策划分析</a>
+                <a href="#character-design" class="hover:text-purple-600 transition">角色策划案</a>
                 <a href="#about" class="hover:text-purple-600 transition">关于</a>
                 <a href="https://github.com/LinWangRu" target="_blank" class="hover:text-purple-600 transition">GitHub</a>
             </nav>
@@ -509,6 +510,122 @@
                     </button>
                 </div>
             </article>
+
+<!-- 角色策划案 · 破碎冠冕 / 卡列琳娜 / 伊利斯 -->
+<article id="character-design" class="project-card bg-white rounded-2xl p-8 shadow-md border-2 border-rose-100 relative overflow-hidden">
+    <div class="absolute top-0 right-0 bg-gradient-to-l from-rose-500 to-fuchsia-500 text-white px-4 py-1 text-xs font-bold rounded-bl-lg">
+        角色策划案
+    </div>
+    <div class="flex items-start gap-4 mb-4">
+        <div class="game-icon bg-gradient-to-br from-rose-400 to-fuchsia-500 text-white">🗡️</div>
+        <div class="flex-1">
+            <div class="flex flex-col md:flex-row justify-between items-start md:items-center">
+                <div>
+                    <h4 class="text-2xl font-bold text-gray-900 mb-1">角色策划案 · 三个核心角色</h4>
+                    <p class="text-gray-600">破碎冠冕（爱丽丝）即时 · 回合双形态 · 完整配置表驱动</p>
+                </div>
+                <span class="mt-2 md:mt-0 px-3 py-1 bg-rose-100 text-rose-700 rounded-full text-sm">2026 · 角色设计</span>
+            </div>
+        </div>
+    </div>
+    <div class="flex gap-2 flex-wrap mb-4">
+        <span class="tag px-3 py-1 bg-rose-50 text-rose-600 rounded text-xs font-medium">角色机制设计</span>
+        <span class="tag px-3 py-1 bg-fuchsia-50 text-fuchsia-600 rounded text-xs font-medium">3C 战斗闭环</span>
+        <span class="tag px-3 py-1 bg-indigo-50 text-indigo-600 rounded text-xs font-medium">技能数值口径</span>
+        <span class="tag px-3 py-1 bg-blue-50 text-blue-600 rounded text-xs font-medium">Buff / Debuff</span>
+        <span class="tag px-3 py-1 bg-emerald-50 text-emerald-600 rounded text-xs font-medium">双形态切换</span>
+        <span class="tag px-3 py-1 bg-amber-50 text-amber-700 rounded text-xs font-medium">Excel 配表</span>
+    </div>
+
+    <!-- 角色标签切换 -->
+    <div class="char-tabs mb-6">
+        <button class="char-tab active" data-char="alice" onclick="switchChar('alice')">破碎冠冕 · 爱丽丝（双形态）</button>
+        <button class="char-tab" data-char="kale" onclick="switchChar('kale')">乘风破浪 · 卡列琳娜</button>
+        <button class="char-tab" data-char="yiris" onclick="switchChar('yiris')">余音 · 伊利斯</button>
+    </div>
+
+    <!-- 爱丽丝面板 -->
+    <div id="char-alice" class="char-panel active">
+        <div class="bg-gray-50 rounded-lg p-4 mb-4">
+            <h5 class="font-semibold text-gray-700 mb-2">设计思路：</h5>
+            <ul class="list-disc list-inside text-gray-600 space-y-1 text-sm">
+                <li><strong>定位</strong>：序章即入队的圣战士，玩家可立即体验三段普攻 + 大剑突刺 + 闪避 + 护盾 + 龙甲切换</li>
+                <li><strong>双形态机制</strong>：纯白（剑）→ 龙甲（拳 / 剑自由切换）解锁后，资源系统【咒怨】↔【破碎冠冕】充能形成内外两层循环</li>
+                <li><strong>印记体系</strong>：【撕裂】最多 6 层 / 目标，层数同时驱动：① 玩家伤害成长 ② Boss 易伤 ③ 终结技充能；与终结技【冥龙裁决】引爆产生连锁</li>
+                <li><strong>数值闭环</strong>：以玩家最大体力为基底的百分比口径（已损体力 1.5% / 3% / 8% 回复），避免硬数值随养成膨胀</li>
+            </ul>
+        </div>
+        <div class="flex gap-3 flex-wrap">
+            <a href="restart/%E3%80%90%E7%A0%B4%E7%A2%8E%E5%86%A0%E5%86%95%E3%80%91%E7%88%B1%E4%B8%BD%E4%B8%9D%EF%BC%88%E5%AE%9E%E6%97%B6%E6%88%98%E6%96%97%EF%BC%89.txt" target="_blank"
+               class="inline-flex items-center gap-2 px-4 py-2 bg-rose-600 text-white rounded-lg hover:bg-rose-700 transition text-sm font-medium">
+                阅读即时战斗稿（TXT）
+            </a>
+            <a href="restart/Alice_3C_Combat_Design.xlsx" download
+               class="inline-flex items-center gap-2 px-4 py-2 bg-white text-rose-700 border border-rose-200 rounded-lg hover:bg-rose-50 transition text-sm font-medium">
+                下载 3C 战斗策划表 Excel
+            </a>
+            <a href="restart/%E3%80%90%E7%A0%B4%E7%A2%8E%E5%86%A0%E5%86%95%E3%80%91%E7%88%B1%E4%B8%BD%E4%B8%9D%EF%BC%88%E5%9B%9E%E5%90%88%E5%88%B6%EF%BC%89.txt" target="_blank"
+               class="inline-flex items-center gap-2 px-4 py-2 bg-white text-rose-700 border border-rose-200 rounded-lg hover:bg-rose-50 transition text-sm font-medium">
+                阅读回合制稿（TXT）
+            </a>
+        </div>
+    </div>
+
+    <!-- 卡列琳娜面板 -->
+    <div id="char-kale" class="char-panel">
+        <div class="bg-gray-50 rounded-lg p-4 mb-4">
+            <h5 class="font-semibold text-gray-700 mb-2">设计思路：</h5>
+            <ul class="list-disc list-inside text-gray-600 space-y-1 text-sm">
+                <li><strong>定位</strong>：物攻 / 护盾型前排，以 <code>护盾倍率（最高 150% 体力）</code> 为核心资源</li>
+                <li><strong>转化双通路</strong>：<code>不灭罡体</code> 牺牲 50% 当前体力换护盾；<code>灵魂虹吸</code> 把护盾 50% 转回复；反复切入"受伤 = 资源"的循环</li>
+                <li><strong>振动波反馈</strong>：护盾 ≥ 20% 时普攻附加 <code>1~2 道振动波</code>（BOSS 翻倍），保证持续作战期的输出不空转</li>
+                <li><strong>终结技两路</strong>：<code>斩海断浪</code> 走斩首回收护盾，<code>力挽狂澜</code> 走护盾翻倍 + 异常免疫 → 同一角色两手都强但二选一</li>
+            </ul>
+        </div>
+        <div class="flex gap-3 flex-wrap">
+            <a href="restart/%E3%80%90%E4%B9%98%E9%A3%8E%E7%A0%B4%E6%B5%AA%E3%80%91%E5%8D%A1%E5%88%97%E7%90%B3%E5%A8%9C.txt" target="_blank"
+               class="inline-flex items-center gap-2 px-4 py-2 bg-rose-600 text-white rounded-lg hover:bg-rose-700 transition text-sm font-medium">
+                阅读乘风破浪 · 卡列琳娜（TXT）
+            </a>
+        </div>
+    </div>
+
+    <!-- 伊利斯面板 -->
+    <div id="char-yiris" class="char-panel">
+        <div class="bg-gray-50 rounded-lg p-4 mb-4">
+            <h5 class="font-semibold text-gray-700 mb-2">设计思路：</h5>
+            <ul class="list-disc list-inside text-gray-600 space-y-1 text-sm">
+                <li><strong>定位</strong>：音波魔攻型输出，以「低语」印记为核心资源累积型</li>
+                <li><strong>三段成长</strong>：每 3 层提属性 / 每 9 层回能量 / 消耗 6 层永久 +2.5% 基础魔攻，形成"短 / 中 / 长"三档反馈</li>
+                <li><strong>终结限定条件</strong>：【完美谢幕】要求本场消耗 56 层【低语】才解锁，把高威力绑定在长期资源投入上</li>
+                <li><strong>暴击穿透</strong>：对魔防脆弱 / 暴击目标叠加被动增益，奖励反复暴击的玩法风格</li>
+            </ul>
+        </div>
+        <div class="flex gap-3 flex-wrap">
+            <a href="restart/%E4%BC%8A%E5%88%A9%E6%96%AF.txt" target="_blank"
+               class="inline-flex items-center gap-2 px-4 py-2 bg-rose-600 text-white rounded-lg hover:bg-rose-700 transition text-sm font-medium">
+                阅读余音 · 伊利斯（TXT）
+            </a>
+        </div>
+    </div>
+</article>
+
+<style>
+.char-tabs { display:flex; gap:0.5rem; flex-wrap:wrap; border-bottom: 2px solid #e5e7eb; }
+.char-tab { padding: 0.6rem 1.1rem; background: transparent; color:#6b7280; font-size: 0.9rem; font-weight: 500; border-radius: 0.5rem 0.5rem 0 0; cursor: pointer; border: 1px solid transparent; border-bottom: none; transition: all 0.2s; }
+.char-tab:hover { background:#fce7f3; color:#be185d; }
+.char-tab.active { background: linear-gradient(135deg,#f43f5e 0%,#d946ef 100%); color:#fff; border-color:#f43f5e; }
+.char-panel { display:none; }
+.char-panel.active { display:block; }
+</style>
+<script>
+function switchChar(name){
+    document.querySelectorAll('.char-tab').forEach(b=>b.classList.remove('active'));
+    document.querySelectorAll('.char-panel').forEach(p=>p.classList.remove('active'));
+    document.querySelector('.char-tab[data-char="'+name+'"]').classList.add('active');
+    document.getElementById('char-'+name).classList.add('active');
+}
+</script>
 
 <!-- 游戏分析与数值策划 · 合并模块 -->
 <!-- 游戏分析与数值策划 · 合并模块 -->
