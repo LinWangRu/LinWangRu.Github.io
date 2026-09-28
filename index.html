@@ -292,7 +292,7 @@
                         <div class="flex flex-col md:flex-row justify-between items-start md:items-center">
                             <div>
                                 <h4 class="text-2xl font-bold text-gray-900 mb-1">重启（JRPG · 双战斗体系）</h4>
-                                <p class="text-gray-600">单机 JRPG · 野外即时连招清杂 + Boss 回合制指令战；用世界里程碑等级替代刷级；真结局由回合制使用次数决定</p>
+                                <p class="text-gray-600">单机 JRPG · 主角用「失落者的时间」怀表在即时连招与回合指令战间切换；野外不刷级、Boss 算策略；真结局由怀表按下的次数决定</p>
                             </div>
                             <span class="mt-2 md:mt-0 px-3 py-1 bg-indigo-100 text-indigo-600 rounded-full text-sm">2026.04 - 至今 · 主策划</span>
                         </div>
@@ -300,22 +300,22 @@
                 </div>
 
                 <div class="flex gap-2 flex-wrap mb-4">
-                    <span class="tag px-3 py-1 bg-indigo-50 text-indigo-600 rounded text-xs font-medium">服务群体分层</span>
-                    <span class="tag px-3 py-1 bg-blue-50 text-blue-600 rounded text-xs font-medium">Swift / Command</span>
-                    <span class="tag px-3 py-1 bg-purple-50 text-purple-600 rounded text-xs font-medium">机制与剧情桥接</span>
+                    <span class="tag px-3 py-1 bg-indigo-50 text-indigo-600 rounded text-xs font-medium">创世 6 神</span>
+                    <span class="tag px-3 py-1 bg-blue-50 text-blue-600 rounded text-xs font-medium">怀表切换战斗</span>
+                    <span class="tag px-3 py-1 bg-purple-50 text-purple-600 rounded text-xs font-medium">灵脉 · 灵核 · 6 派系</span>
                     <span class="tag px-3 py-1 bg-amber-50 text-amber-700 rounded text-xs font-medium">野外即时 · Boss 回合</span>
-                    <span class="tag px-3 py-1 bg-green-50 text-green-600 rounded text-xs font-medium">剧情 × 养成推进</span>
+                    <span class="tag px-3 py-1 bg-green-50 text-green-600 rounded text-xs font-medium">里程碑等级 · 不刷级</span>
                 </div>
 
                 <div class="bg-gray-50 rounded-lg p-4 mb-4">
                     <h5 class="font-semibold text-gray-700 mb-2">3 个核心创新点：</h5>
                     <ul class="list-disc list-inside text-gray-600 space-y-1 text-sm">
-                        <li><strong>① 双战斗体系</strong>：野外即时连招清杂（解决传统回合制野外重复刷级的痛点）+ Boss 回合制指令战（保留 JRPG 策略深度与演出）；共享养成与技能身份，用节奏变奏而非两套割裂玩法硬拼</li>
-                        <li><strong>② 世界里程碑等级</strong>：角色等级绑定剧情节点，<strong>不刷级</strong>，玩家注意力转向世界探索（探索程度决定后续回合制使用次数上限）</li>
-                        <li><strong>③ 回合制使用次数决定真结局</strong>：玩家在关键时刻选择是否进入回合制决策，次数累积影响剧情走向（参考黎之轨迹学园好感度系统）</li>
+                        <li><strong>① 双战斗 + 怀表叙事</strong>：主角用「失落者的时间」怀表在野外即时连招与 Boss 回合制指令战之间切换；怀表不是按键，是剧情道具 —— 把「为什么要切」用创世 6 神的故事说圆</li>
+                        <li><strong>② 世界里程碑等级 + 灵脉养成</strong>：角色等级绑定剧情节点（<strong>不刷级</strong>）；每个角色 3 个灵脉槽，6 大派系灵核（祝福 / 坚韧 / 源质 / 主宰 / 精密 / 亡灵）自由搭配，对应创世 6 神</li>
+                        <li><strong>③ 怀表使用次数决定真结局</strong>：怀表按下的次数累积到不同阈值 → 不同真结局走向；次数上限受等级 + 探索程度限制（参考黎之轨迹学园好感度系统）</li>
+                        <li><strong>战斗菜单（空轨逻辑）</strong>：回合制核心 = 普攻 + 战技 + 终结技 + CP（通用行动资源）+ 能量（高威力消耗）+ 通用被动；行动条（AT）可读 / 可预约 / 可打断</li>
+                        <li><strong>即时战斗（鬼泣 5 逻辑）</strong>：连招派生 + S/A/B/C/D 评级；参考《鬼泣 5》的手感密度</li>
                         <li><strong>服务群体</strong>：核心用户是同时要连招与回合制策略的单机 JRPG 玩家；动作手感只解决野外重复性，不能反过来让 Boss 战变成无脑连招</li>
-                        <li><strong>机制桥接</strong>：共享养成、技能身份与数值口径；切换时冻结/归档即时输入，由 TurnManager 接管 AT 充能→预约→结算；Craft 产耗跨模式闭环</li>
-                        <li><strong>场景规范</strong>：野外刷怪默认即时；精英/Boss 强制回合；用「剧情动机 → 养成解锁 → 战斗验证」推动持续体验</li>
                     </ul>
                 </div>
 
@@ -380,12 +380,12 @@
                     <a href="restart/重启_双战斗体系_系统策划案.pdf" target="_blank"
                        class="inline-flex items-center gap-2 px-4 py-2 bg-indigo-600 text-white rounded-lg hover:bg-indigo-700 transition text-sm font-medium">
                         <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 10v6m0 0l-3-3m3 3l3-3m2 8H7a2 2 0 01-2-2V5a2 2 0 012-2h5.586a1 1 0 01.707.293l5.414 5.414a1 1 0 01.293.707V19a2 2 0 01-2 2z"/></svg>
-                        阅读系统策划案 PDF
+                        阅读系统策划案 PDF v1.0（按完整想法重写）
                     </a>
                     <a href="restart/重启_双战斗体系_系统策划案.docx" download
                        class="inline-flex items-center gap-2 px-4 py-2 bg-white text-indigo-700 border border-indigo-200 rounded-lg hover:bg-indigo-50 transition text-sm font-medium">
                         <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 10v6m0 0l-3-3m3 3l3-3m2 8H7a2 2 0 01-2-2V5a2 2 0 012-2h5.586a1 1 0 01.707.293l5.414 5.414a1 1 0 01.293.707V19a2 2 0 01-2 2z"/></svg>
-                        下载 Word v0.3（已修正品类与术语）
+                        下载 Word v1.0（完整想法版，待补完项已标红）
                     </a>
                     <button onclick="playVideo('restart/重启演示.mp4')"
                             class="inline-flex items-center gap-2 px-4 py-2 bg-indigo-600 text-white rounded-lg hover:bg-indigo-700 transition text-sm font-medium">
