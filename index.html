@@ -321,7 +321,7 @@
 
                 <div class="bg-rose-50 border border-rose-200 rounded-lg p-3 mb-4">
                     <p class="text-xs text-rose-700 leading-relaxed">
-                        <strong>坦诚说明：</strong>① 伤害结算与动画时间帧未对齐，视觉表现仍待打磨；② 目前仅放出回合制（Command）部分的演示，野外即时（Swift）尚未录制；③ 回合制核心循环（AT 充能→预约→结算、Buff / Debuff、技能与数值）已基本完整，可对照策划案核查。完整演示在补齐后会替换此处。
+                        <strong>坦诚说明：</strong>① 伤害结算与动画时间帧未完全对齐，视觉表现仍在打磨；② 双战斗均已跑通：回合制（Command）的 AT 充能→预约→结算、Buff / Debuff 与数值完整，野外即时（Swift）的连招派生、攻击判定与位移已可实机运行，两段演示均可在下方查看；③ 伤害公式、行动条结算、能量表与难度表均可对照 11 页策划案核查。
                     </p>
                 </div>
 
@@ -382,6 +382,11 @@
                         <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 10v6m0 0l-3-3m3 3l3-3m2 8H7a2 2 0 01-2-2V5a2 2 0 012-2h5.586a1 1 0 01.707.293l5.414 5.414a1 1 0 01.293.707V19a2 2 0 01-2 2z"/></svg>
                         查看策划案
                     </a>
+                    <button onclick="playVideo('restart/重启实时战斗演示.mp4')"
+                            class="inline-flex items-center gap-2 px-4 py-2 bg-indigo-600 text-white rounded-lg hover:bg-indigo-700 transition text-sm font-medium">
+                        <svg class="w-4 h-4" fill="currentColor" viewBox="0 0 24 24"><path d="M8 5v14l11-7z"/></svg>
+                        演示视频（实时战斗）
+                    </button>
                     <button onclick="playVideo('restart/重启演示.mp4')"
                             class="inline-flex items-center gap-2 px-4 py-2 bg-indigo-600 text-white rounded-lg hover:bg-indigo-700 transition text-sm font-medium">
                         <svg class="w-4 h-4" fill="currentColor" viewBox="0 0 24 24"><path d="M8 5v14l11-7z"/></svg>
