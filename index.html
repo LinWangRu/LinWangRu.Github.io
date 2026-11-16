@@ -325,37 +325,30 @@
                     </p>
                 </div>
 
-                <!-- 角色策划案（重启 · 子模块） -->
+                <!-- 角色策划案（子模块） -->
                 <div class="bg-gray-50 rounded-lg p-4 mb-4 border border-gray-200">
                     <h5 class="font-semibold text-gray-800 mb-3 flex items-center gap-2">
-                        <span class="text-base">🗡️</span>
+                        <span class="text-base">🎯</span>
                         <span>角色策划案（核心输出角色）</span>
                     </h5>
 
                     <div class="char-tabs mb-3">
-                        <button class="char-tab active" data-char="alice" onclick="switchChar('alice')">破碎冠冕 · 爱丽丝（双形态）</button>
+                        <button class="char-tab active" data-char="bai" onclick="switchChar('bai')">轰击拳套 · 白（雷引爆发）</button>
                         <button class="char-tab" data-char="kale" onclick="switchChar('kale')">乘风破浪 · 卡列琳娜</button>
                     </div>
 
-                    <div id="char-alice" class="char-panel active">
+                    <div id="char-bai" class="char-panel active">
                         <ul class="list-disc list-inside text-gray-600 space-y-1 text-xs mb-3">
-                            <li><strong>定位</strong>：序章即入队的圣战士，玩家可立即体验三段普攻 + 大剑突刺 + 闪避 + 护盾 + 龙甲切换</li>
-                            <li><strong>双形态机制</strong>：纯白（剑）→ 龙甲（拳 / 剑自由切换）解锁后，资源系统【咒怨】↔【破碎冠冕】充能形成内外两层循环</li>
-                            <li><strong>印记体系</strong>：【撕裂】最多 6 层 / 目标，层数同时驱动伤害成长 / BOSS 易伤 / 终结充能；与【冥龙裁决】引爆产生连锁</li>
-                            <li><strong>数值闭环</strong>：以玩家最大体力为基底的百分比口径，避免硬数值随养成膨胀</li>
+                            <li><strong>性质</strong>：《破碎冠冕》的核心输出角色，也是全项目唯一一个在引擎里真跑过、逐条调过参的角色 —— 表内数值、帧号、音效与镜头参数全部从实机资产导出，不是纸面推演</li>
+                            <li><strong>技能组</strong>：10 招已进引擎（普攻 2 段 / 空中 2 招 / 重击 + 蓄力三档 / 闪避 / 跳跃）+ 7 招设计（普攻 3–5 段 / 突进 / 标记 / 完美闪避派生 / 大招），共 17 招</li>
+                            <li><strong>资源与形态</strong>：<strong>雷意</strong>上限 100，回能全部走命中、打空不回；满 100 进入<strong>引雷</strong> 8s（物攻 ×1.25、蓄力道数 5→7、射线射程 320→480cm）。形态做成叠加修饰器，不占动作槽、进入不打断出招</li>
+                            <li><strong>状态机</strong>：11 状态 + 18 条转换，真正新增的只有<strong>完美闪避派生窗口</strong>与形态修饰层；普攻 5 段用「取消窗 / 连段窗」控制衔接，而不是写死段数</li>
+                            <li><strong>数值口径</strong>：伤害 = 物攻 × 倍率 − 物防（保底 1）；破甲按目标物防的百分比削减、多来源只取最大值不叠加，不会因先手后手让防御跑偏</li>
                         </ul>
                         <div class="flex gap-2 flex-wrap">
-                            <a href="restart/%E3%80%90%E7%A0%B4%E7%A2%8E%E5%86%A0%E5%86%95%E3%80%91%E7%88%B1%E4%B8%BD%E4%B8%9D%EF%BC%88%E5%AE%9E%E6%97%B6%E6%88%98%E6%96%97%EF%BC%89.txt" target="_blank"
+                            <a href="restart/%E7%99%BD_%E6%8A%80%E8%83%BD%E9%85%8D%E7%BD%AE%E8%A1%A8.xlsx" download
                                class="inline-flex items-center gap-2 px-3 py-1.5 bg-rose-600 text-white rounded text-xs font-medium hover:bg-rose-700 transition">
-                                阅读即时战斗稿
-                            </a>
-                            <a href="restart/Alice_3C_Combat_Design.xlsx" download
-                               class="inline-flex items-center gap-2 px-3 py-1.5 bg-white text-rose-700 border border-rose-200 rounded text-xs font-medium hover:bg-rose-50 transition">
-                                下载 3C 战斗策划表 Excel
-                            </a>
-                            <a href="restart/%E3%80%90%E7%A0%B4%E7%A2%8E%E5%86%A0%E5%86%95%E3%80%91%E7%88%B1%E4%B8%BD%E4%B8%9D%EF%BC%88%E5%9B%9E%E5%90%88%E5%88%B6%EF%BC%89.txt" target="_blank"
-                               class="inline-flex items-center gap-2 px-3 py-1.5 bg-white text-rose-700 border border-rose-200 rounded text-xs font-medium hover:bg-rose-50 transition">
-                                阅读回合制稿
+                                下载技能配置表 Excel（7 张表）
                             </a>
                         </div>
                     </div>
