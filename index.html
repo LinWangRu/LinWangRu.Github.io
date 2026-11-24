@@ -508,6 +508,92 @@ function switchChar(name){
     </div>
 </article>
 
+            <!-- 诡秘 / 动作化 MMO · 4 人秘境联机共斗 (战斗 + 系统策划) -->
+            <article class="project-card bg-white rounded-2xl p-8 shadow-md border-2 border-purple-100 relative overflow-hidden">
+                <div class="absolute top-0 right-0 bg-gradient-to-l from-purple-500 to-fuchsia-500 text-white px-4 py-1 text-xs font-bold rounded-bl-lg">
+                    战斗策划 · 系统策划
+                </div>
+
+                <div class="flex items-start gap-4 mb-4">
+                    <div class="game-icon bg-gradient-to-br from-purple-500 to-fuchsia-500 text-white">🐙</div>
+                    <div class="flex-1">
+                        <div class="flex flex-col md:flex-row justify-between items-start md:items-center">
+                            <div>
+                                <h4 class="text-2xl font-bold text-gray-900 mb-1">诡秘（动作化 MMO · 4 人秘境共斗）</h4>
+                                <p class="text-gray-600">原创 4 人真人 PvE 共斗战斗系统：韧性破坏 → 虚弱 → 处决的协同循环，注视最高优先级索敌，五职业跨池选角；武器 / 符文 / 装备构筑，含难度分级与完整配置表</p>
+                            </div>
+                            <span class="mt-2 md:mt-0 px-3 py-1 bg-purple-100 text-purple-600 rounded-full text-sm">2026.11 · 独立设计</span>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="flex gap-2 flex-wrap mb-4">
+                    <span class="tag px-3 py-1 bg-purple-50 text-purple-600 rounded text-xs font-medium">韧性 · 虚弱 · 处决</span>
+                    <span class="tag px-3 py-1 bg-blue-50 text-blue-600 rounded text-xs font-medium">注视最高优先级</span>
+                    <span class="tag px-3 py-1 bg-indigo-50 text-indigo-600 rounded text-xs font-medium">5 职业跨池选角</span>
+                    <span class="tag px-3 py-1 bg-amber-50 text-amber-700 rounded text-xs font-medium">武器 · 符文 · 装备构筑</span>
+                    <span class="tag px-3 py-1 bg-green-50 text-green-600 rounded text-xs font-medium">四档难度 + 怪物分级</span>
+                    <span class="tag px-3 py-1 bg-rose-50 text-rose-600 rounded text-xs font-medium">配置表驱动</span>
+                </div>
+
+                <div class="bg-gray-50 rounded-lg p-4 mb-4">
+                    <h5 class="font-semibold text-gray-700 mb-2">核心设计与设计论证：</h5>
+                    <ul class="list-disc list-inside text-gray-600 space-y-1 text-sm">
+                        <li><strong>① 处决协同循环</strong>：靠打韧性进入虚弱、靠虚弱窗口多人处决；处决按参与人数给伤害，但「按处决键」本身不记贡献——区分按键行为与实际战斗贡献，避免抢键</li>
+                        <li><strong>② 注视与镜头锁定分离</strong>：注视决定怪物打谁、绝对优先不可覆盖，被注视者全属性下降；主锁定权降为纯镜头，只管玩家看哪，不再和索敌抢定义</li>
+                        <li><strong>③ 角色构筑与长线养成</strong>：武器决定招式组（动作需要看得见的释放载体），符文 3 大 15 小用魔力锁绑同系、防纯堆数值，装备鼓励四件套（2/4 件套效果作长线抓手）但允许散件，并给出金装获取量的控制口径</li>
+                        <li><strong>④ 难度与怪物分级</strong>：简单 / 普通 / 困难 / 地狱四档——数值提升、部分招式升级、解锁新招；怪物分凡躯 / 魔裔 / 古神 / 神话，最终档为神话。难度不改判定规则，低档练的手感高档照样成立</li>
+                        <li><strong>⑤ 论证写法</strong>：每项机制都按「为什么这样定 → 具体是什么 → 边界与配置表归属」写，正文约 6.5 万字、34 张表、15 张流程界面图，硬规则红字、举例绿字、待定紫框</li>
+                    </ul>
+                </div>
+
+                <div class="bg-purple-50 border border-purple-200 rounded-lg p-3 mb-4">
+                    <p class="text-xs text-purple-700 leading-relaxed">
+                        <strong>交付说明：</strong>① 本案锁定 4 人秘境联机共斗，单人大世界探索不做；② 帧数据 / 伤害数值等按本案 60fps 口径留待配置表与实机调参填写，未编造数值；③ 下方角色与首领为独立样例交付，正文只写规则与结构、不重复其内容。
+                    </p>
+                </div>
+
+                <!-- 角色 / 首领样例（子模块） -->
+                <div class="bg-gray-50 rounded-lg p-4 mb-4 border border-gray-200">
+                    <h5 class="font-semibold text-gray-800 mb-3 flex items-center gap-2">
+                        <span class="text-base">🎯</span>
+                        <span>样例交付：角色设计 + 首领设计</span>
+                    </h5>
+                    <div class="space-y-3">
+                        <div class="bg-white rounded-lg border border-purple-100 p-3">
+                            <div class="font-semibold text-purple-700 text-sm mb-1">阿兹努 · 角色设计示例（射击 / 秘法）</div>
+                            <p class="text-xs text-gray-600 mb-2">以塔罗牌为武器，圣杯 / 圣剑 / 星币 / 权杖四系小阿卡那招式 + 洗牌 / 天选之人 / 命运的谢礼；附三武器基础数值表、技能有无与效果表、帧与镜头列项表（3 sheet）。</p>
+                            <div class="flex gap-2 flex-wrap">
+                                <a href="Mystery/%E9%98%BF%E5%85%B9%E5%8A%AA%E8%A7%92%E8%89%B2%E8%AE%BE%E8%AE%A1.txt" target="_blank"
+                                   class="inline-flex items-center gap-1 px-2.5 py-1 bg-purple-600 text-white rounded text-xs font-medium hover:bg-purple-700 transition">阅读角色原案</a>
+                                <a href="Mystery/%E9%98%BF%E5%85%B9%E5%8A%AA%E8%A7%92%E8%89%B2%E9%85%8D%E7%BD%AE%E8%A1%A8.xlsx" download
+                                   class="inline-flex items-center gap-1 px-2.5 py-1 bg-purple-600 text-white rounded text-xs font-medium hover:bg-purple-700 transition">下载角色配置表（3 sheet）</a>
+                            </div>
+                        </div>
+                        <div class="bg-white rounded-lg border border-fuchsia-100 p-3">
+                            <div class="font-semibold text-fuchsia-700 text-sm mb-1">魔龙尼德霍格 · 首领设计示例（地狱 / 神话）</div>
+                            <p class="text-xs text-gray-600 mb-2">两阶段状态机，10 招招式表（雷鸣弹 / 吐息 / 咆哮 / 雷击 / 天雷缭乱等），犄角不可再生 + 尾晶可再生的弱点体系；附 UE 蓝图风格状态机图、怪物形象示意与招式配置表（4 sheet）。</p>
+                            <div class="flex gap-2 flex-wrap">
+                                <a href="Mystery/%E9%AD%94%E9%BE%99%E5%B0%BC%E5%BE%B7%E9%9C%8D%E6%A0%BC_%E7%8A%B6%E6%80%81%E6%9C%BA.html" target="_blank"
+                                   class="inline-flex items-center gap-1 px-2.5 py-1 bg-fuchsia-600 text-white rounded text-xs font-medium hover:bg-fuchsia-700 transition">查看状态机图</a>
+                                <a href="Mystery/%E9%AD%94%E9%BE%99%E5%B0%BC%E5%BE%B7%E9%9C%8D%E6%A0%BC_%E7%A4%BA%E6%84%8F%E5%9B%BE.png" target="_blank"
+                                   class="inline-flex items-center gap-1 px-2.5 py-1 bg-fuchsia-600 text-white rounded text-xs font-medium hover:bg-fuchsia-700 transition">查看怪物形象</a>
+                                <a href="Mystery/%E9%AD%94%E9%BE%99%E5%B0%BC%E5%BE%B7%E9%9C%8D%E6%A0%BC_%E9%85%8D%E7%BD%AE%E8%A1%A8.xlsx" download
+                                   class="inline-flex items-center gap-1 px-2.5 py-1 bg-fuchsia-600 text-white rounded text-xs font-medium hover:bg-fuchsia-700 transition">下载招式配置表（4 sheet）</a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="flex gap-3 flex-wrap">
+                    <a href="Mystery/%E3%80%8A%E8%AF%A1%E7%A7%98%E3%80%8B%E6%88%98%E6%96%97%E7%B3%BB%E7%BB%9F%E7%AD%96%E5%88%92%E6%A1%88_v0.75.docx" download
+                       class="inline-flex items-center gap-2 px-4 py-2 bg-purple-600 text-white rounded-lg hover:bg-purple-700 transition text-sm font-medium">
+                        <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 10v6m0 0l-3-3m3 3l3-3m2 8H7a2 2 0 01-2-2V5a2 2 0 012-2h5.586a1 1 0 01.707.293l5.414 5.414a1 1 0 01.293.707V19a2 2 0 01-2 2z"/></svg>
+                        下载策划案正文（v0.75）
+                    </a>
+                </div>
+            </article>
+
             <!-- 重启 / JRPG 双战斗 (UE4 系统策划) -->
             <article class="project-card bg-white rounded-2xl p-8 shadow-md border-2 border-indigo-100 relative overflow-hidden">
                 <div class="absolute top-0 right-0 bg-gradient-to-l from-indigo-500 to-blue-500 text-white px-4 py-1 text-xs font-bold rounded-bl-lg">

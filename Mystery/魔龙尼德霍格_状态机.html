@@ -1,0 +1,282 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>魔龙尼德霍格 · 战斗状态机（蓝图示意）</title>
+<style>
+  :root{
+    --bg:#1b1d22; --grid:#2a2d35; --panel:#252830; --panel2:#2d303a;
+    --line:#9aa0ad; --txt:#e8e9ed; --sub:#b9bdc7;
+    --entry:#3f8f57; --state:#2f6fb0; --skill:#a8622a; --weak:#7a5299;
+    --phase:#b03a4a; --exec:#c08a2a; --dead:#555a66; --cond:#2f7d76;
+  }
+  *{box-sizing:border-box;}
+  html,body{margin:0;height:100%;font-family:"Microsoft YaHei","PingFang SC",sans-serif;background:var(--bg);color:var(--txt);}
+  #app{display:flex;height:100vh;overflow:hidden;}
+  /* 左侧信息栏 */
+  #side{width:300px;flex:none;background:var(--panel);border-right:1px solid #3a3e49;display:flex;flex-direction:column;overflow-y:auto;}
+  #side h1{font-size:16px;margin:14px 16px 4px;}
+  #side .tag{font-size:11px;color:var(--sub);margin:0 16px 12px;line-height:1.6;border-left:3px solid var(--phase);padding-left:8px;}
+  #side img{width:100%;display:block;}
+  #side .sec{padding:12px 16px;border-top:1px solid #3a3e49;}
+  #side .sec h2{font-size:12px;color:#8fb7e8;margin:0 0 8px;letter-spacing:.5px;}
+  #side .kv{font-size:12px;line-height:1.85;color:var(--sub);}
+  #side .kv b{color:var(--txt);font-weight:600;}
+  #side .kv .r{color:#e08a8a;}
+  /* 画布区 */
+  #main{flex:1;display:flex;flex-direction:column;min-width:0;}
+  #bar{height:44px;flex:none;background:var(--panel);border-bottom:1px solid #3a3e49;display:flex;align-items:center;gap:12px;padding:0 14px;}
+  #bar .title{font-size:13px;font-weight:600;}
+  #bar .legend{display:flex;gap:10px;flex-wrap:wrap;margin-left:auto;font-size:11px;color:var(--sub);}
+  #bar .legend i{display:inline-block;width:9px;height:9px;border-radius:2px;margin-right:3px;vertical-align:middle;}
+  #bar button{background:var(--panel2);color:var(--txt);border:1px solid #454a57;border-radius:4px;padding:5px 10px;font-size:11px;cursor:pointer;}
+  #bar button:hover{background:#3a3f4b;}
+  #canvasWrap{flex:1;position:relative;overflow:hidden;background-color:var(--bg);
+    background-image:linear-gradient(var(--grid) 1px,transparent 1px),linear-gradient(90deg,var(--grid) 1px,transparent 1px);
+    background-size:24px 24px;cursor:grab;}
+  #canvasWrap.drag{cursor:grabbing;}
+  svg{position:absolute;inset:0;width:100%;height:100%;}
+  .node rect{fill:var(--panel2);stroke:#11131a;stroke-width:1.5;rx:6;}
+  .node .head{fill:var(--state);rx:6;}
+  .node .title{fill:#fff;font-size:13px;font-weight:600;}
+  .node .ln{fill:var(--txt);font-size:11px;}
+  .node .ln.dim{fill:var(--sub);}
+  .node .pin{fill:#0f1116;stroke:#8a90a0;stroke-width:1.5;}
+  .node:hover rect{fill:#343845;}
+  .node.sel rect{fill:#3c4252;stroke:#ffd479;stroke-width:2;}
+  .edge{fill:none;stroke:var(--line);stroke-width:2;marker-end:url(#arrow);}
+  .edge.hot{stroke:#ffd479;stroke-width:2.6;}
+  .edge.dash{stroke-dasharray:6 4;}
+  .edge.red{stroke:#d9756f;}
+  .edge.green{stroke:#6fbf8a;}
+  .elabel{fill:#cfd3dc;font-size:10.5px;paint-order:stroke;stroke:#1b1d22;stroke-width:3px;stroke-linejoin:round;}
+  /* 详情浮层 */
+  #detail{position:absolute;right:14px;bottom:14px;width:330px;background:rgba(30,33,40,.96);border:1px solid #4a5060;border-radius:6px;padding:12px 14px;font-size:12px;line-height:1.7;display:none;box-shadow:0 6px 24px rgba(0,0,0,.5);}
+  #detail h3{margin:0 0 6px;font-size:14px;color:#ffd479;}
+  #detail .row{margin:2px 0;color:var(--sub);}
+  #detail .row b{color:var(--txt);}
+  #detail .close{position:absolute;right:8px;top:6px;cursor:pointer;color:#9aa0ad;font-size:16px;}
+  #hint{position:absolute;left:14px;bottom:12px;font-size:11px;color:#7d8392;}
+</style>
+</head>
+<body>
+<div id="app">
+  <aside id="side">
+    <h1>魔龙尼德霍格</h1>
+    <p class="tag">战斗状态机 · 蓝图示意<br>本项目未实装，图为规则推演；怪物形象为 AI 生成示意图，非实机资产。</p>
+    <img src="魔龙尼德霍格_示意图.png" alt="魔龙尼德霍格 AI 生成示意图">
+    <div class="sec">
+      <h2>核心参数</h2>
+      <div class="kv">
+        韧性节点：<b>3 个等分</b><br>
+        虚弱：<span class="r">攻击间隔 +30%，8 秒</span>（期间照常出招）<br>
+        弱点：<b>犄角</b>（不可再生）／<b>尾部结晶</b>（可再生，12 秒起，每次 −2 秒，减到 0 秒即立刻再生）<br>
+        破坏奖励：狂暴化（攻防 +50%，8 秒）；犄角 + 尾晶合计破坏 4 次获永久【天雷缭乱】强化<br>
+        注视：<b>本 BOSS 不授予</b>，索敌走「特殊索敌 &gt; 仇恨」<br>
+        二阶段：生命低于 50% 解锁三招
+      </div>
+    </div>
+    <div class="sec">
+      <h2>读图说明</h2>
+      <div class="kv">
+        ● 实线箭头＝正常流转；<b>虚线</b>＝条件满足才发生<br>
+        ● 红字＝硬规则；节点内「原案」为原始描述口径<br>
+        ● <b>生命</b>：原描述写「体力低于 50%」，按本次口径统一理解为生命<br>
+        ● 索敌：原案写注视优先，本 BOSS 不授注视，故注视档空置<br>
+        ● 雷击：200/500/800 是距自身三个圆形范围区，单处雷击判定半径 100
+      </div>
+    </div>
+    <div class="sec">
+      <h2>配置表边界</h2>
+      <div class="kv">
+        本图只管状态流转：什么条件下进哪一招、何时切阶段、何时进虚弱和处决。<br>
+        伤害数值、前摇／判定／后摇、抗打断等级、判定盒与高度、基础属性，统一在招式配置表填写；本案帧口径按 <b>60fps</b> 换算。<br>
+        所以这些数值不画在状态机里，也不算本图缺失。
+      </div>
+    </div>
+  </aside>
+
+  <div id="main">
+    <div id="bar">
+      <span class="title">Nidhogg_CombatFSM</span>
+      <button id="reset">重置视图</button>
+      <span class="legend">
+        <span><i style="background:var(--entry)"></i>入口</span>
+        <span><i style="background:var(--state)"></i>状态</span>
+        <span><i style="background:var(--skill)"></i>招式</span>
+        <span><i style="background:var(--cond)"></i>判定</span>
+        <span><i style="background:var(--weak)"></i>虚弱</span>
+        <span><i style="background:var(--exec)"></i>处决</span>
+        <span><i style="background:var(--phase)"></i>阶段</span>
+        <span><i style="background:var(--dead)"></i>结束</span>
+      </span>
+    </div>
+    <div id="canvasWrap">
+      <svg id="svg" viewBox="0 0 1260 1010" preserveAspectRatio="xMidYMin meet">
+        <defs>
+          <marker id="arrow" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="6" markerHeight="6" orient="auto-start-reverse">
+            <path d="M0,0 L10,5 L0,10 z" fill="#9aa0ad"/>
+          </marker>
+        </defs>
+        <g id="viewport"></g>
+      </svg>
+      <div id="hint">拖拽平移 · 滚轮缩放 · 点击节点看详情</div>
+      <div id="detail"><span class="close" id="dclose">×</span><div id="dbody"></div></div>
+    </div>
+  </div>
+</div>
+
+<script>
+// 节点数据：x,y 为左上角；type 决定标题条颜色
+const NODES = [
+  // 入口与主干
+  {id:"start", x:60, y:60, w:160, h:65, type:"entry", lines:["战斗开始","4 人入场 · 满血满韧"], d:"战斗开始：4 名真人玩家进入秘境，首领满生命、满韧性，按阶段配置启用招式。"},
+  {id:"idle", x:60, y:170, w:180, h:80, type:"state", lines:["待机 / 游走","按索敌规则选定目标","读前摇的空隙"], d:"无招式进行时的默认状态。按索敌优先级选定当前目标，玩家在此窗口读招、打弱点、削韧。"},
+  {id:"select", x:60, y:300, w:190, h:86, type:"cond", lines:["招式选择","优先级：数字大者优先","同级均可用时按配置定"], d:"每次出招前判定。招式后有优先级数字，数字越大越优先；多招同时可用时先放优先级高的。特殊说明：同级之间的取舍由配置决定。"},
+
+  // 索敌列
+  {id:"target", x:330, y:170, w:210, h:96, type:"cond", lines:["索敌判定","注视（本怪空置）","＞ 特殊索敌 ＞ 常规仇恨"], d:"原案：注视 > 特殊索敌 > 常规仇恨。本 BOSS 破坏弱点不授予注视，故注视档空置；实际按各招自带的特殊索敌，否则走仇恨。特殊索敌：龙之吐息=最近单位；雷鸣弹=生命最低 3 名（原案写体力最低，按本次口径理解为生命）。"},
+
+  // 招式列（左）
+  {id:"s_claw", x:330, y:300, w:205, h:74, type:"skill", lines:["龙之巨爪 [0]","400 内有目标 · CD 6s","左爪拍击 →1.4s→ 右爪"], d:"无特殊条件。400 范围内有目标可用。举起左前爪拍击，落地后隔 1.4 秒右前爪落地。优先级 0，最低。"},
+  {id:"s_breath", x:330, y:390, w:205, h:86, type:"skill", lines:["龙之吐息 [1]","需犄角 · 最近单位 · CD 20s","蓄力 2s → 持续吐息(每 0.5s)","→1s 角红 →1s 全身旋转 360°"], d:"犄角存在时可用，特殊索敌=离自己最近单位。蓄力 2 秒后喷射，持续伤害每 0.5 秒一次；吐射后 1 秒犄角变红，再 1 秒全身原地旋转 360 度。吐息无限贯穿地图，跳跃不会触发判定。断角后本招失效。"},
+  {id:"s_roar", x:330, y:492, w:205, h:74, type:"skill", lines:["火焰咆哮 [1]","需犄角 · 600 内有目标","120° 扇形 5 火球 · CD 10s"], d:"犄角存在、600 范围内有目标可用。向目标扇形（宽角 120）发射 5 个火球，最大飞行 600，路径上首次命中造成伤害。"},
+  {id:"s_bolt", x:330, y:582, w:205, h:74, type:"skill", lines:["雷鸣弹 [未标]","需尾晶 · 生命最低 3 名","3 枚弱追踪 · CD 8s"], d:"尾部结晶存在时可用。甩出 3 枚弱追踪雷弹（原案写单人模式 1 枚，本案不做单人），攻击生命最低的 3 名目标，首次命中造成伤害，飞行距离无限。原案未给优先级数字，图中按未标注处理。"},
+  {id:"s_thunder", x:330, y:672, w:205, h:86, type:"skill", lines:["雷击 [1]","需尾晶 · 200/500/800 圆形范围区","12/4/8 点落雷 · 每 0.5s","判定半径 100 · CD 12s"], d:"尾部结晶存在时可用。在距离自身 200、500、800 的三个圆形范围区上，每隔 0.5 秒于 12 点、4 点、8 点方向各召唤一次雷击；每一处雷击的判定半径是 100。200/500/800 指落点所在的圆形范围区，不是伤害数值。"},
+  {id:"s_charge", x:330, y:774, w:205, h:74, type:"skill", lines:["飞袭 [1]","1000 内有目标 · CD 10s","腾空 0.75s → 冲锋 → 火焰痕迹 4s"], d:"1000 范围内有目标可用。鼓翼腾空 0.75 秒，向锁定目标当前位置冲锋，路径命中造成伤害，地面留 4 秒火焰痕迹（持续小额伤害）。"},
+  {id:"s_roar3", x:330, y:864, w:205, h:80, type:"skill", lines:["龙吟 [3] 被动","每损失 25% 最大生命触发","逼退 1000 内目标至边界","双方无法行动 1s"], d:"被动，每减少 25% 最大生命触发一次。把 1000 范围内所有目标逼退到边界，持续 1 秒，期间双方无法行动。优先级 3 最高。"},
+
+  // 二阶段招式（右列）
+  {id:"p2", x:660, y:300, w:200, h:80, type:"phase", lines:["二阶段：生命 < 50%","解锁：利刃风暴 / 风暴主宰 / 天雷缭乱"], d:"原案写「自身体力低于 50%」，按本次口径统一理解为生命低于 50%。达到后解锁三招。"},
+  {id:"s_storm", x:660, y:398, w:210, h:74, type:"skill", lines:["利刃风暴 [0]","二阶段 · CD 20s","扇翼 10 次 ×0.25s → 贯风刃"], d:"二阶段解锁。连续扇动翅膀 10 次，每次间隔 0.25 秒，向前方任意方向发射一道贯风刃。飞行距离无限，跳跃会触发判定（与吐息相反）。"},
+  {id:"s_flight", x:660, y:488, w:210, h:74, type:"skill", lines:["风暴主宰 [1]","二阶段 · CD 12s","腾空 0.5s → 800 内任意落点","期间无敌 · 不落原点"], d:"二阶段解锁。腾空 0.5 秒后极速飞天，落在 800 范围内任意位置。玩家视角跟随，首领期间无敌，不会落在原点。"},
+  {id:"s_chaos", x:660, y:578, w:210, h:92, type:"skill", lines:["天雷缭乱 [3]","二阶段 + 尾晶 · 基础 CD 20s","每次触发 −1s，最低 0s（无 CD）","800 内雷击 · 雷伤 +2%/层，上限 10"], d:"二阶段且尾部结晶存在时可用。腾空 0.75 秒，对自身 800 范围内召唤若干次雷击，每次命中叠 1 层【雷伤】。冷却每次触发减少 1 秒，减到 0 秒后按无冷却处理；特殊能力 2 的 −20% 作用在剩余冷却上，0 秒时仍为无冷却。雷伤不可清除，死后复活重置，最多 10 层；每层使雷鸣弹／雷击／天雷缭乱伤害 +2%。"},
+
+  // 弱点/狂暴列
+  {id:"weak", x:960, y:170, w:210, h:95, type:"weak", lines:["弱点被破坏","犄角：不可再生 → 断角禁吐息/咆哮","尾晶：12s 起，每次 −2s，到 0 即立刻再生","→ 狂暴化：攻防 +50%，8s"], d:"犄角附着型、尾部结晶可再生型。破坏后触发狂暴化：攻击力、防御力 +50%，持续 8 秒（按本案增益状态处理）。犄角破坏后吐息与咆哮失效；尾晶破坏后雷系三招失效，直到再生。尾部结晶再生时间从 12 秒起，每被破坏一次减少 2 秒；减到 0 秒后，破坏结束即立刻再生，不再卡倒计时。注意：本案规则——本 BOSS 破坏弱点不授予注视。"},
+  {id:"rage", x:960, y:278, w:210, h:80, type:"phase", lines:["狂暴化","攻防 +50% · 8s","不放大处决百分比伤害"], d:"弱点破坏触发的增益状态。攻防 +50%，8 秒。按本案规则，狂暴不放大处决技的百分比伤害。"},
+  {id:"special", x:960, y:370, w:210, h:80, type:"phase", lines:["特殊能力 2（永久）","犄角+尾晶合计破坏 4 次","天雷缭乱：范围 +50%、CD −20%"], d:"累计破坏 4 次弱点，按犄角和尾部结晶的破坏次数合计；犄角不可再生，最多计 1 次，因此可由「犄角 1 次 + 尾晶 3 次」或「尾晶 4 次」达成。永久强化为天雷缭乱攻击范围 +50%、冷却 −20%。"},
+
+  // 韧性/虚弱/处决列
+  {id:"poise", x:960, y:470, w:210, h:80, type:"weak", lines:["韧性削减","3 个等分节点","跨节点 → 虚弱"], d:"韧性条分 3 等分节点。从满值向下每跨过一个节点，触发该节点虚弱。虚弱期间不削韧；保护期照常削韧但不触发虚弱。"},
+  {id:"weakstate", x:960, y:562, w:210, h:80, type:"weak", lines:["虚弱 8s","攻击间隔 +30%","照常出招 · 不削韧"], d:"踩到韧性节点触发。攻击间隔增加 30%，持续 8 秒。按本案规则：虚弱期间怪物照常可以攻击，且韧性不再被缩减。"},
+  {id:"execwin", x:960, y:654, w:210, h:80, type:"exec", lines:["处决窗口","韧性归零 → 首领停手","玩家照常输出 · 按 C 触发"], d:"韧性归零后开启。窗口期首领无法攻击，玩家仍可正常输出、攒能量、交治疗；合法距离内窗口内按下情境键 C 的人数决定处决百分比伤害档位。"},
+  {id:"execdone", x:960, y:746, w:210, h:80, type:"exec", lines:["处决结算 → 回韧","无敌 Z 秒 · 韧性回满","处决伤害记参与者贡献"], d:"处决技结算后进入无敌，按配置时长，韧性回满。处决技打出的伤害按窗口内按下 C 的玩家分别记入各人贡献；按 C 这个动作本身不记贡献。"},
+
+  // 死亡
+  {id:"dead", x:660, y:900, w:200, h:60, type:"dead", lines:["首领生命归零 → 战斗胜利"], d:"胜负只看首领本体生命。生命归零判胜利，进入结算与奖励发放。"},
+];
+
+// 连线：a→b；label；cls: hot/dash/red/green；path 覆盖可自定义
+const EDGES = [
+  {a:"start", b:"idle"},
+  {a:"idle", b:"select", label:"可出招"},
+  {a:"idle", b:"target", label:"选目标", cls:"hot"},
+  {a:"select", b:"s_claw"},
+  {a:"select", b:"s_breath"},
+  {a:"select", b:"s_roar"},
+  {a:"select", b:"s_bolt"},
+  {a:"select", b:"s_thunder"},
+  {a:"select", b:"s_charge"},
+  {a:"select", b:"s_roar3", label:"被动触发", cls:"dash"},
+  {a:"target", b:"s_breath", label:"最近单位", cls:"hot"},
+  {a:"target", b:"s_bolt", label:"生命最低 3", cls:"hot"},
+  {a:"s_breath", b:"weak", label:"打犄角", cls:"dash"},
+  {a:"s_thunder", b:"weak", label:"打尾晶", cls:"dash"},
+  {a:"s_chaos", b:"weak", label:"打尾晶", cls:"dash"},
+  {a:"weak", b:"rage", label:"破坏即触发"},
+  {a:"weak", b:"special", label:"角+尾合计 4 次", cls:"dash"},
+  {a:"rage", b:"idle", label:"8s 后", cls:"green"},
+  {a:"special", b:"s_chaos", label:"永久强化", cls:"dash"},
+  {a:"p2", b:"s_storm", label:"解锁"},
+  {a:"p2", b:"s_flight", label:"解锁"},
+  {a:"p2", b:"s_chaos", label:"解锁"},
+  {a:"s_claw", b:"poise", label:"命中削韧", cls:"dash"},
+  {a:"s_thunder", b:"poise", label:"命中削韧", cls:"dash"},
+  {a:"poise", b:"weakstate", label:"跨节点", cls:"red"},
+  {a:"weakstate", b:"idle", label:"8s 后", cls:"green"},
+  {a:"poise", b:"execwin", label:"归零", cls:"red"},
+  {a:"execwin", b:"execdone", label:"按 C 结算", cls:"hot"},
+  {a:"execdone", b:"idle", label:"无敌结束", cls:"green"},
+  {a:"idle", b:"p2", label:"生命 < 50%", cls:"red"},
+  {a:"execdone", b:"dead", label:"生命归零", cls:"red"},
+  {a:"idle", b:"dead", label:"生命归零", cls:"red", via:{x:600,y:900}},
+];
+
+const svg = document.getElementById('svg');
+const vp = document.getElementById('viewport');
+const wrap = document.getElementById('canvasWrap');
+const detail = document.getElementById('detail');
+const NS = 'http://www.w3.org/2000/svg';
+function el(t, attrs){const e=document.createElementNS(NS,t);for(const k in attrs)e.setAttribute(k,attrs[k]);return e;}
+
+function nodeCenter(n){return {x:n.x+n.w/2, y:n.y+n.h/2};}
+function edgePath(a,b,via){
+  const A=nodeCenter(a), B=nodeCenter(b);
+  if(via) return `M ${A.x} ${A.y} L ${via.x} ${via.y} L ${B.x} ${B.y}`;
+  const dx=B.x-A.x, dy=B.y-A.y;
+  if(Math.abs(dx) < 60){ // 竖向为主
+    const my=(A.y+B.y)/2;
+    return `M ${A.x} ${A.y} C ${A.x} ${my}, ${B.x} ${my}, ${B.x} ${B.y}`;
+  } else {
+    const mx=(A.x+B.x)/2;
+    return `M ${A.x} ${A.y} C ${mx} ${A.y}, ${mx} ${B.y}, ${B.x} ${B.y}`;
+  }
+}
+function render(){
+  vp.innerHTML='';
+  const map={}; NODES.forEach(n=>map[n.id]=n);
+  // 先画连线
+  EDGES.forEach(e=>{
+    const a=map[e.a], b=map[e.b]; if(!a||!b)return;
+    const p=el('path',{d:edgePath(a,b,e.via),class:'edge'+(e.cls?' '+e.cls:'')});
+    vp.appendChild(p);
+    if(e.label){
+      const A=nodeCenter(a), B=nodeCenter(b);
+      let lx=(A.x+B.x)/2, ly=(A.y+B.y)/2;
+      if(e.via){lx=e.via.x; ly=e.via.y-8;}
+      const t=el('text',{x:lx,y:ly,class:'elabel','text-anchor':'middle'});
+      t.textContent=e.label; vp.appendChild(t);
+    }
+  });
+  // 再画节点
+  NODES.forEach(n=>{
+    const g=el('g',{class:'node','data-id':n.id});
+    g.appendChild(el('rect',{x:n.x,y:n.y,width:n.w,height:n.h}));
+    g.appendChild(el('rect',{x:n.x,y:n.y,width:n.w,height:24,class:'head',fill:'var(--'+n.type+')'}));
+    const tt=el('text',{x:n.x+10,y:n.y+16,class:'title'});tt.textContent=n.lines[0];g.appendChild(tt);
+    n.lines.slice(1).forEach((ln,i)=>{
+      const t=el('text',{x:n.x+10,y:n.y+40+i*15,class:'ln'+(i>0?' dim':'')});t.textContent=ln;g.appendChild(t);
+    });
+    // 引脚
+    g.appendChild(el('circle',{cx:n.x,cy:n.y+n.h/2,r:4,class:'pin'}));
+    g.appendChild(el('circle',{cx:n.x+n.w,cy:n.y+n.h/2,r:4,class:'pin'}));
+    g.addEventListener('click',()=>showDetail(n,g));
+    vp.appendChild(g);
+  });
+}
+function showDetail(n,g){
+  document.querySelectorAll('.node.sel').forEach(x=>x.classList.remove('sel'));
+  g.classList.add('sel');
+  document.getElementById('dbody').innerHTML='<h3>'+n.lines[0]+'</h3>'+
+    '<div class="row"><b>状态详情：</b>'+n.d+'</div>';
+  detail.style.display='block';
+}
+document.getElementById('dclose').onclick=()=>{detail.style.display='none';document.querySelectorAll('.node.sel').forEach(x=>x.classList.remove('sel'));};
+
+// 平移缩放
+let tx=0,ty=0,scale=1,dragging=false,sx=0,sy=0;
+function apply(){vp.setAttribute('transform',`translate(${tx},${ty}) scale(${scale})`);}
+wrap.addEventListener('mousedown',e=>{dragging=true;sx=e.clientX-tx;sy=e.clientY-ty;wrap.classList.add('drag');});
+window.addEventListener('mousemove',e=>{if(dragging){tx=e.clientX-sx;ty=e.clientY-sy;apply();}});
+window.addEventListener('mouseup',()=>{dragging=false;wrap.classList.remove('drag');});
+wrap.addEventListener('wheel',e=>{e.preventDefault();const k=e.deltaY<0?1.1:0.9;scale=Math.max(.35,Math.min(2.2,scale*k));apply();},{passive:false});
+document.getElementById('reset').onclick=()=>{tx=0;ty=0;scale=1;apply();};
+
+// 初始缩放适配
+render();
+scale=0.72;apply();
+</script>
+</body>
+</html>
