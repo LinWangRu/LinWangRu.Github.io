@@ -947,7 +947,7 @@ function switchChar(name){
     <!-- Footer -->
     <footer class="bg-white border-t border-gray-200 py-8">
         <div class="max-w-5xl mx-auto px-6 text-center text-gray-500 text-sm">
-            <p>© 2026 Lin WangRu. 使用 GitHub Pages 部署</p>
+            <p>© 2026 Lin WangRu. 使用 GitHub Pages 部署 <span onclick="window._toggleSecretVisitor && window._toggleSecretVisitor()" style="opacity:.10;cursor:pointer;font-size:9px;" title="">·</span></p>
         </div>
     </footer>
 
@@ -1039,6 +1039,58 @@ function switchChar(name){
                 closeVideo();
             }
         });
+    </script>
+
+    <!-- ===== 隐蔽访问计数（不蒜子 · 免注册）===== -->
+    <span id="busuanzi_value_site_pv" style="display:none"></span>
+    <span id="busuanzi_value_site_uv" style="display:none"></span>
+    <script async src="//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script>
+
+    <!-- 私密面板：Ctrl+Alt+V 或点页脚小点唤出 -->
+    <div id="secretVisitorPanel" style="display:none;position:fixed;right:20px;bottom:20px;z-index:99999;background:rgba(15,23,42,.96);color:#e2e8f0;padding:16px 18px;border-radius:12px;box-shadow:0 10px 30px rgba(0,0,0,.35);font-family:Inter,sans-serif;font-size:13px;min-width:230px;">
+        <div style="display:flex;justify-content:space-between;align-items:center;margin-bottom:10px;">
+            <strong style="color:#38bdf8;letter-spacing:.5px;">站点访问统计</strong>
+            <span onclick="window._toggleSecretVisitor && window._toggleSecretVisitor()" style="cursor:pointer;color:#94a3b8;font-size:16px;line-height:1;">&times;</span>
+        </div>
+        <div style="display:flex;justify-content:space-between;padding:5px 0;border-bottom:1px solid rgba(148,163,184,.2);">
+            <span>独立访客（去重）</span><strong id="secretUv" style="color:#fbbf24;">&hellip;</strong>
+        </div>
+        <div style="display:flex;justify-content:space-between;padding:5px 0;">
+            <span>总浏览次数</span><strong id="secretPv" style="color:#fbbf24;">&hellip;</strong>
+        </div>
+        <p style="margin:10px 0 0;font-size:11px;color:#94a3b8;line-height:1.5;">本机恒为 1 位访客；数字上升即表示有其他设备访问过。此面板仅你可唤出。</p>
+    </div>
+    <script>
+        (function () {
+            var timer = null;
+            function refresh() {
+                var uv = document.getElementById('busuanzi_value_site_uv');
+                var pv = document.getElementById('busuanzi_value_site_pv');
+                var u = (uv && uv.textContent.trim()) || '&hellip;';
+                var p = (pv && pv.textContent.trim()) || '&hellip;';
+                document.getElementById('secretUv').innerHTML = u;
+                document.getElementById('secretPv').innerHTML = p;
+            }
+            function toggle() {
+                var panel = document.getElementById('secretVisitorPanel');
+                if (!panel) return;
+                if (panel.style.display === 'none') {
+                    panel.style.display = 'block';
+                    refresh();
+                    timer = setInterval(refresh, 1500);
+                } else {
+                    panel.style.display = 'none';
+                    if (timer) { clearInterval(timer); timer = null; }
+                }
+            }
+            window._toggleSecretVisitor = toggle;
+            document.addEventListener('keydown', function (e) {
+                if (e.ctrlKey && e.altKey && (e.key === 'V' || e.key === 'v')) {
+                    e.preventDefault();
+                    toggle();
+                }
+            });
+        })();
     </script>
 </body>
 </html>
